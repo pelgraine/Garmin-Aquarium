@@ -1,0 +1,11 @@
+# Connect IQ build output (the VS Code build writes it into the project folder)
+*.prg
+*.prg.debug.xml
+*.iq
+gen/
+mir/
+internal-mir/
+bin/
+
+# macOS
+.DS_Store

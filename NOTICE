@@ -6,5 +6,10 @@ itself a fork of Lagerpun/esp32-cyd-aquarium, adapted from Livegrid OpenMatrix.
 Those projects are licensed under the GNU Affero General Public License v3.0,
 and so is this one (see LICENSE). Not an official Livegrid project.
 
+Modified by pelgraine, October 2026: translated the simulation and drawing to
+Monkey C for the Garmin fenix 7S, moved the tank onto a round screen, redrew
+the common fish and the large species as outlines, replaced the noise-driven
+steering, and dropped the tank camera, Wi-Fi clock and sensor features.
+
 Colour conversion (Colour.mc) follows FastLED's hsv2rgb_rainbow as shipped in
 drvkmr/GFX_Lite.
