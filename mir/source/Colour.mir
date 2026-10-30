@@ -1,0 +1,853 @@
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 4; @symbol_moduledef = [Colour,4,7,13]; ]
+module Colour {
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 5; @symbol_functiondef = [scale8,5,13,19]; @symbol_param<0> = [i,5,20,21]; @symbol_param<1> = [s,5,23,24]; ]
+    function scale8(i, s) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_5_26_7_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 6 8 ]
+        %tmp.1 = lgetv %i;
+        symbol [ i %tmp.1 6 16 17 ];
+        %tmp.2 = lgetv %s;
+        symbol [ s %tmp.2 6 21 22 ];
+        %tmp.3 = 1;
+        %tmp.4 = add %tmp.2 %tmp.3;
+        %tmp.5 = mul %tmp.1 %tmp.4;
+        %tmp.6 = 8;
+        %tmp.7 = shr %tmp.5 %tmp.6;
+        ret %tmp.7;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_5_26_7_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 9; @symbol_functiondef = [scale8v,9,13,20]; @symbol_param<0> = [i,9,21,22]; @symbol_param<1> = [s,9,24,25]; ]
+    function scale8v(i, s) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_9_27_15_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 10 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_9_27_15_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_9_27_15_4_stop" ]
+        %j.1 = local;
+        symbol [ j %j.1 10 12 13 ];
+        %tmp.1 = lgetv %i;
+        symbol [ i %tmp.1 10 17 18 ];
+        %tmp.2 = lgetv %s;
+        symbol [ s %tmp.2 10 21 22 ];
+        %tmp.3 = mul %tmp.1 %tmp.2;
+        %tmp.4 = 8;
+        %tmp.5 = shr %tmp.3 %tmp.4;
+        lputv %j.1 %tmp.5;
+        symbol [ j %j.1 10 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 11 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_8_13_8_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_12_11_27_begin:
+        %tmp.6 = lgetv %i;
+        symbol [ i %tmp.6 11 12 13 ];
+        %tmp.7 = 0;
+        %tmp.8 = ne %tmp.6 %tmp.7;
+        bf %tmp.8 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_8_13_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_22_11_27_true:
+        %tmp.9 = lgetv %s;
+        symbol [ s %tmp.9 11 22 23 ];
+        %tmp.10 = 0;
+        %tmp.11 = ne %tmp.9 %tmp.10;
+        push %tmp.11;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_22_11_27_end:
+        %tmp.12 = phi [%tmp.8 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_12_11_27_begin] [%tmp.11 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_22_11_27_true] [%tmp.12 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_22_11_27_end];
+        bf %tmp.12 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_8_13_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_8_13_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_30_13_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 12 12 ]
+        %tmp.13 = lgetv %j.1;
+        symbol [ j %tmp.13 12 12 13 ];
+        %tmp.14 = 1;
+        %tmp.15 = add %tmp.13 %tmp.14;
+        lputv %j.1 %tmp.15;
+        symbol [ j %j.1 12 12 13 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_30_13_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_8_13_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_11_8_13_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 14 8 ]
+        %tmp.16 = lgetv %j.1;
+        symbol [ j %tmp.16 14 15 16 ];
+        ret %tmp.16;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_9_27_15_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 17; @symbol_functiondef = [rgb,17,13,16]; @symbol_param<0> = [r,17,17,18]; @symbol_param<1> = [g,17,20,21]; @symbol_param<2> = [b,17,23,24]; ]
+    function rgb(r, g, b) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_17_26_19_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 18 8 ]
+        %tmp.1 = lgetv %r;
+        symbol [ r %tmp.1 18 16 17 ];
+        %tmp.2 = 16;
+        %tmp.3 = shl %tmp.1 %tmp.2;
+        %tmp.4 = lgetv %g;
+        symbol [ g %tmp.4 18 28 29 ];
+        %tmp.5 = 8;
+        %tmp.6 = shl %tmp.4 %tmp.5;
+        %tmp.7 = bitor %tmp.3 %tmp.6;
+        %tmp.8 = lgetv %b;
+        symbol [ b %tmp.8 18 38 39 ];
+        %tmp.9 = bitor %tmp.7 %tmp.8;
+        ret %tmp.9;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_17_26_19_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 22; @symbol_functiondef = [lighter,22,13,20]; @symbol_param<0> = [c,22,21,22]; @symbol_param<1> = [f,22,24,25]; ]
+    function lighter(c, f) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 23 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_stop" ]
+        %r.1 = local;
+        symbol [ r %r.1 23 12 13 ];
+        %tmp.1 = lgetv %c;
+        symbol [ c %tmp.1 23 17 18 ];
+        %tmp.2 = 16;
+        %tmp.3 = shr %tmp.1 %tmp.2;
+        %tmp.4 = 0xFF;
+        %tmp.5 = bitand %tmp.3 %tmp.4;
+        lputv %r.1 %tmp.5;
+        symbol [ r %r.1 23 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 24 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_stop" ]
+        %g.2 = local;
+        symbol [ g %g.2 24 12 13 ];
+        %tmp.6 = lgetv %c;
+        symbol [ c %tmp.6 24 17 18 ];
+        %tmp.7 = 8;
+        %tmp.8 = shr %tmp.6 %tmp.7;
+        %tmp.9 = 0xFF;
+        %tmp.10 = bitand %tmp.8 %tmp.9;
+        lputv %g.2 %tmp.10;
+        symbol [ g %g.2 24 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 25 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_stop" ]
+        %b.3 = local;
+        symbol [ b %b.3 25 12 13 ];
+        %tmp.11 = lgetv %c;
+        symbol [ c %tmp.11 25 16 17 ];
+        %tmp.12 = 0xFF;
+        %tmp.13 = bitand %tmp.11 %tmp.12;
+        lputv %b.3 %tmp.13;
+        symbol [ b %b.3 25 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 26 8 ]
+        %tmp.14 = lgetv %r.1;
+        symbol [ r %tmp.14 26 12 13 ];
+        %tmp.15 = 255;
+        %tmp.16 = lgetv %r.1;
+        symbol [ r %tmp.16 26 24 25 ];
+        %tmp.17 = sub %tmp.15 %tmp.16;
+        %tmp.18 = lgetv %f;
+        symbol [ f %tmp.18 26 29 30 ];
+        %tmp.19 = mul %tmp.17 %tmp.18;
+        symbol [ toNumber %tmp.20 26 32 40 ];
+        %tmp.20 = getv function %tmp.19 :toNumber;
+        %tmp.21 = invoke %tmp.19 %tmp.20();
+        %tmp.22 = add %tmp.14 %tmp.21;
+        lputv %r.1 %tmp.22;
+        symbol [ r %r.1 26 8 9 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 27 8 ]
+        %tmp.23 = lgetv %g.2;
+        symbol [ g %tmp.23 27 12 13 ];
+        %tmp.24 = 255;
+        %tmp.25 = lgetv %g.2;
+        symbol [ g %tmp.25 27 24 25 ];
+        %tmp.26 = sub %tmp.24 %tmp.25;
+        %tmp.27 = lgetv %f;
+        symbol [ f %tmp.27 27 29 30 ];
+        %tmp.28 = mul %tmp.26 %tmp.27;
+        symbol [ toNumber %tmp.29 27 32 40 ];
+        %tmp.29 = getv function %tmp.28 :toNumber;
+        %tmp.30 = invoke %tmp.28 %tmp.29();
+        %tmp.31 = add %tmp.23 %tmp.30;
+        lputv %g.2 %tmp.31;
+        symbol [ g %g.2 27 8 9 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 28 8 ]
+        %tmp.32 = lgetv %b.3;
+        symbol [ b %tmp.32 28 12 13 ];
+        %tmp.33 = 255;
+        %tmp.34 = lgetv %b.3;
+        symbol [ b %tmp.34 28 24 25 ];
+        %tmp.35 = sub %tmp.33 %tmp.34;
+        %tmp.36 = lgetv %f;
+        symbol [ f %tmp.36 28 29 30 ];
+        %tmp.37 = mul %tmp.35 %tmp.36;
+        symbol [ toNumber %tmp.38 28 32 40 ];
+        %tmp.38 = getv function %tmp.37 :toNumber;
+        %tmp.39 = invoke %tmp.37 %tmp.38();
+        %tmp.40 = add %tmp.32 %tmp.39;
+        lputv %b.3 %tmp.40;
+        symbol [ b %b.3 28 8 9 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 29 8 ]
+        %tmp.41 = self;
+        symbol [ rgb %tmp.42 29 15 18 ];
+        %tmp.42 = getv function %tmp.41 :rgb;
+        %tmp.43 = lgetv %r.1;
+        symbol [ r %tmp.43 29 19 20 ];
+        %tmp.44 = lgetv %g.2;
+        symbol [ g %tmp.44 29 22 23 ];
+        %tmp.45 = lgetv %b.3;
+        symbol [ b %tmp.45 29 25 26 ];
+        %tmp.46 = invoke %tmp.41 %tmp.42(%tmp.43, %tmp.44, %tmp.45);
+        ret %tmp.46;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_22_27_30_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 33; @symbol_functiondef = [scaled,33,13,19]; @symbol_param<0> = [c,33,20,21]; @symbol_param<1> = [f,33,23,24]; ]
+    function scaled(c, f) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 34 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_stop" ]
+        %r.1 = local;
+        symbol [ r %r.1 34 12 13 ];
+        %tmp.1 = lgetv %c;
+        symbol [ c %tmp.1 34 19 20 ];
+        %tmp.2 = 16;
+        %tmp.3 = shr %tmp.1 %tmp.2;
+        %tmp.4 = 0xFF;
+        %tmp.5 = bitand %tmp.3 %tmp.4;
+        %tmp.6 = lgetv %f;
+        symbol [ f %tmp.6 34 38 39 ];
+        %tmp.7 = mul %tmp.5 %tmp.6;
+        symbol [ toNumber %tmp.8 34 41 49 ];
+        %tmp.8 = getv function %tmp.7 :toNumber;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        lputv %r.1 %tmp.9;
+        symbol [ r %r.1 34 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 35 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_stop" ]
+        %g.2 = local;
+        symbol [ g %g.2 35 12 13 ];
+        %tmp.10 = lgetv %c;
+        symbol [ c %tmp.10 35 19 20 ];
+        %tmp.11 = 8;
+        %tmp.12 = shr %tmp.10 %tmp.11;
+        %tmp.13 = 0xFF;
+        %tmp.14 = bitand %tmp.12 %tmp.13;
+        %tmp.15 = lgetv %f;
+        symbol [ f %tmp.15 35 37 38 ];
+        %tmp.16 = mul %tmp.14 %tmp.15;
+        symbol [ toNumber %tmp.17 35 40 48 ];
+        %tmp.17 = getv function %tmp.16 :toNumber;
+        %tmp.18 = invoke %tmp.16 %tmp.17();
+        lputv %g.2 %tmp.18;
+        symbol [ g %g.2 35 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 36 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_stop" ]
+        %b.3 = local;
+        symbol [ b %b.3 36 12 13 ];
+        %tmp.19 = lgetv %c;
+        symbol [ c %tmp.19 36 18 19 ];
+        %tmp.20 = 0xFF;
+        %tmp.21 = bitand %tmp.19 %tmp.20;
+        %tmp.22 = lgetv %f;
+        symbol [ f %tmp.22 36 30 31 ];
+        %tmp.23 = mul %tmp.21 %tmp.22;
+        symbol [ toNumber %tmp.24 36 33 41 ];
+        %tmp.24 = getv function %tmp.23 :toNumber;
+        %tmp.25 = invoke %tmp.23 %tmp.24();
+        lputv %b.3 %tmp.25;
+        symbol [ b %b.3 36 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 37 8 ]
+        %tmp.26 = self;
+        symbol [ rgb %tmp.27 37 15 18 ];
+        %tmp.27 = getv function %tmp.26 :rgb;
+        %tmp.28 = lgetv %r.1;
+        symbol [ r %tmp.28 37 19 20 ];
+        %tmp.29 = lgetv %g.2;
+        symbol [ g %tmp.29 37 22 23 ];
+        %tmp.30 = lgetv %b.3;
+        symbol [ b %tmp.30 37 25 26 ];
+        %tmp.31 = invoke %tmp.26 %tmp.27(%tmp.28, %tmp.29, %tmp.30);
+        ret %tmp.31;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_33_26_38_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 40; @symbol_functiondef = [hsv,40,13,16]; @symbol_param<0> = [hue,40,17,20]; @symbol_param<1> = [sat,40,22,25]; @symbol_param<2> = [val,40,27,30]; ]
+    function hsv(hue, sat, val) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 41 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_stop" ]
+        %offset8.1 = local;
+        symbol [ offset8 %offset8.1 41 12 19 ];
+        %tmp.1 = lgetv %hue;
+        symbol [ hue %tmp.1 41 23 26 ];
+        %tmp.2 = 0x1F;
+        %tmp.3 = bitand %tmp.1 %tmp.2;
+        %tmp.4 = 3;
+        %tmp.5 = shl %tmp.3 %tmp.4;
+        lputv %offset8.1 %tmp.5;
+        symbol [ offset8 %offset8.1 41 12 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 42 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_stop" ]
+        %third.2 = local;
+        symbol [ third %third.2 42 12 17 ];
+        %tmp.6 = self;
+        symbol [ scale8 %tmp.7 42 20 26 ];
+        %tmp.7 = getv function %tmp.6 :scale8;
+        %tmp.8 = lgetv %offset8.1;
+        symbol [ offset8 %tmp.8 42 27 34 ];
+        %tmp.9 = 85;
+        %tmp.10 = invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9);
+        lputv %third.2 %tmp.10;
+        symbol [ third %third.2 42 12 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 43 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_stop" ]
+        %r.3 = local;
+        symbol [ r %r.3 43 12 13 ];
+        %tmp.11 = 0;
+        lputv %r.3 %tmp.11;
+        symbol [ r %r.3 43 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 44 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_stop" ]
+        %g.4 = local;
+        symbol [ g %g.4 44 12 13 ];
+        %tmp.12 = 0;
+        lputv %g.4 %tmp.12;
+        symbol [ g %g.4 44 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 45 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_stop" ]
+        %b.5 = local;
+        symbol [ b %b.5 45 12 13 ];
+        %tmp.13 = 0;
+        lputv %b.5 %tmp.13;
+        symbol [ b %b.5 45 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 46 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_stop" ]
+        %twothirds.6 = local;
+        symbol [ twothirds %twothirds.6 46 12 21 ];
+        %tmp.14 = 0;
+        lputv %twothirds.6 %tmp.14;
+        symbol [ twothirds %twothirds.6 46 12 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 47 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_8_77_8_if_stmt:
+        %tmp.15 = lgetv %hue;
+        symbol [ hue %tmp.15 47 13 16 ];
+        %tmp.16 = 0x80;
+        %tmp.17 = bitand %tmp.15 %tmp.16;
+        %tmp.18 = 0;
+        %tmp.19 = eq %tmp.17 %tmp.18;
+        bf %tmp.19 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_8_77_8_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_8_77_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_31_62_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 48 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_12_61_12_if_stmt:
+        %tmp.20 = lgetv %hue;
+        symbol [ hue %tmp.20 48 17 20 ];
+        %tmp.21 = 0x40;
+        %tmp.22 = bitand %tmp.20 %tmp.21;
+        %tmp.23 = 0;
+        %tmp.24 = eq %tmp.22 %tmp.23;
+        bf %tmp.24 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_12_61_12_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_12_61_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_35_54_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 49 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_16_53_16_if_stmt:
+        %tmp.25 = lgetv %hue;
+        symbol [ hue %tmp.25 49 21 24 ];
+        %tmp.26 = 0x20;
+        %tmp.27 = bitand %tmp.25 %tmp.26;
+        %tmp.28 = 0;
+        %tmp.29 = eq %tmp.27 %tmp.28;
+        bf %tmp.29 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_16_53_16_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_16_53_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_39_51_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 50 20 ]
+        %tmp.30 = 255;
+        %tmp.31 = lgetv %third.2;
+        symbol [ third %tmp.31 50 30 35 ];
+        %tmp.32 = sub %tmp.30 %tmp.31;
+        lputv %r.3 %tmp.32;
+        symbol [ r %r.3 50 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 50 37 ]
+        %tmp.33 = lgetv %third.2;
+        symbol [ third %tmp.33 50 41 46 ];
+        lputv %g.4 %tmp.33;
+        symbol [ g %g.4 50 37 38 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 50 48 ]
+        %tmp.34 = 0;
+        lputv %b.5 %tmp.34;
+        symbol [ b %b.5 50 48 49 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_39_51_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_16_53_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_16_53_16_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_51_23_53_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 52 20 ]
+        %tmp.35 = 171;
+        lputv %r.3 %tmp.35;
+        symbol [ r %r.3 52 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 52 29 ]
+        %tmp.36 = 85;
+        %tmp.37 = lgetv %third.2;
+        symbol [ third %tmp.37 52 38 43 ];
+        %tmp.38 = add %tmp.36 %tmp.37;
+        lputv %g.4 %tmp.38;
+        symbol [ g %g.4 52 29 30 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 52 45 ]
+        %tmp.39 = 0;
+        lputv %b.5 %tmp.39;
+        symbol [ b %b.5 52 45 46 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_51_23_53_16_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_49_16_53_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_35_54_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_12_61_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_12_61_12_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_54_19_61_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 55 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_16_60_16_if_stmt:
+        %tmp.40 = lgetv %hue;
+        symbol [ hue %tmp.40 55 21 24 ];
+        %tmp.41 = 0x20;
+        %tmp.42 = bitand %tmp.40 %tmp.41;
+        %tmp.43 = 0;
+        %tmp.44 = eq %tmp.42 %tmp.43;
+        bf %tmp.44 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_16_60_16_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_16_60_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_39_58_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 56 20 ]
+        %tmp.45 = self;
+        symbol [ scale8 %tmp.46 56 32 38 ];
+        %tmp.46 = getv function %tmp.45 :scale8;
+        %tmp.47 = lgetv %offset8.1;
+        symbol [ offset8 %tmp.47 56 39 46 ];
+        %tmp.48 = 170;
+        %tmp.49 = invoke %tmp.45 %tmp.46(%tmp.47, %tmp.48);
+        lputv %twothirds.6 %tmp.49;
+        symbol [ twothirds %twothirds.6 56 20 29 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 57 20 ]
+        %tmp.50 = 171;
+        %tmp.51 = lgetv %twothirds.6;
+        symbol [ twothirds %tmp.51 57 30 39 ];
+        %tmp.52 = sub %tmp.50 %tmp.51;
+        lputv %r.3 %tmp.52;
+        symbol [ r %r.3 57 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 57 41 ]
+        %tmp.53 = 170;
+        %tmp.54 = lgetv %third.2;
+        symbol [ third %tmp.54 57 51 56 ];
+        %tmp.55 = add %tmp.53 %tmp.54;
+        lputv %g.4 %tmp.55;
+        symbol [ g %g.4 57 41 42 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 57 58 ]
+        %tmp.56 = 0;
+        lputv %b.5 %tmp.56;
+        symbol [ b %b.5 57 58 59 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_39_58_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_16_60_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_16_60_16_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_58_23_60_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 59 20 ]
+        %tmp.57 = 0;
+        lputv %r.3 %tmp.57;
+        symbol [ r %r.3 59 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 59 27 ]
+        %tmp.58 = 255;
+        %tmp.59 = lgetv %third.2;
+        symbol [ third %tmp.59 59 37 42 ];
+        %tmp.60 = sub %tmp.58 %tmp.59;
+        lputv %g.4 %tmp.60;
+        symbol [ g %g.4 59 27 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 59 44 ]
+        %tmp.61 = lgetv %third.2;
+        symbol [ third %tmp.61 59 48 53 ];
+        lputv %b.5 %tmp.61;
+        symbol [ b %b.5 59 44 45 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_58_23_60_16_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_55_16_60_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_54_19_61_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_48_12_61_12_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_31_62_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_8_77_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_8_77_8_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_62_15_77_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 63 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_12_76_12_if_stmt:
+        %tmp.62 = lgetv %hue;
+        symbol [ hue %tmp.62 63 17 20 ];
+        %tmp.63 = 0x40;
+        %tmp.64 = bitand %tmp.62 %tmp.63;
+        %tmp.65 = 0;
+        %tmp.66 = eq %tmp.64 %tmp.65;
+        bf %tmp.66 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_12_76_12_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_12_76_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_35_70_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 64 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_16_69_16_if_stmt:
+        %tmp.67 = lgetv %hue;
+        symbol [ hue %tmp.67 64 21 24 ];
+        %tmp.68 = 0x20;
+        %tmp.69 = bitand %tmp.67 %tmp.68;
+        %tmp.70 = 0;
+        %tmp.71 = eq %tmp.69 %tmp.70;
+        bf %tmp.71 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_16_69_16_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_16_69_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_39_67_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 65 20 ]
+        %tmp.72 = self;
+        symbol [ scale8 %tmp.73 65 32 38 ];
+        %tmp.73 = getv function %tmp.72 :scale8;
+        %tmp.74 = lgetv %offset8.1;
+        symbol [ offset8 %tmp.74 65 39 46 ];
+        %tmp.75 = 170;
+        %tmp.76 = invoke %tmp.72 %tmp.73(%tmp.74, %tmp.75);
+        lputv %twothirds.6 %tmp.76;
+        symbol [ twothirds %twothirds.6 65 20 29 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 66 20 ]
+        %tmp.77 = 0;
+        lputv %r.3 %tmp.77;
+        symbol [ r %r.3 66 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 66 27 ]
+        %tmp.78 = 171;
+        %tmp.79 = lgetv %twothirds.6;
+        symbol [ twothirds %tmp.79 66 37 46 ];
+        %tmp.80 = sub %tmp.78 %tmp.79;
+        lputv %g.4 %tmp.80;
+        symbol [ g %g.4 66 27 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 66 48 ]
+        %tmp.81 = 85;
+        %tmp.82 = lgetv %twothirds.6;
+        symbol [ twothirds %tmp.82 66 57 66 ];
+        %tmp.83 = add %tmp.81 %tmp.82;
+        lputv %b.5 %tmp.83;
+        symbol [ b %b.5 66 48 49 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_39_67_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_16_69_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_16_69_16_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_67_23_69_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 68 20 ]
+        %tmp.84 = lgetv %third.2;
+        symbol [ third %tmp.84 68 24 29 ];
+        lputv %r.3 %tmp.84;
+        symbol [ r %r.3 68 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 68 31 ]
+        %tmp.85 = 0;
+        lputv %g.4 %tmp.85;
+        symbol [ g %g.4 68 31 32 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 68 38 ]
+        %tmp.86 = 255;
+        %tmp.87 = lgetv %third.2;
+        symbol [ third %tmp.87 68 48 53 ];
+        %tmp.88 = sub %tmp.86 %tmp.87;
+        lputv %b.5 %tmp.88;
+        symbol [ b %b.5 68 38 39 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_67_23_69_16_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_64_16_69_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_35_70_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_12_76_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_12_76_12_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_70_19_76_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 71 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_16_75_16_if_stmt:
+        %tmp.89 = lgetv %hue;
+        symbol [ hue %tmp.89 71 21 24 ];
+        %tmp.90 = 0x20;
+        %tmp.91 = bitand %tmp.89 %tmp.90;
+        %tmp.92 = 0;
+        %tmp.93 = eq %tmp.91 %tmp.92;
+        bf %tmp.93 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_16_75_16_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_16_75_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_39_73_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 72 20 ]
+        %tmp.94 = 85;
+        %tmp.95 = lgetv %third.2;
+        symbol [ third %tmp.95 72 29 34 ];
+        %tmp.96 = add %tmp.94 %tmp.95;
+        lputv %r.3 %tmp.96;
+        symbol [ r %r.3 72 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 72 36 ]
+        %tmp.97 = 0;
+        lputv %g.4 %tmp.97;
+        symbol [ g %g.4 72 36 37 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 72 43 ]
+        %tmp.98 = 171;
+        %tmp.99 = lgetv %third.2;
+        symbol [ third %tmp.99 72 53 58 ];
+        %tmp.100 = sub %tmp.98 %tmp.99;
+        lputv %b.5 %tmp.100;
+        symbol [ b %b.5 72 43 44 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_39_73_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_16_75_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_16_75_16_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_73_23_75_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 74 20 ]
+        %tmp.101 = 170;
+        %tmp.102 = lgetv %third.2;
+        symbol [ third %tmp.102 74 30 35 ];
+        %tmp.103 = add %tmp.101 %tmp.102;
+        lputv %r.3 %tmp.103;
+        symbol [ r %r.3 74 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 74 37 ]
+        %tmp.104 = 0;
+        lputv %g.4 %tmp.104;
+        symbol [ g %g.4 74 37 38 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 74 44 ]
+        %tmp.105 = 85;
+        %tmp.106 = lgetv %third.2;
+        symbol [ third %tmp.106 74 53 58 ];
+        %tmp.107 = sub %tmp.105 %tmp.106;
+        lputv %b.5 %tmp.107;
+        symbol [ b %b.5 74 44 45 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_73_23_75_16_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_71_16_75_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_70_19_76_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_63_12_76_12_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_62_15_77_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_47_8_77_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 78 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_78_8_89_8_if_stmt:
+        %tmp.108 = lgetv %sat;
+        symbol [ sat %tmp.108 78 12 15 ];
+        %tmp.109 = 255;
+        %tmp.110 = ne %tmp.108 %tmp.109;
+        bf %tmp.110 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_78_8_89_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_78_8_89_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_78_24_89_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 79 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_12_88_12_if_stmt:
+        %tmp.111 = lgetv %sat;
+        symbol [ sat %tmp.111 79 16 19 ];
+        %tmp.112 = 0;
+        %tmp.113 = eq %tmp.111 %tmp.112;
+        bf %tmp.113 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_12_88_12_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_12_88_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_26_81_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 80 16 ]
+        %tmp.114 = 255;
+        lputv %r.3 %tmp.114;
+        symbol [ r %r.3 80 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 80 25 ]
+        %tmp.115 = 255;
+        lputv %g.4 %tmp.115;
+        symbol [ g %g.4 80 25 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 80 34 ]
+        %tmp.116 = 255;
+        lputv %b.5 %tmp.116;
+        symbol [ b %b.5 80 34 35 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_26_81_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_12_88_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_12_88_12_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_81_19_88_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 82 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_81_19_88_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_81_19_88_12_stop" ]
+        %desat.7 = local;
+        symbol [ desat %desat.7 82 20 25 ];
+        %tmp.117 = 255;
+        %tmp.118 = lgetv %sat;
+        symbol [ sat %tmp.118 82 34 37 ];
+        %tmp.119 = sub %tmp.117 %tmp.118;
+        lputv %desat.7 %tmp.119;
+        symbol [ desat %desat.7 82 20 25 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 83 16 ]
+        %tmp.120 = self;
+        symbol [ scale8v %tmp.121 83 24 31 ];
+        %tmp.121 = getv function %tmp.120 :scale8v;
+        %tmp.122 = lgetv %desat.7;
+        symbol [ desat %tmp.122 83 32 37 ];
+        %tmp.123 = lgetv %desat.7;
+        symbol [ desat %tmp.123 83 39 44 ];
+        %tmp.124 = invoke %tmp.120 %tmp.121(%tmp.122, %tmp.123);
+        lputv %desat.7 %tmp.124;
+        symbol [ desat %desat.7 83 16 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 84 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_81_19_88_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_81_19_88_12_stop" ]
+        %satscale.8 = local;
+        symbol [ satscale %satscale.8 84 20 28 ];
+        %tmp.125 = 255;
+        %tmp.126 = lgetv %desat.7;
+        symbol [ desat %tmp.126 84 37 42 ];
+        %tmp.127 = sub %tmp.125 %tmp.126;
+        lputv %satscale.8 %tmp.127;
+        symbol [ satscale %satscale.8 84 20 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 85 16 ]
+        %tmp.128 = self;
+        symbol [ scale8 %tmp.129 85 20 26 ];
+        %tmp.129 = getv function %tmp.128 :scale8;
+        %tmp.130 = lgetv %r.3;
+        symbol [ r %tmp.130 85 27 28 ];
+        %tmp.131 = lgetv %satscale.8;
+        symbol [ satscale %tmp.131 85 30 38 ];
+        %tmp.132 = invoke %tmp.128 %tmp.129(%tmp.130, %tmp.131);
+        %tmp.133 = lgetv %desat.7;
+        symbol [ desat %tmp.133 85 42 47 ];
+        %tmp.134 = add %tmp.132 %tmp.133;
+        lputv %r.3 %tmp.134;
+        symbol [ r %r.3 85 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 86 16 ]
+        %tmp.135 = self;
+        symbol [ scale8 %tmp.136 86 20 26 ];
+        %tmp.136 = getv function %tmp.135 :scale8;
+        %tmp.137 = lgetv %g.4;
+        symbol [ g %tmp.137 86 27 28 ];
+        %tmp.138 = lgetv %satscale.8;
+        symbol [ satscale %tmp.138 86 30 38 ];
+        %tmp.139 = invoke %tmp.135 %tmp.136(%tmp.137, %tmp.138);
+        %tmp.140 = lgetv %desat.7;
+        symbol [ desat %tmp.140 86 42 47 ];
+        %tmp.141 = add %tmp.139 %tmp.140;
+        lputv %g.4 %tmp.141;
+        symbol [ g %g.4 86 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 87 16 ]
+        %tmp.142 = self;
+        symbol [ scale8 %tmp.143 87 20 26 ];
+        %tmp.143 = getv function %tmp.142 :scale8;
+        %tmp.144 = lgetv %b.5;
+        symbol [ b %tmp.144 87 27 28 ];
+        %tmp.145 = lgetv %satscale.8;
+        symbol [ satscale %tmp.145 87 30 38 ];
+        %tmp.146 = invoke %tmp.142 %tmp.143(%tmp.144, %tmp.145);
+        %tmp.147 = lgetv %desat.7;
+        symbol [ desat %tmp.147 87 42 47 ];
+        %tmp.148 = add %tmp.146 %tmp.147;
+        lputv %b.5 %tmp.148;
+        symbol [ b %b.5 87 16 17 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_81_19_88_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_79_12_88_12_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_78_24_89_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_78_8_89_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_78_8_89_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 90 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_8_99_8_if_stmt:
+        %tmp.149 = lgetv %val;
+        symbol [ val %tmp.149 90 12 15 ];
+        %tmp.150 = 255;
+        %tmp.151 = ne %tmp.149 %tmp.150;
+        bf %tmp.151 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_8_99_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_8_99_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_24_99_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 91 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_24_99_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_24_99_8_stop" ]
+        %v.9 = local;
+        symbol [ v %v.9 91 16 17 ];
+        %tmp.152 = self;
+        symbol [ scale8v %tmp.153 91 20 27 ];
+        %tmp.153 = getv function %tmp.152 :scale8v;
+        %tmp.154 = lgetv %val;
+        symbol [ val %tmp.154 91 28 31 ];
+        %tmp.155 = lgetv %val;
+        symbol [ val %tmp.155 91 33 36 ];
+        %tmp.156 = invoke %tmp.152 %tmp.153(%tmp.154, %tmp.155);
+        lputv %v.9 %tmp.156;
+        symbol [ v %v.9 91 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 92 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_12_98_12_if_stmt:
+        %tmp.157 = lgetv %v.9;
+        symbol [ v %tmp.157 92 16 17 ];
+        %tmp.158 = 0;
+        %tmp.159 = eq %tmp.157 %tmp.158;
+        bf %tmp.159 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_12_98_12_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_12_98_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_24_94_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 93 16 ]
+        %tmp.160 = 0;
+        lputv %r.3 %tmp.160;
+        symbol [ r %r.3 93 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 93 23 ]
+        %tmp.161 = 0;
+        lputv %g.4 %tmp.161;
+        symbol [ g %g.4 93 23 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 93 30 ]
+        %tmp.162 = 0;
+        lputv %b.5 %tmp.162;
+        symbol [ b %b.5 93 30 31 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_24_94_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_12_98_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_12_98_12_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_94_19_98_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 95 16 ]
+        %tmp.163 = self;
+        symbol [ scale8 %tmp.164 95 20 26 ];
+        %tmp.164 = getv function %tmp.163 :scale8;
+        %tmp.165 = lgetv %r.3;
+        symbol [ r %tmp.165 95 27 28 ];
+        %tmp.166 = lgetv %v.9;
+        symbol [ v %tmp.166 95 30 31 ];
+        %tmp.167 = invoke %tmp.163 %tmp.164(%tmp.165, %tmp.166);
+        lputv %r.3 %tmp.167;
+        symbol [ r %r.3 95 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 96 16 ]
+        %tmp.168 = self;
+        symbol [ scale8 %tmp.169 96 20 26 ];
+        %tmp.169 = getv function %tmp.168 :scale8;
+        %tmp.170 = lgetv %g.4;
+        symbol [ g %tmp.170 96 27 28 ];
+        %tmp.171 = lgetv %v.9;
+        symbol [ v %tmp.171 96 30 31 ];
+        %tmp.172 = invoke %tmp.168 %tmp.169(%tmp.170, %tmp.171);
+        lputv %g.4 %tmp.172;
+        symbol [ g %g.4 96 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 97 16 ]
+        %tmp.173 = self;
+        symbol [ scale8 %tmp.174 97 20 26 ];
+        %tmp.174 = getv function %tmp.173 :scale8;
+        %tmp.175 = lgetv %b.5;
+        symbol [ b %tmp.175 97 27 28 ];
+        %tmp.176 = lgetv %v.9;
+        symbol [ v %tmp.176 97 30 31 ];
+        %tmp.177 = invoke %tmp.173 %tmp.174(%tmp.175, %tmp.176);
+        lputv %b.5 %tmp.177;
+        symbol [ b %b.5 97 16 17 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_94_19_98_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_92_12_98_12_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_24_99_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_8_99_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_90_8_99_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 100 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_100_8_100_32_if_stmt:
+        %tmp.178 = lgetv %r.3;
+        symbol [ r %tmp.178 100 12 13 ];
+        %tmp.179 = 255;
+        %tmp.180 = gt %tmp.178 %tmp.179;
+        bf %tmp.180 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_100_8_100_32_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_100_8_100_32_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_100_21_100_32_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 100 23 ]
+        %tmp.181 = 255;
+        lputv %r.3 %tmp.181;
+        symbol [ r %r.3 100 23 24 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_100_21_100_32_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_100_8_100_32_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_100_8_100_32_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 101 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_101_8_101_32_if_stmt:
+        %tmp.182 = lgetv %g.4;
+        symbol [ g %tmp.182 101 12 13 ];
+        %tmp.183 = 255;
+        %tmp.184 = gt %tmp.182 %tmp.183;
+        bf %tmp.184 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_101_8_101_32_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_101_8_101_32_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_101_21_101_32_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 101 23 ]
+        %tmp.185 = 255;
+        lputv %g.4 %tmp.185;
+        symbol [ g %g.4 101 23 24 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_101_21_101_32_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_101_8_101_32_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_101_8_101_32_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 102 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_102_8_102_32_if_stmt:
+        %tmp.186 = lgetv %b.5;
+        symbol [ b %tmp.186 102 12 13 ];
+        %tmp.187 = 255;
+        %tmp.188 = gt %tmp.186 %tmp.187;
+        bf %tmp.188 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_102_8_102_32_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_102_8_102_32_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_102_21_102_32_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 102 23 ]
+        %tmp.189 = 255;
+        lputv %b.5 %tmp.189;
+        symbol [ b %b.5 102 23 24 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_102_21_102_32_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_102_8_102_32_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_102_8_102_32_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc" 103 8 ]
+        %tmp.190 = self;
+        symbol [ rgb %tmp.191 103 15 18 ];
+        %tmp.191 = getv function %tmp.190 :rgb;
+        %tmp.192 = lgetv %r.3;
+        symbol [ r %tmp.192 103 19 20 ];
+        %tmp.193 = lgetv %g.4;
+        symbol [ g %tmp.193 103 22 23 ];
+        %tmp.194 = lgetv %b.5;
+        symbol [ b %tmp.194 103 25 26 ];
+        %tmp.195 = invoke %tmp.190 %tmp.191(%tmp.192, %tmp.193, %tmp.194);
+        ret %tmp.195;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Colour_mc_40_32_104_4_stop:
+    }
+}
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Colour.mc"; @line = 4; ]
+<init> {
+}

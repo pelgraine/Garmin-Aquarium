@@ -1,0 +1,81 @@
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 4; @symbol_moduledef = [Cfg,4,7,10]; ]
+module Cfg {
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 7; @position = 10; @symbol_constdef = [FRAME_MS,7,10,18]; ]
+    const FRAME_MS = 100;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 12; @position = 10; @symbol_constdef = [CYD_FRAME_MS,12,10,22]; ]
+    const CYD_FRAME_MS = 33.333;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 15; @position = 10; @symbol_constdef = [R,15,10,11]; ]
+    const R = 40.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 16; @position = 10; @symbol_constdef = [C,16,10,11]; ]
+    const C = 40.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 17; @position = 10; @symbol_constdef = [KEEP_R,17,10,16]; ]
+    const KEEP_R = 34.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 22; @position = 10; @symbol_constdef = [PHYS,22,10,14]; ]
+    const PHYS = 80.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 29; @position = 10; @symbol_constdef = [CREATURE_SCALE,29,10,24]; ]
+    const CREATURE_SCALE = 1.8;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 36; @position = 10; @symbol_constdef = [OUTLINE_SCALE,36,10,23]; ]
+    const OUTLINE_SCALE = 1.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 43; @position = 10; @symbol_constdef = [BIG_WEIGHT,43,10,20]; ]
+    const BIG_WEIGHT = 16;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 47; @position = 10; @symbol_constdef = [NUM_FISH,47,10,18]; ]
+    const NUM_FISH = 8;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 48; @position = 10; @symbol_constdef = [NUM_PLANTS,48,10,20]; ]
+    const NUM_PLANTS = 3;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 49; @position = 10; @symbol_constdef = [BOID_GROUPS,49,10,21]; ]
+    const BOID_GROUPS = 2;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 50; @position = 10; @symbol_constdef = [BOIDS_MIN,50,10,19]; ]
+    const BOIDS_MIN = 6;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 51; @position = 10; @symbol_constdef = [BOIDS_MAX,51,10,19]; ]
+    const BOIDS_MAX = 10;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 54; @position = 10; @symbol_constdef = [FOOD_BOOT_MIN_MS,54,10,26]; ]
+    const FOOD_BOOT_MIN_MS = 1500;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 55; @position = 10; @symbol_constdef = [FOOD_BOOT_MAX_MS,55,10,26]; ]
+    const FOOD_BOOT_MAX_MS = 3500;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 56; @position = 10; @symbol_constdef = [FOOD_MIN_MS,56,10,21]; ]
+    const FOOD_MIN_MS = 5500;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 57; @position = 10; @symbol_constdef = [FOOD_MAX_MS,57,10,21]; ]
+    const FOOD_MAX_MS = 12000;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 58; @position = 10; @symbol_constdef = [MAX_FOOD,58,10,18]; ]
+    const MAX_FOOD = 3;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 61; @position = 10; @symbol_constdef = [REFILL_MIN_MS,61,10,23]; ]
+    const REFILL_MIN_MS = 1200000;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 62; @position = 10; @symbol_constdef = [REFILL_MAX_MS,62,10,23]; ]
+    const REFILL_MAX_MS = 2400000;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 65; @position = 10; @symbol_constdef = [AGE_EGG,65,10,17]; ]
+    const AGE_EGG = 0.1;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 66; @position = 10; @symbol_constdef = [AGE_ADULT,66,10,19]; ]
+    const AGE_ADULT = 0.7;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 67; @position = 10; @symbol_constdef = [AGE_SENIOR,67,10,20]; ]
+    const AGE_SENIOR = 0.9;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 68; @position = 10; @symbol_constdef = [AGE_DEAD,68,10,18]; ]
+    const AGE_DEAD = 1.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 69; @position = 10; @symbol_constdef = [LIFESPAN_DAYS,69,10,23]; ]
+    const LIFESPAN_DAYS = 7.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 70; @position = 10; @symbol_constdef = [LIFESPAN_VARIATION,70,10,28]; ]
+    const LIFESPAN_VARIATION = 1.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 73; @position = 10; @symbol_constdef = [COL_BUBBLE,73,10,20]; ]
+    const COL_BUBBLE = 0xFFF5B4;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 74; @position = 10; @symbol_constdef = [COL_DIARY,74,10,19]; ]
+    const COL_DIARY = 0xC8F0DC;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 75; @position = 10; @symbol_constdef = [COL_FPS,75,10,17]; ]
+    const COL_FPS = 0x808080;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 77; @symbol_functiondef = [dt,77,13,15]; ]
+    function dt() {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Cfg_mc_77_18_79_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc" 78 8 ]
+        symbol [ FRAME_MS %tmp.2 78 15 23 ];
+        %tmp.2 = getv ? :FRAME_MS;
+        symbol [ CYD_FRAME_MS %tmp.4 78 26 38 ];
+        %tmp.4 = getv ? :CYD_FRAME_MS;
+        %tmp.5 = div %tmp.2 %tmp.4;
+        ret %tmp.5;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Cfg_mc_77_18_79_4_stop:
+    }
+}
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Cfg.mc"; @line = 4; ]
+<init> {
+}

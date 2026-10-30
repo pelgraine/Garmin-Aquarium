@@ -1,0 +1,1589 @@
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 1; @symbol_usingdef<0> = [Toybox,1,6,12]; @symbol_usingdef<1> = [Math,1,13,17]; ]
+using Toybox.Math;
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [System,2,13,19]; ]
+using Toybox.System;
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 9; @symbol_classdef = [Motion,9,6,12]; ]
+class Motion {
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 9; ]
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 9; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 10; @position = 8; @symbol_vardef = [px,10,8,10]; ]
+    var px;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 11; @position = 8; @symbol_vardef = [py,11,8,10]; ]
+    var py;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 12; @position = 8; @symbol_vardef = [vx,12,8,10]; ]
+    var vx;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 13; @position = 8; @symbol_vardef = [vy,13,8,10]; ]
+    var vy;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 14; @position = 8; @symbol_vardef = [ax,14,8,10]; ]
+    var ax = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 15; @position = 8; @symbol_vardef = [ay,15,8,10]; ]
+    var ay = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 16; @position = 8; @symbol_vardef = [angle,16,8,13]; ]
+    var angle = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 18; @position = 8; @symbol_vardef = [maxSpeed,18,8,16]; ]
+    var maxSpeed;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 19; @position = 8; @symbol_vardef = [minSpeed,19,8,16]; ]
+    var minSpeed;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 20; @position = 8; @symbol_vardef = [sinAmp,20,8,14]; ]
+    var sinAmp;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 21; @position = 8; @symbol_vardef = [sinFreq,21,8,15]; ]
+    var sinFreq;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 22; @position = 8; @symbol_vardef = [noiseAmp,22,8,16]; ]
+    var noiseAmp;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 23; @position = 8; @symbol_vardef = [sideSine,23,8,16]; ]
+    var sideSine;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 24; @position = 8; @symbol_vardef = [useNoise,24,8,16]; ]
+    var useNoise;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 25; @position = 8; @symbol_vardef = [angleOffset,25,8,19]; ]
+    var angleOffset;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 26; @position = 8; @symbol_vardef = [wander,26,8,14]; ]
+    var wander = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 28; @position = 8; @symbol_vardef = [outOfBoundary,28,8,21]; ]
+    var outOfBoundary = false;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 29; @position = 8; @symbol_vardef = [followingFood,29,8,21]; ]
+    var followingFood = false;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 30; @position = 8; @symbol_vardef = [foodX,30,8,13]; ]
+    var foodX = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 31; @position = 8; @symbol_vardef = [foodY,31,8,13]; ]
+    var foodY = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 32; @position = 8; @symbol_vardef = [wiggling,32,8,16]; ]
+    var wiggling = false;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 33; @position = 8; @symbol_vardef = [wiggleUntil,33,8,19]; ]
+    var wiggleUntil = 0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 34; @position = 8; @symbol_vardef = [scared,34,8,14]; ]
+    var scared = false;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 35; @position = 8; @symbol_vardef = [scareX,35,8,14]; ]
+    var scareX = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 36; @position = 8; @symbol_vardef = [scareY,36,8,14]; ]
+    var scareY = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 37; @position = 8; @symbol_vardef = [schooling,37,8,17]; ]
+    var schooling = false;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 38; @position = 8; @symbol_vardef = [schoolX,38,8,15]; ]
+    var schoolX = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 39; @position = 8; @symbol_vardef = [schoolY,39,8,15]; ]
+    var schoolY = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 41; @position = 10; @symbol_constdef = [MAX_FORCE,41,10,19]; ]
+    const MAX_FORCE = 0.0375;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 42; @position = 10; @symbol_constdef = [FOOD_FORCE,42,10,20]; ]
+    const FOOD_FORCE = 0.075;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 43; @position = 10; @symbol_constdef = [BOUNDARY_FORCE,43,10,24]; ]
+    const BOUNDARY_FORCE = 0.0025;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 44; @position = 10; @symbol_constdef = [TWO_PI,44,10,16]; ]
+    const TWO_PI = 6.283185;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 47; @symbol_functiondef = [initialize,47,13,23]; @symbol_param<0> = [kind,47,24,28]; @symbol_param<1> = [x,47,30,31]; @symbol_param<2> = [y,47,33,34]; ]
+    function initialize(kind, x, y) as Void {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_47_36_83_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 48 8 ]
+        %tmp.1 = lgetv %x;
+        symbol [ x %tmp.1 48 13 14 ];
+        symbol [ px ? 48 8 10 ];
+        putv self :px %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 49 8 ]
+        %tmp.2 = lgetv %y;
+        symbol [ y %tmp.2 49 13 14 ];
+        symbol [ py ? 49 8 10 ];
+        putv self :py %tmp.2;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 50 8 ]
+        symbol [ Rnd %tmp.4 50 22 25 ];
+        %tmp.4 = getv ? :Rnd;
+        symbol [ unit %tmp.5 50 26 30 ];
+        %tmp.5 = getv function %tmp.4 :unit;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        symbol [ TWO_PI %tmp.8 50 35 41 ];
+        %tmp.8 = getv ? :TWO_PI;
+        %tmp.9 = mul %tmp.6 %tmp.8;
+        symbol [ angleOffset ? 50 8 19 ];
+        putv self :angleOffset %tmp.9;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 51 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_8_72_8_if_stmt:
+        %tmp.10 = lgetv %kind;
+        symbol [ kind %tmp.10 51 12 16 ];
+        symbol [ Species %tmp.12 51 20 27 ];
+        %tmp.12 = getv ? :Species;
+        symbol [ MOTION_TURTLE %tmp.13 51 28 41 ];
+        %tmp.13 = getv %tmp.12 :MOTION_TURTLE;
+        %tmp.14 = eq %tmp.10 %tmp.13;
+        bf %tmp.14 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_8_72_8_if_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_8_72_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_43_55_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 52 12 ]
+        %tmp.15 = 40.0;
+        %tmp.16 = 80.0;
+        %tmp.17 = div %tmp.15 %tmp.16;
+        symbol [ maxSpeed ? 52 12 20 ];
+        putv self :maxSpeed %tmp.17;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 52 36 ]
+        %tmp.18 = 5.0;
+        %tmp.19 = 80.0;
+        %tmp.20 = div %tmp.18 %tmp.19;
+        symbol [ minSpeed ? 52 36 44 ];
+        putv self :minSpeed %tmp.20;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 53 12 ]
+        %tmp.21 = 10.0;
+        %tmp.22 = 80.0;
+        %tmp.23 = div %tmp.21 %tmp.22;
+        symbol [ sinAmp ? 53 12 18 ];
+        putv self :sinAmp %tmp.23;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 53 34 ]
+        %tmp.24 = 0.001;
+        symbol [ sinFreq ? 53 34 41 ];
+        putv self :sinFreq %tmp.24;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 53 51 ]
+        %tmp.25 = 1.0;
+        %tmp.26 = 80.0;
+        %tmp.27 = div %tmp.25 %tmp.26;
+        symbol [ noiseAmp ? 53 51 59 ];
+        putv self :noiseAmp %tmp.27;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 54 12 ]
+        %tmp.28 = false;
+        symbol [ sideSine ? 54 12 20 ];
+        putv self :sideSine %tmp.28;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 54 30 ]
+        %tmp.29 = true;
+        symbol [ useNoise ? 54 30 38 ];
+        putv self :useNoise %tmp.29;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_43_55_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_8_72_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_8_72_8_if_false:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 55 15 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_15_72_8_if_stmt:
+        %tmp.30 = lgetv %kind;
+        symbol [ kind %tmp.30 55 19 23 ];
+        symbol [ Species %tmp.32 55 27 34 ];
+        %tmp.32 = getv ? :Species;
+        symbol [ MOTION_STAR %tmp.33 55 35 46 ];
+        %tmp.33 = getv %tmp.32 :MOTION_STAR;
+        %tmp.34 = eq %tmp.30 %tmp.33;
+        bf %tmp.34 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_15_72_8_if_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_15_72_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_48_59_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 56 12 ]
+        %tmp.35 = 30.0;
+        %tmp.36 = 80.0;
+        %tmp.37 = div %tmp.35 %tmp.36;
+        symbol [ maxSpeed ? 56 12 20 ];
+        putv self :maxSpeed %tmp.37;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 56 36 ]
+        %tmp.38 = 10.0;
+        %tmp.39 = 80.0;
+        %tmp.40 = div %tmp.38 %tmp.39;
+        symbol [ minSpeed ? 56 36 44 ];
+        putv self :minSpeed %tmp.40;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 57 12 ]
+        %tmp.41 = 5.0;
+        %tmp.42 = 80.0;
+        %tmp.43 = div %tmp.41 %tmp.42;
+        symbol [ sinAmp ? 57 12 18 ];
+        putv self :sinAmp %tmp.43;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 57 33 ]
+        %tmp.44 = 0.005;
+        symbol [ sinFreq ? 57 33 40 ];
+        putv self :sinFreq %tmp.44;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 57 50 ]
+        %tmp.45 = 2.0;
+        %tmp.46 = 80.0;
+        %tmp.47 = div %tmp.45 %tmp.46;
+        symbol [ noiseAmp ? 57 50 58 ];
+        putv self :noiseAmp %tmp.47;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 58 12 ]
+        %tmp.48 = false;
+        symbol [ sideSine ? 58 12 20 ];
+        putv self :sideSine %tmp.48;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 58 30 ]
+        %tmp.49 = true;
+        symbol [ useNoise ? 58 30 38 ];
+        putv self :useNoise %tmp.49;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_48_59_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_15_72_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_15_72_8_if_false:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 59 15 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_15_72_8_if_stmt:
+        %tmp.50 = lgetv %kind;
+        symbol [ kind %tmp.50 59 19 23 ];
+        symbol [ Species %tmp.52 59 27 34 ];
+        %tmp.52 = getv ? :Species;
+        symbol [ MOTION_SNAKE %tmp.53 59 35 47 ];
+        %tmp.53 = getv %tmp.52 :MOTION_SNAKE;
+        %tmp.54 = eq %tmp.50 %tmp.53;
+        bf %tmp.54 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_15_72_8_if_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_15_72_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_49_63_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 60 12 ]
+        %tmp.55 = 40.0;
+        %tmp.56 = 80.0;
+        %tmp.57 = div %tmp.55 %tmp.56;
+        symbol [ maxSpeed ? 60 12 20 ];
+        putv self :maxSpeed %tmp.57;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 60 36 ]
+        %tmp.58 = 20.0;
+        %tmp.59 = 80.0;
+        %tmp.60 = div %tmp.58 %tmp.59;
+        symbol [ minSpeed ? 60 36 44 ];
+        putv self :minSpeed %tmp.60;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 61 12 ]
+        %tmp.61 = 5.0;
+        %tmp.62 = 80.0;
+        %tmp.63 = div %tmp.61 %tmp.62;
+        symbol [ sinAmp ? 61 12 18 ];
+        putv self :sinAmp %tmp.63;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 61 33 ]
+        %tmp.64 = 0.005;
+        symbol [ sinFreq ? 61 33 40 ];
+        putv self :sinFreq %tmp.64;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 61 50 ]
+        %tmp.65 = 6.0;
+        %tmp.66 = 80.0;
+        %tmp.67 = div %tmp.65 %tmp.66;
+        symbol [ noiseAmp ? 61 50 58 ];
+        putv self :noiseAmp %tmp.67;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 62 12 ]
+        %tmp.68 = true;
+        symbol [ sideSine ? 62 12 20 ];
+        putv self :sideSine %tmp.68;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 62 29 ]
+        %tmp.69 = true;
+        symbol [ useNoise ? 62 29 37 ];
+        putv self :useNoise %tmp.69;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_49_63_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_15_72_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_15_72_8_if_false:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 63 15 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_15_72_8_if_stmt:
+        %tmp.70 = lgetv %kind;
+        symbol [ kind %tmp.70 63 19 23 ];
+        symbol [ Species %tmp.72 63 27 34 ];
+        %tmp.72 = getv ? :Species;
+        symbol [ MOTION_OCTOPUS %tmp.73 63 35 49 ];
+        %tmp.73 = getv %tmp.72 :MOTION_OCTOPUS;
+        %tmp.74 = eq %tmp.70 %tmp.73;
+        bf %tmp.74 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_15_72_8_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_15_72_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_51_67_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 64 12 ]
+        %tmp.75 = 35.0;
+        %tmp.76 = 80.0;
+        %tmp.77 = div %tmp.75 %tmp.76;
+        symbol [ maxSpeed ? 64 12 20 ];
+        putv self :maxSpeed %tmp.77;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 64 36 ]
+        %tmp.78 = 5.0;
+        %tmp.79 = 80.0;
+        %tmp.80 = div %tmp.78 %tmp.79;
+        symbol [ minSpeed ? 64 36 44 ];
+        putv self :minSpeed %tmp.80;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 65 12 ]
+        %tmp.81 = 8.0;
+        %tmp.82 = 80.0;
+        %tmp.83 = div %tmp.81 %tmp.82;
+        symbol [ sinAmp ? 65 12 18 ];
+        putv self :sinAmp %tmp.83;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 65 33 ]
+        %tmp.84 = 0.002;
+        symbol [ sinFreq ? 65 33 40 ];
+        putv self :sinFreq %tmp.84;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 65 50 ]
+        %tmp.85 = 0.0;
+        symbol [ noiseAmp ? 65 50 58 ];
+        putv self :noiseAmp %tmp.85;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 66 12 ]
+        %tmp.86 = false;
+        symbol [ sideSine ? 66 12 20 ];
+        putv self :sideSine %tmp.86;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 66 30 ]
+        %tmp.87 = false;
+        symbol [ useNoise ? 66 30 38 ];
+        putv self :useNoise %tmp.87;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_51_67_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_15_72_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_15_72_8_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_67_15_72_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 69 12 ]
+        %tmp.88 = 30.0;
+        %tmp.89 = 80.0;
+        %tmp.90 = div %tmp.88 %tmp.89;
+        symbol [ maxSpeed ? 69 12 20 ];
+        putv self :maxSpeed %tmp.90;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 69 36 ]
+        %tmp.91 = 10.0;
+        %tmp.92 = 80.0;
+        %tmp.93 = div %tmp.91 %tmp.92;
+        symbol [ minSpeed ? 69 36 44 ];
+        putv self :minSpeed %tmp.93;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 70 12 ]
+        %tmp.94 = 2.0;
+        %tmp.95 = 80.0;
+        %tmp.96 = div %tmp.94 %tmp.95;
+        symbol [ sinAmp ? 70 12 18 ];
+        putv self :sinAmp %tmp.96;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 70 33 ]
+        %tmp.97 = 0.002;
+        symbol [ sinFreq ? 70 33 40 ];
+        putv self :sinFreq %tmp.97;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 70 50 ]
+        %tmp.98 = 6.0;
+        %tmp.99 = 80.0;
+        %tmp.100 = div %tmp.98 %tmp.99;
+        symbol [ noiseAmp ? 70 50 58 ];
+        putv self :noiseAmp %tmp.100;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 71 12 ]
+        %tmp.101 = true;
+        symbol [ sideSine ? 71 12 20 ];
+        putv self :sideSine %tmp.101;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 71 29 ]
+        %tmp.102 = true;
+        symbol [ useNoise ? 71 29 37 ];
+        putv self :useNoise %tmp.102;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_67_15_72_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_63_15_72_8_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_59_15_72_8_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_55_15_72_8_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_51_8_72_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 74 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_47_36_83_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_47_36_83_4_stop" ]
+        %m.1 = local;
+        symbol [ m %m.1 74 12 13 ];
+        %tmp.103 = 0.0;
+        lputv %m.1 %tmp.103;
+        symbol [ m %m.1 74 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 75 8 ]
+        while @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_8_79_8_while_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_8_79_8_while_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_8_79_8_while_test:
+        %tmp.104 = lgetv %m.1;
+        symbol [ m %tmp.104 75 15 16 ];
+        %tmp.105 = 5.0;
+        %tmp.106 = lt %tmp.104 %tmp.105;
+        bf %tmp.106 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_8_79_8_while_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_8_79_8_while_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_24_79_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 76 12 ]
+        symbol [ Rnd %tmp.108 76 17 20 ];
+        %tmp.108 = getv ? :Rnd;
+        symbol [ range %tmp.109 76 21 26 ];
+        %tmp.109 = getv function %tmp.108 :range;
+        %tmp.110 = -10;
+        %tmp.111 = 10;
+        %tmp.112 = invoke %tmp.108 %tmp.109(%tmp.110, %tmp.111);
+        symbol [ toFloat %tmp.113 76 36 43 ];
+        %tmp.113 = getv function %tmp.112 :toFloat;
+        %tmp.114 = invoke %tmp.112 %tmp.113();
+        symbol [ vx ? 76 12 14 ];
+        putv self :vx %tmp.114;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 77 12 ]
+        symbol [ Rnd %tmp.116 77 17 20 ];
+        %tmp.116 = getv ? :Rnd;
+        symbol [ range %tmp.117 77 21 26 ];
+        %tmp.117 = getv function %tmp.116 :range;
+        %tmp.118 = -10;
+        %tmp.119 = 10;
+        %tmp.120 = invoke %tmp.116 %tmp.117(%tmp.118, %tmp.119);
+        symbol [ toFloat %tmp.121 77 36 43 ];
+        %tmp.121 = getv function %tmp.120 :toFloat;
+        %tmp.122 = invoke %tmp.120 %tmp.121();
+        symbol [ vy ? 77 12 14 ];
+        putv self :vy %tmp.122;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 78 12 ]
+        symbol [ Math %tmp.123 78 16 20 ];
+        %tmp.123 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.124 78 21 25 ];
+        %tmp.124 = getv function %tmp.123 :sqrt;
+        symbol [ vx %tmp.126 78 26 28 ];
+        %tmp.126 = getv ? :vx;
+        symbol [ vx %tmp.128 78 31 33 ];
+        %tmp.128 = getv ? :vx;
+        %tmp.129 = mul %tmp.126 %tmp.128;
+        symbol [ vy %tmp.131 78 36 38 ];
+        %tmp.131 = getv ? :vy;
+        symbol [ vy %tmp.133 78 41 43 ];
+        %tmp.133 = getv ? :vy;
+        %tmp.134 = mul %tmp.131 %tmp.133;
+        %tmp.135 = add %tmp.129 %tmp.134;
+        %tmp.136 = invoke %tmp.123 %tmp.124(%tmp.135);
+        lputv %m.1 %tmp.136;
+        symbol [ m %m.1 78 12 13 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_24_79_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_8_79_8_while_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_75_8_79_8_while_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 80 8 ]
+        symbol [ vx %tmp.138 80 13 15 ];
+        %tmp.138 = getv ? :vx;
+        %tmp.139 = 80.0;
+        %tmp.140 = div %tmp.138 %tmp.139;
+        symbol [ vx ? 80 8 10 ];
+        putv self :vx %tmp.140;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 81 8 ]
+        symbol [ vy %tmp.142 81 13 15 ];
+        %tmp.142 = getv ? :vy;
+        %tmp.143 = 80.0;
+        %tmp.144 = div %tmp.142 %tmp.143;
+        symbol [ vy ? 81 8 10 ];
+        putv self :vy %tmp.144;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 82 8 ]
+        symbol [ Math %tmp.145 82 16 20 ];
+        %tmp.145 = getm $.Toybox.Math;
+        symbol [ atan2 %tmp.146 82 21 26 ];
+        %tmp.146 = getv function %tmp.145 :atan2;
+        symbol [ vy %tmp.148 82 27 29 ];
+        %tmp.148 = getv ? :vy;
+        symbol [ vx %tmp.150 82 31 33 ];
+        %tmp.150 = getv ? :vx;
+        %tmp.151 = invoke %tmp.145 %tmp.146(%tmp.148, %tmp.150);
+        symbol [ angle ? 82 8 13 ];
+        putv self :angle %tmp.151;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_47_36_83_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 85; @symbol_functiondef = [heading,85,13,20]; ]
+    function heading() {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_85_23_87_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 86 8 ]
+        symbol [ Math %tmp.1 86 15 19 ];
+        %tmp.1 = getm $.Toybox.Math;
+        symbol [ atan2 %tmp.2 86 20 25 ];
+        %tmp.2 = getv function %tmp.1 :atan2;
+        symbol [ vy %tmp.4 86 26 28 ];
+        %tmp.4 = getv ? :vy;
+        symbol [ vx %tmp.6 86 30 32 ];
+        %tmp.6 = getv ? :vx;
+        %tmp.7 = invoke %tmp.1 %tmp.2(%tmp.4, %tmp.6);
+        ret %tmp.7;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_85_23_87_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 89; @symbol_functiondef = [applyForce,89,13,23]; @symbol_param<0> = [fx,89,24,26]; @symbol_param<1> = [fy,89,28,30]; ]
+    function applyForce(fx, fy) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_89_32_92_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 90 8 ]
+        symbol [ ax %tmp.1 90 8 10 ];
+        %tmp.1 = getv self :ax;
+        %tmp.2 = lgetv %fx;
+        symbol [ fx %tmp.2 90 14 16 ];
+        %tmp.3 = add %tmp.1 %tmp.2;
+        symbol [ ax ? 90 8 10 ];
+        putv self :ax dup %tmp.3;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 91 8 ]
+        symbol [ ay %tmp.4 91 8 10 ];
+        %tmp.4 = getv self :ay;
+        %tmp.5 = lgetv %fy;
+        symbol [ fy %tmp.5 91 14 16 ];
+        %tmp.6 = add %tmp.4 %tmp.5;
+        symbol [ ay ? 91 8 10 ];
+        putv self :ay dup %tmp.6;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_89_32_92_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 96; @symbol_functiondef = [boundaryCheck,96,13,26]; @symbol_param<0> = [force,96,27,32]; ]
+    function boundaryCheck(force) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 97 8 ]
+        %tmp.1 = false;
+        symbol [ outOfBoundary ? 97 8 21 ];
+        putv self :outOfBoundary %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 98 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_stop" ]
+        %dx.1 = local;
+        symbol [ dx %dx.1 98 12 14 ];
+        symbol [ px %tmp.3 98 17 19 ];
+        %tmp.3 = getv ? :px;
+        symbol [ Cfg %tmp.5 98 22 25 ];
+        %tmp.5 = getv ? :Cfg;
+        symbol [ C %tmp.6 98 26 27 ];
+        %tmp.6 = getv %tmp.5 :C;
+        %tmp.7 = sub %tmp.3 %tmp.6;
+        lputv %dx.1 %tmp.7;
+        symbol [ dx %dx.1 98 12 14 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 99 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_stop" ]
+        %dy.2 = local;
+        symbol [ dy %dy.2 99 12 14 ];
+        symbol [ py %tmp.9 99 17 19 ];
+        %tmp.9 = getv ? :py;
+        symbol [ Cfg %tmp.11 99 22 25 ];
+        %tmp.11 = getv ? :Cfg;
+        symbol [ C %tmp.12 99 26 27 ];
+        %tmp.12 = getv %tmp.11 :C;
+        %tmp.13 = sub %tmp.9 %tmp.12;
+        lputv %dy.2 %tmp.13;
+        symbol [ dy %dy.2 99 12 14 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 100 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_stop" ]
+        %d.3 = local;
+        symbol [ d %d.3 100 12 13 ];
+        symbol [ Math %tmp.14 100 16 20 ];
+        %tmp.14 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.15 100 21 25 ];
+        %tmp.15 = getv function %tmp.14 :sqrt;
+        %tmp.16 = lgetv %dx.1;
+        symbol [ dx %tmp.16 100 26 28 ];
+        %tmp.17 = lgetv %dx.1;
+        symbol [ dx %tmp.17 100 31 33 ];
+        %tmp.18 = mul %tmp.16 %tmp.17;
+        %tmp.19 = lgetv %dy.2;
+        symbol [ dy %tmp.19 100 36 38 ];
+        %tmp.20 = lgetv %dy.2;
+        symbol [ dy %tmp.20 100 41 43 ];
+        %tmp.21 = mul %tmp.19 %tmp.20;
+        %tmp.22 = add %tmp.18 %tmp.21;
+        %tmp.23 = invoke %tmp.14 %tmp.15(%tmp.22);
+        lputv %d.3 %tmp.23;
+        symbol [ d %d.3 100 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 101 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_8_104_8_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_12_101_34_begin:
+        %tmp.24 = lgetv %d.3;
+        symbol [ d %tmp.24 101 12 13 ];
+        symbol [ Cfg %tmp.26 101 16 19 ];
+        %tmp.26 = getv ? :Cfg;
+        symbol [ KEEP_R %tmp.27 101 20 26 ];
+        %tmp.27 = getv %tmp.26 :KEEP_R;
+        %tmp.28 = gt %tmp.24 %tmp.27;
+        bf %tmp.28 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_8_104_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_30_101_34_true:
+        %tmp.29 = lgetv %d.3;
+        symbol [ d %tmp.29 101 30 31 ];
+        %tmp.30 = 0.0;
+        %tmp.31 = gt %tmp.29 %tmp.30;
+        push %tmp.31;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_30_101_34_end:
+        %tmp.32 = phi [%tmp.28 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_12_101_34_begin] [%tmp.31 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_30_101_34_true] [%tmp.32 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_30_101_34_end];
+        bf %tmp.32 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_8_104_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_8_104_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_39_104_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 102 12 ]
+        %tmp.33 = self;
+        symbol [ applyForce %tmp.34 102 12 22 ];
+        %tmp.34 = getv function %tmp.33 :applyForce;
+        %tmp.35 = lgetv %dx.1;
+        symbol [ dx %tmp.35 102 24 26 ];
+        %tmp.36 = sub 0 %tmp.35;
+        %tmp.37 = lgetv %d.3;
+        symbol [ d %tmp.37 102 29 30 ];
+        %tmp.38 = div %tmp.36 %tmp.37;
+        %tmp.39 = lgetv %force;
+        symbol [ force %tmp.39 102 33 38 ];
+        %tmp.40 = mul %tmp.38 %tmp.39;
+        %tmp.41 = lgetv %dy.2;
+        symbol [ dy %tmp.41 102 41 43 ];
+        %tmp.42 = sub 0 %tmp.41;
+        %tmp.43 = lgetv %d.3;
+        symbol [ d %tmp.43 102 46 47 ];
+        %tmp.44 = div %tmp.42 %tmp.43;
+        %tmp.45 = lgetv %force;
+        symbol [ force %tmp.45 102 50 55 ];
+        %tmp.46 = mul %tmp.44 %tmp.45;
+        invoke %tmp.33 %tmp.34(%tmp.40, %tmp.46);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 103 12 ]
+        %tmp.47 = true;
+        symbol [ outOfBoundary ? 103 12 25 ];
+        putv self :outOfBoundary %tmp.47;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_39_104_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_8_104_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_101_8_104_8_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_96_34_105_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 107; @symbol_functiondef = [sineMotion,107,13,23]; @symbol_param<0> = [nowMs,107,24,29]; ]
+    function sineMotion(nowMs) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 108 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_stop" ]
+        %theta.1 = local;
+        symbol [ theta %theta.1 108 12 17 ];
+        %tmp.1 = self;
+        symbol [ heading %tmp.2 108 20 27 ];
+        %tmp.2 = getv function %tmp.1 :heading;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        lputv %theta.1 %tmp.3;
+        symbol [ theta %theta.1 108 12 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 109 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_109_8_111_8_if_stmt:
+        symbol [ sideSine %tmp.5 109 12 20 ];
+        %tmp.5 = getv ? :sideSine;
+        bf %tmp.5 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_109_8_111_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_109_8_111_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_109_22_111_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 110 12 ]
+        %tmp.6 = lgetv %theta.1;
+        symbol [ theta %tmp.6 110 12 17 ];
+        symbol [ Math %tmp.7 110 21 25 ];
+        %tmp.7 = getm $.Toybox.Math;
+        symbol [ PI %tmp.8 110 26 28 ];
+        %tmp.8 = getv %tmp.7 :PI;
+        %tmp.9 = 2.0;
+        %tmp.10 = div %tmp.8 %tmp.9;
+        %tmp.11 = add %tmp.6 %tmp.10;
+        lputv %theta.1 %tmp.11;
+        symbol [ theta %theta.1 110 12 17 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_109_22_111_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_109_8_111_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_109_8_111_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 112 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_stop" ]
+        %a.2 = local;
+        symbol [ a %a.2 112 12 13 ];
+        %tmp.12 = lgetv %nowMs;
+        symbol [ nowMs %tmp.12 112 16 21 ];
+        symbol [ sinFreq %tmp.14 112 24 31 ];
+        %tmp.14 = getv ? :sinFreq;
+        %tmp.15 = mul %tmp.12 %tmp.14;
+        symbol [ angleOffset %tmp.17 112 34 45 ];
+        %tmp.17 = getv ? :angleOffset;
+        %tmp.18 = add %tmp.15 %tmp.17;
+        lputv %a.2 %tmp.18;
+        symbol [ a %a.2 112 12 13 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 113 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_stop" ]
+        %yOffset.3 = local;
+        symbol [ yOffset %yOffset.3 113 12 19 ];
+        symbol [ Math %tmp.19 113 22 26 ];
+        %tmp.19 = getm $.Toybox.Math;
+        symbol [ sin %tmp.20 113 27 30 ];
+        %tmp.20 = getv function %tmp.19 :sin;
+        %tmp.21 = lgetv %a.2;
+        symbol [ a %tmp.21 113 31 32 ];
+        %tmp.22 = invoke %tmp.19 %tmp.20(%tmp.21);
+        symbol [ sinAmp %tmp.24 113 36 42 ];
+        %tmp.24 = getv ? :sinAmp;
+        %tmp.25 = mul %tmp.22 %tmp.24;
+        lputv %yOffset.3 %tmp.25;
+        symbol [ yOffset %yOffset.3 113 12 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 114 8 ]
+        %tmp.26 = self;
+        symbol [ applyForce %tmp.27 114 8 18 ];
+        %tmp.27 = getv function %tmp.26 :applyForce;
+        symbol [ Math %tmp.28 114 19 23 ];
+        %tmp.28 = getm $.Toybox.Math;
+        symbol [ cos %tmp.29 114 24 27 ];
+        %tmp.29 = getv function %tmp.28 :cos;
+        %tmp.30 = lgetv %theta.1;
+        symbol [ theta %tmp.30 114 28 33 ];
+        %tmp.31 = invoke %tmp.28 %tmp.29(%tmp.30);
+        %tmp.32 = lgetv %yOffset.3;
+        symbol [ yOffset %tmp.32 114 37 44 ];
+        %tmp.33 = mul %tmp.31 %tmp.32;
+        symbol [ Math %tmp.34 114 46 50 ];
+        %tmp.34 = getm $.Toybox.Math;
+        symbol [ sin %tmp.35 114 51 54 ];
+        %tmp.35 = getv function %tmp.34 :sin;
+        %tmp.36 = lgetv %theta.1;
+        symbol [ theta %tmp.36 114 55 60 ];
+        %tmp.37 = invoke %tmp.34 %tmp.35(%tmp.36);
+        %tmp.38 = lgetv %yOffset.3;
+        symbol [ yOffset %tmp.38 114 64 71 ];
+        %tmp.39 = mul %tmp.37 %tmp.38;
+        invoke %tmp.26 %tmp.27(%tmp.33, %tmp.39);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_107_31_115_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 117; @symbol_functiondef = [noiseMotion,117,13,24]; ]
+    function noiseMotion() {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_117_27_124_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 118 8 ]
+        symbol [ wander %tmp.1 118 8 14 ];
+        %tmp.1 = getv self :wander;
+        symbol [ Rnd %tmp.3 118 18 21 ];
+        %tmp.3 = getv ? :Rnd;
+        symbol [ signed %tmp.4 118 22 28 ];
+        %tmp.4 = getv function %tmp.3 :signed;
+        %tmp.5 = invoke %tmp.3 %tmp.4();
+        %tmp.6 = 0.4;
+        %tmp.7 = mul %tmp.5 %tmp.6;
+        %tmp.8 = add %tmp.1 %tmp.7;
+        symbol [ wander ? 118 8 14 ];
+        putv self :wander dup %tmp.8;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 119 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_119_8_119_42_if_stmt:
+        symbol [ wander %tmp.10 119 12 18 ];
+        %tmp.10 = getv ? :wander;
+        %tmp.11 = 1.0;
+        %tmp.12 = gt %tmp.10 %tmp.11;
+        bf %tmp.12 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_119_8_119_42_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_119_8_119_42_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_119_26_119_42_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 119 28 ]
+        %tmp.13 = 1.0;
+        symbol [ wander ? 119 28 34 ];
+        putv self :wander %tmp.13;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_119_26_119_42_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_119_8_119_42_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_119_8_119_42_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 120 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_120_8_120_44_if_stmt:
+        symbol [ wander %tmp.15 120 12 18 ];
+        %tmp.15 = getv ? :wander;
+        %tmp.16 = -1.0;
+        %tmp.17 = lt %tmp.15 %tmp.16;
+        bf %tmp.17 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_120_8_120_44_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_120_8_120_44_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_120_27_120_44_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 120 29 ]
+        %tmp.18 = -1.0;
+        symbol [ wander ? 120 29 35 ];
+        putv self :wander %tmp.18;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_120_27_120_44_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_120_8_120_44_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_120_8_120_44_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 121 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_117_27_124_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_117_27_124_4_stop" ]
+        %noiseAngle.1 = local;
+        symbol [ noiseAngle %noiseAngle.1 121 12 22 ];
+        symbol [ wander %tmp.20 121 25 31 ];
+        %tmp.20 = getv ? :wander;
+        symbol [ TWO_PI %tmp.22 121 34 40 ];
+        %tmp.22 = getv ? :TWO_PI;
+        %tmp.23 = mul %tmp.20 %tmp.22;
+        lputv %noiseAngle.1 %tmp.23;
+        symbol [ noiseAngle %noiseAngle.1 121 12 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 122 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_117_27_124_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_117_27_124_4_stop" ]
+        %mag.2 = local;
+        symbol [ mag %mag.2 122 12 15 ];
+        symbol [ noiseAmp %tmp.25 122 18 26 ];
+        %tmp.25 = getv ? :noiseAmp;
+        symbol [ wander %tmp.27 122 29 35 ];
+        %tmp.27 = getv ? :wander;
+        %tmp.28 = mul %tmp.25 %tmp.27;
+        lputv %mag.2 %tmp.28;
+        symbol [ mag %mag.2 122 12 15 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 123 8 ]
+        %tmp.29 = self;
+        symbol [ applyForce %tmp.30 123 8 18 ];
+        %tmp.30 = getv function %tmp.29 :applyForce;
+        symbol [ Math %tmp.31 123 19 23 ];
+        %tmp.31 = getm $.Toybox.Math;
+        symbol [ cos %tmp.32 123 24 27 ];
+        %tmp.32 = getv function %tmp.31 :cos;
+        %tmp.33 = lgetv %noiseAngle.1;
+        symbol [ noiseAngle %tmp.33 123 28 38 ];
+        %tmp.34 = invoke %tmp.31 %tmp.32(%tmp.33);
+        %tmp.35 = lgetv %mag.2;
+        symbol [ mag %tmp.35 123 42 45 ];
+        %tmp.36 = mul %tmp.34 %tmp.35;
+        symbol [ Math %tmp.37 123 47 51 ];
+        %tmp.37 = getm $.Toybox.Math;
+        symbol [ sin %tmp.38 123 52 55 ];
+        %tmp.38 = getv function %tmp.37 :sin;
+        %tmp.39 = lgetv %noiseAngle.1;
+        symbol [ noiseAngle %tmp.39 123 56 66 ];
+        %tmp.40 = invoke %tmp.37 %tmp.38(%tmp.39);
+        %tmp.41 = lgetv %mag.2;
+        symbol [ mag %tmp.41 123 70 73 ];
+        %tmp.42 = mul %tmp.40 %tmp.41;
+        invoke %tmp.29 %tmp.30(%tmp.36, %tmp.42);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_117_27_124_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 128; @symbol_functiondef = [update,128,13,19]; @symbol_param<0> = [age,128,20,23]; @symbol_param<1> = [stayInside,128,25,35]; @symbol_param<2> = [nowMs,128,37,42]; @symbol_param<3> = [dt,128,44,46]; ]
+    function update(age, stayInside, nowMs, dt) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 129 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_129_8_133_8_if_stmt:
+        %tmp.1 = lgetv %age;
+        symbol [ age %tmp.1 129 12 15 ];
+        symbol [ Cfg %tmp.3 129 18 21 ];
+        %tmp.3 = getv ? :Cfg;
+        symbol [ AGE_EGG %tmp.4 129 22 29 ];
+        %tmp.4 = getv %tmp.3 :AGE_EGG;
+        %tmp.5 = lt %tmp.1 %tmp.4;
+        bf %tmp.5 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_129_8_133_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_129_8_133_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_129_31_133_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 130 12 ]
+        %tmp.6 = 0.0;
+        symbol [ vx ? 130 12 14 ];
+        putv self :vx %tmp.6;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 131 12 ]
+        %tmp.7 = 0.0;
+        symbol [ vy ? 131 12 14 ];
+        putv self :vy %tmp.7;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 132 12 ]
+        ret ?;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_129_31_133_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_129_8_133_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_129_8_133_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 134 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_8_138_8_if_stmt:
+        %tmp.8 = lgetv %stayInside;
+        symbol [ stayInside %tmp.8 134 12 22 ];
+        bf %tmp.8 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_8_138_8_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_8_138_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_24_136_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 135 12 ]
+        %tmp.9 = self;
+        symbol [ boundaryCheck %tmp.10 135 12 25 ];
+        %tmp.10 = getv function %tmp.9 :boundaryCheck;
+        symbol [ BOUNDARY_FORCE %tmp.12 135 26 40 ];
+        %tmp.12 = getv ? :BOUNDARY_FORCE;
+        %tmp.13 = 10.0;
+        %tmp.14 = mul %tmp.12 %tmp.13;
+        invoke %tmp.9 %tmp.10(%tmp.14);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_24_136_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_8_138_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_8_138_8_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_136_15_138_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 137 12 ]
+        %tmp.15 = self;
+        symbol [ boundaryCheck %tmp.16 137 12 25 ];
+        %tmp.16 = getv function %tmp.15 :boundaryCheck;
+        symbol [ BOUNDARY_FORCE %tmp.18 137 26 40 ];
+        %tmp.18 = getv ? :BOUNDARY_FORCE;
+        invoke %tmp.15 %tmp.16(%tmp.18);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_136_15_138_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_134_8_138_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 139 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_8_151_8_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_12_139_31_begin:
+        symbol [ followingFood %tmp.20 139 13 26 ];
+        %tmp.20 = getv ? :followingFood;
+        %tmp.21 = not %tmp.20;
+        bf %tmp.21 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_8_151_8_if_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_30_139_31_true:
+        symbol [ outOfBoundary %tmp.23 139 31 44 ];
+        %tmp.23 = getv ? :outOfBoundary;
+        %tmp.24 = not %tmp.23;
+        push %tmp.24;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_30_139_31_end:
+        %tmp.25 = phi [%tmp.21 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_12_139_31_begin] [%tmp.24 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_30_139_31_true] [%tmp.25 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_30_139_31_end];
+        bf %tmp.25 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_8_151_8_if_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_8_151_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_46_144_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 140 12 ]
+        %tmp.26 = self;
+        symbol [ sineMotion %tmp.27 140 12 22 ];
+        %tmp.27 = getv function %tmp.26 :sineMotion;
+        %tmp.28 = lgetv %nowMs;
+        symbol [ nowMs %tmp.28 140 23 28 ];
+        invoke %tmp.26 %tmp.27(%tmp.28);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 141 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_141_12_143_12_if_stmt:
+        symbol [ useNoise %tmp.30 141 16 24 ];
+        %tmp.30 = getv ? :useNoise;
+        bf %tmp.30 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_141_12_143_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_141_12_143_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_141_26_143_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 142 16 ]
+        %tmp.31 = self;
+        symbol [ noiseMotion %tmp.32 142 16 27 ];
+        %tmp.32 = getv function %tmp.31 :noiseMotion;
+        invoke %tmp.31 %tmp.32();
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_141_26_143_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_141_12_143_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_141_12_143_12_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_46_144_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_8_151_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_8_151_8_if_false:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 144 15 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_15_151_8_if_stmt:
+        symbol [ followingFood %tmp.34 144 19 32 ];
+        %tmp.34 = getv ? :followingFood;
+        bf %tmp.34 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_15_151_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_15_151_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 145 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_stop" ]
+        %fx.1 = local;
+        symbol [ fx %fx.1 145 16 18 ];
+        symbol [ foodX %tmp.36 145 21 26 ];
+        %tmp.36 = getv ? :foodX;
+        symbol [ px %tmp.38 145 29 31 ];
+        %tmp.38 = getv ? :px;
+        %tmp.39 = sub %tmp.36 %tmp.38;
+        lputv %fx.1 %tmp.39;
+        symbol [ fx %fx.1 145 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 146 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_stop" ]
+        %fy.2 = local;
+        symbol [ fy %fy.2 146 16 18 ];
+        symbol [ foodY %tmp.41 146 21 26 ];
+        %tmp.41 = getv ? :foodY;
+        symbol [ py %tmp.43 146 29 31 ];
+        %tmp.43 = getv ? :py;
+        %tmp.44 = sub %tmp.41 %tmp.43;
+        lputv %fy.2 %tmp.44;
+        symbol [ fy %fy.2 146 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 147 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_stop" ]
+        %m.3 = local;
+        symbol [ m %m.3 147 16 17 ];
+        symbol [ Math %tmp.45 147 20 24 ];
+        %tmp.45 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.46 147 25 29 ];
+        %tmp.46 = getv function %tmp.45 :sqrt;
+        %tmp.47 = lgetv %fx.1;
+        symbol [ fx %tmp.47 147 30 32 ];
+        %tmp.48 = lgetv %fx.1;
+        symbol [ fx %tmp.48 147 35 37 ];
+        %tmp.49 = mul %tmp.47 %tmp.48;
+        %tmp.50 = lgetv %fy.2;
+        symbol [ fy %tmp.50 147 40 42 ];
+        %tmp.51 = lgetv %fy.2;
+        symbol [ fy %tmp.51 147 45 47 ];
+        %tmp.52 = mul %tmp.50 %tmp.51;
+        %tmp.53 = add %tmp.49 %tmp.52;
+        %tmp.54 = invoke %tmp.45 %tmp.46(%tmp.53);
+        lputv %m.3 %tmp.54;
+        symbol [ m %m.3 147 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 148 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_148_12_150_12_if_stmt:
+        %tmp.55 = lgetv %m.3;
+        symbol [ m %tmp.55 148 16 17 ];
+        %tmp.56 = 0.0;
+        %tmp.57 = gt %tmp.55 %tmp.56;
+        bf %tmp.57 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_148_12_150_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_148_12_150_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_148_25_150_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 149 16 ]
+        %tmp.58 = self;
+        symbol [ applyForce %tmp.59 149 16 26 ];
+        %tmp.59 = getv function %tmp.58 :applyForce;
+        %tmp.60 = lgetv %fx.1;
+        symbol [ fx %tmp.60 149 27 29 ];
+        %tmp.61 = lgetv %m.3;
+        symbol [ m %tmp.61 149 32 33 ];
+        %tmp.62 = div %tmp.60 %tmp.61;
+        symbol [ FOOD_FORCE %tmp.64 149 36 46 ];
+        %tmp.64 = getv ? :FOOD_FORCE;
+        %tmp.65 = mul %tmp.62 %tmp.64;
+        %tmp.66 = lgetv %fy.2;
+        symbol [ fy %tmp.66 149 48 50 ];
+        %tmp.67 = lgetv %m.3;
+        symbol [ m %tmp.67 149 53 54 ];
+        %tmp.68 = div %tmp.66 %tmp.67;
+        symbol [ FOOD_FORCE %tmp.70 149 57 67 ];
+        %tmp.70 = getv ? :FOOD_FORCE;
+        %tmp.71 = mul %tmp.68 %tmp.70;
+        invoke %tmp.58 %tmp.59(%tmp.65, %tmp.71);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_148_25_150_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_148_12_150_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_148_12_150_12_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_34_151_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_15_151_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_144_15_151_8_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_139_8_151_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 153 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_153_8_161_8_if_stmt:
+        symbol [ wiggling %tmp.73 153 12 20 ];
+        %tmp.73 = getv ? :wiggling;
+        bf %tmp.73 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_153_8_161_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_153_8_161_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_153_22_161_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 154 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_12_160_12_if_stmt:
+        %tmp.74 = lgetv %nowMs;
+        symbol [ nowMs %tmp.74 154 16 21 ];
+        symbol [ wiggleUntil %tmp.76 154 24 35 ];
+        %tmp.76 = getv ? :wiggleUntil;
+        %tmp.77 = lt %tmp.74 %tmp.76;
+        bf %tmp.77 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_12_160_12_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_12_160_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_37_158_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 155 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_37_158_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_37_158_12_stop" ]
+        %sa.4 = local;
+        symbol [ sa %sa.4 155 20 22 ];
+        symbol [ angle %tmp.79 155 25 30 ];
+        %tmp.79 = getv ? :angle;
+        symbol [ Math %tmp.80 155 33 37 ];
+        %tmp.80 = getm $.Toybox.Math;
+        symbol [ PI %tmp.81 155 38 40 ];
+        %tmp.81 = getv %tmp.80 :PI;
+        %tmp.82 = 2.0;
+        %tmp.83 = div %tmp.81 %tmp.82;
+        %tmp.84 = add %tmp.79 %tmp.83;
+        lputv %sa.4 %tmp.84;
+        symbol [ sa %sa.4 155 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 156 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_37_158_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_37_158_12_stop" ]
+        %s.5 = local;
+        symbol [ s %s.5 156 20 21 ];
+        symbol [ MAX_FORCE %tmp.86 156 24 33 ];
+        %tmp.86 = getv ? :MAX_FORCE;
+        %tmp.87 = 2.0;
+        %tmp.88 = mul %tmp.86 %tmp.87;
+        symbol [ Math %tmp.89 156 42 46 ];
+        %tmp.89 = getm $.Toybox.Math;
+        symbol [ sin %tmp.90 156 47 50 ];
+        %tmp.90 = getv function %tmp.89 :sin;
+        %tmp.91 = lgetv %nowMs;
+        symbol [ nowMs %tmp.91 156 51 56 ];
+        %tmp.92 = 0.05;
+        %tmp.93 = mul %tmp.91 %tmp.92;
+        %tmp.94 = invoke %tmp.89 %tmp.90(%tmp.93);
+        %tmp.95 = mul %tmp.88 %tmp.94;
+        lputv %s.5 %tmp.95;
+        symbol [ s %s.5 156 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 157 16 ]
+        %tmp.96 = self;
+        symbol [ applyForce %tmp.97 157 16 26 ];
+        %tmp.97 = getv function %tmp.96 :applyForce;
+        symbol [ Math %tmp.98 157 27 31 ];
+        %tmp.98 = getm $.Toybox.Math;
+        symbol [ cos %tmp.99 157 32 35 ];
+        %tmp.99 = getv function %tmp.98 :cos;
+        %tmp.100 = lgetv %sa.4;
+        symbol [ sa %tmp.100 157 36 38 ];
+        %tmp.101 = invoke %tmp.98 %tmp.99(%tmp.100);
+        %tmp.102 = lgetv %s.5;
+        symbol [ s %tmp.102 157 42 43 ];
+        %tmp.103 = mul %tmp.101 %tmp.102;
+        symbol [ Math %tmp.104 157 45 49 ];
+        %tmp.104 = getm $.Toybox.Math;
+        symbol [ sin %tmp.105 157 50 53 ];
+        %tmp.105 = getv function %tmp.104 :sin;
+        %tmp.106 = lgetv %sa.4;
+        symbol [ sa %tmp.106 157 54 56 ];
+        %tmp.107 = invoke %tmp.104 %tmp.105(%tmp.106);
+        %tmp.108 = lgetv %s.5;
+        symbol [ s %tmp.108 157 60 61 ];
+        %tmp.109 = mul %tmp.107 %tmp.108;
+        invoke %tmp.96 %tmp.97(%tmp.103, %tmp.109);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_37_158_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_12_160_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_12_160_12_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_158_19_160_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 159 16 ]
+        %tmp.110 = false;
+        symbol [ wiggling ? 159 16 24 ];
+        putv self :wiggling %tmp.110;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_158_19_160_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_154_12_160_12_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_153_22_161_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_153_8_161_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_153_8_161_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 163 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_8_174_8_if_stmt:
+        symbol [ scared %tmp.112 163 12 18 ];
+        %tmp.112 = getv ? :scared;
+        bf %tmp.112 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_8_174_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_8_174_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 164 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_stop" ]
+        %awx.6 = local;
+        symbol [ awx %awx.6 164 16 19 ];
+        symbol [ px %tmp.114 164 22 24 ];
+        %tmp.114 = getv ? :px;
+        symbol [ scareX %tmp.116 164 27 33 ];
+        %tmp.116 = getv ? :scareX;
+        %tmp.117 = sub %tmp.114 %tmp.116;
+        lputv %awx.6 %tmp.117;
+        symbol [ awx %awx.6 164 16 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 165 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_stop" ]
+        %awy.7 = local;
+        symbol [ awy %awy.7 165 16 19 ];
+        symbol [ py %tmp.119 165 22 24 ];
+        %tmp.119 = getv ? :py;
+        symbol [ scareY %tmp.121 165 27 33 ];
+        %tmp.121 = getv ? :scareY;
+        %tmp.122 = sub %tmp.119 %tmp.121;
+        lputv %awy.7 %tmp.122;
+        symbol [ awy %awy.7 165 16 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 166 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_stop" ]
+        %am.8 = local;
+        symbol [ am %am.8 166 16 18 ];
+        symbol [ Math %tmp.123 166 21 25 ];
+        %tmp.123 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.124 166 26 30 ];
+        %tmp.124 = getv function %tmp.123 :sqrt;
+        %tmp.125 = lgetv %awx.6;
+        symbol [ awx %tmp.125 166 31 34 ];
+        %tmp.126 = lgetv %awx.6;
+        symbol [ awx %tmp.126 166 37 40 ];
+        %tmp.127 = mul %tmp.125 %tmp.126;
+        %tmp.128 = lgetv %awy.7;
+        symbol [ awy %tmp.128 166 43 46 ];
+        %tmp.129 = lgetv %awy.7;
+        symbol [ awy %tmp.129 166 49 52 ];
+        %tmp.130 = mul %tmp.128 %tmp.129;
+        %tmp.131 = add %tmp.127 %tmp.130;
+        %tmp.132 = invoke %tmp.123 %tmp.124(%tmp.131);
+        lputv %am.8 %tmp.132;
+        symbol [ am %am.8 166 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 167 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_167_12_171_12_if_stmt:
+        %tmp.133 = lgetv %am.8;
+        symbol [ am %tmp.133 167 16 18 ];
+        %tmp.134 = 0.1;
+        %tmp.135 = lt %tmp.133 %tmp.134;
+        bf %tmp.135 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_167_12_171_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_167_12_171_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_167_26_171_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 168 16 ]
+        symbol [ Math %tmp.136 168 22 26 ];
+        %tmp.136 = getm $.Toybox.Math;
+        symbol [ cos %tmp.137 168 27 30 ];
+        %tmp.137 = getv function %tmp.136 :cos;
+        symbol [ angle %tmp.139 168 31 36 ];
+        %tmp.139 = getv ? :angle;
+        symbol [ Math %tmp.140 168 39 43 ];
+        %tmp.140 = getm $.Toybox.Math;
+        symbol [ PI %tmp.141 168 44 46 ];
+        %tmp.141 = getv %tmp.140 :PI;
+        %tmp.142 = add %tmp.139 %tmp.141;
+        %tmp.143 = invoke %tmp.136 %tmp.137(%tmp.142);
+        lputv %awx.6 %tmp.143;
+        symbol [ awx %awx.6 168 16 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 169 16 ]
+        symbol [ Math %tmp.144 169 22 26 ];
+        %tmp.144 = getm $.Toybox.Math;
+        symbol [ sin %tmp.145 169 27 30 ];
+        %tmp.145 = getv function %tmp.144 :sin;
+        symbol [ angle %tmp.147 169 31 36 ];
+        %tmp.147 = getv ? :angle;
+        symbol [ Math %tmp.148 169 39 43 ];
+        %tmp.148 = getm $.Toybox.Math;
+        symbol [ PI %tmp.149 169 44 46 ];
+        %tmp.149 = getv %tmp.148 :PI;
+        %tmp.150 = add %tmp.147 %tmp.149;
+        %tmp.151 = invoke %tmp.144 %tmp.145(%tmp.150);
+        lputv %awy.7 %tmp.151;
+        symbol [ awy %awy.7 169 16 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 170 16 ]
+        %tmp.152 = 1.0;
+        lputv %am.8 %tmp.152;
+        symbol [ am %am.8 170 16 18 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_167_26_171_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_167_12_171_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_167_12_171_12_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 172 12 ]
+        %tmp.153 = self;
+        symbol [ applyForce %tmp.154 172 12 22 ];
+        %tmp.154 = getv function %tmp.153 :applyForce;
+        %tmp.155 = lgetv %awx.6;
+        symbol [ awx %tmp.155 172 23 26 ];
+        %tmp.156 = lgetv %am.8;
+        symbol [ am %tmp.156 172 29 31 ];
+        %tmp.157 = div %tmp.155 %tmp.156;
+        symbol [ FOOD_FORCE %tmp.159 172 34 44 ];
+        %tmp.159 = getv ? :FOOD_FORCE;
+        %tmp.160 = mul %tmp.157 %tmp.159;
+        %tmp.161 = lgetv %awy.7;
+        symbol [ awy %tmp.161 172 46 49 ];
+        %tmp.162 = lgetv %am.8;
+        symbol [ am %tmp.162 172 52 54 ];
+        %tmp.163 = div %tmp.161 %tmp.162;
+        symbol [ FOOD_FORCE %tmp.165 172 57 67 ];
+        %tmp.165 = getv ? :FOOD_FORCE;
+        %tmp.166 = mul %tmp.163 %tmp.165;
+        invoke %tmp.153 %tmp.154(%tmp.160, %tmp.166);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 173 12 ]
+        %tmp.167 = false;
+        symbol [ scared ? 173 12 18 ];
+        putv self :scared %tmp.167;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_20_174_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_8_174_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_163_8_174_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 176 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_8_185_8_if_stmt:
+        symbol [ schooling %tmp.169 176 12 21 ];
+        %tmp.169 = getv ? :schooling;
+        bf %tmp.169 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_8_185_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_8_185_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 177 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_stop" ]
+        %tx.9 = local;
+        symbol [ tx %tx.9 177 16 18 ];
+        symbol [ schoolX %tmp.171 177 21 28 ];
+        %tmp.171 = getv ? :schoolX;
+        symbol [ px %tmp.173 177 31 33 ];
+        %tmp.173 = getv ? :px;
+        %tmp.174 = sub %tmp.171 %tmp.173;
+        lputv %tx.9 %tmp.174;
+        symbol [ tx %tx.9 177 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 178 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_stop" ]
+        %ty.10 = local;
+        symbol [ ty %ty.10 178 16 18 ];
+        symbol [ schoolY %tmp.176 178 21 28 ];
+        %tmp.176 = getv ? :schoolY;
+        symbol [ py %tmp.178 178 31 33 ];
+        %tmp.178 = getv ? :py;
+        %tmp.179 = sub %tmp.176 %tmp.178;
+        lputv %ty.10 %tmp.179;
+        symbol [ ty %ty.10 178 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 179 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_stop" ]
+        %tm.11 = local;
+        symbol [ tm %tm.11 179 16 18 ];
+        symbol [ Math %tmp.180 179 21 25 ];
+        %tmp.180 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.181 179 26 30 ];
+        %tmp.181 = getv function %tmp.180 :sqrt;
+        %tmp.182 = lgetv %tx.9;
+        symbol [ tx %tmp.182 179 31 33 ];
+        %tmp.183 = lgetv %tx.9;
+        symbol [ tx %tmp.183 179 36 38 ];
+        %tmp.184 = mul %tmp.182 %tmp.183;
+        %tmp.185 = lgetv %ty.10;
+        symbol [ ty %tmp.185 179 41 43 ];
+        %tmp.186 = lgetv %ty.10;
+        symbol [ ty %tmp.186 179 46 48 ];
+        %tmp.187 = mul %tmp.185 %tmp.186;
+        %tmp.188 = add %tmp.184 %tmp.187;
+        %tmp.189 = invoke %tmp.180 %tmp.181(%tmp.188);
+        lputv %tm.11 %tmp.189;
+        symbol [ tm %tm.11 179 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 180 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_12_183_12_if_stmt:
+        %tmp.190 = lgetv %tm.11;
+        symbol [ tm %tmp.190 180 16 18 ];
+        %tmp.191 = 0.0;
+        %tmp.192 = gt %tmp.190 %tmp.191;
+        bf %tmp.192 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_12_183_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_12_183_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_26_183_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 181 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_26_183_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_26_183_12_stop" ]
+        %f.12 = local;
+        symbol [ f %f.12 181 20 21 ];
+        symbol [ MAX_FORCE %tmp.194 181 24 33 ];
+        %tmp.194 = getv ? :MAX_FORCE;
+        %tmp.195 = 0.35;
+        %tmp.196 = mul %tmp.194 %tmp.195;
+        lputv %f.12 %tmp.196;
+        symbol [ f %f.12 181 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 182 16 ]
+        %tmp.197 = self;
+        symbol [ applyForce %tmp.198 182 16 26 ];
+        %tmp.198 = getv function %tmp.197 :applyForce;
+        %tmp.199 = lgetv %tx.9;
+        symbol [ tx %tmp.199 182 27 29 ];
+        %tmp.200 = lgetv %tm.11;
+        symbol [ tm %tmp.200 182 32 34 ];
+        %tmp.201 = div %tmp.199 %tmp.200;
+        %tmp.202 = lgetv %f.12;
+        symbol [ f %tmp.202 182 37 38 ];
+        %tmp.203 = mul %tmp.201 %tmp.202;
+        %tmp.204 = lgetv %ty.10;
+        symbol [ ty %tmp.204 182 40 42 ];
+        %tmp.205 = lgetv %tm.11;
+        symbol [ tm %tmp.205 182 45 47 ];
+        %tmp.206 = div %tmp.204 %tmp.205;
+        %tmp.207 = lgetv %f.12;
+        symbol [ f %tmp.207 182 50 51 ];
+        %tmp.208 = mul %tmp.206 %tmp.207;
+        invoke %tmp.197 %tmp.198(%tmp.203, %tmp.208);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_26_183_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_12_183_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_180_12_183_12_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 184 12 ]
+        %tmp.209 = false;
+        symbol [ schooling ? 184 12 21 ];
+        putv self :schooling %tmp.209;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_23_185_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_8_185_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_176_8_185_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 189 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_stop" ]
+        %dvx.13 = local;
+        symbol [ dvx %dvx.13 189 12 15 ];
+        symbol [ vx %tmp.211 189 18 20 ];
+        %tmp.211 = getv ? :vx;
+        symbol [ ax %tmp.213 189 23 25 ];
+        %tmp.213 = getv ? :ax;
+        %tmp.214 = lgetv %dt;
+        symbol [ dt %tmp.214 189 28 30 ];
+        %tmp.215 = mul %tmp.213 %tmp.214;
+        %tmp.216 = add %tmp.211 %tmp.215;
+        lputv %dvx.13 %tmp.216;
+        symbol [ dvx %dvx.13 189 12 15 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 190 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_stop" ]
+        %dvy.14 = local;
+        symbol [ dvy %dvy.14 190 12 15 ];
+        symbol [ vy %tmp.218 190 18 20 ];
+        %tmp.218 = getv ? :vy;
+        symbol [ ay %tmp.220 190 23 25 ];
+        %tmp.220 = getv ? :ay;
+        %tmp.221 = lgetv %dt;
+        symbol [ dt %tmp.221 190 28 30 ];
+        %tmp.222 = mul %tmp.220 %tmp.221;
+        %tmp.223 = add %tmp.218 %tmp.222;
+        lputv %dvy.14 %tmp.223;
+        symbol [ dvy %dvy.14 190 12 15 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 191 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_stop" ]
+        %dm.15 = local;
+        symbol [ dm %dm.15 191 12 14 ];
+        symbol [ Math %tmp.224 191 17 21 ];
+        %tmp.224 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.225 191 22 26 ];
+        %tmp.225 = getv function %tmp.224 :sqrt;
+        %tmp.226 = lgetv %dvx.13;
+        symbol [ dvx %tmp.226 191 27 30 ];
+        %tmp.227 = lgetv %dvx.13;
+        symbol [ dvx %tmp.227 191 33 36 ];
+        %tmp.228 = mul %tmp.226 %tmp.227;
+        %tmp.229 = lgetv %dvy.14;
+        symbol [ dvy %tmp.229 191 39 42 ];
+        %tmp.230 = lgetv %dvy.14;
+        symbol [ dvy %tmp.230 191 45 48 ];
+        %tmp.231 = mul %tmp.229 %tmp.230;
+        %tmp.232 = add %tmp.228 %tmp.231;
+        %tmp.233 = invoke %tmp.224 %tmp.225(%tmp.232);
+        lputv %dm.15 %tmp.233;
+        symbol [ dm %dm.15 191 12 14 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 192 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_192_8_201_8_if_stmt:
+        %tmp.234 = lgetv %dm.15;
+        symbol [ dm %tmp.234 192 12 14 ];
+        symbol [ minSpeed %tmp.236 192 17 25 ];
+        %tmp.236 = getv ? :minSpeed;
+        %tmp.237 = lt %tmp.234 %tmp.236;
+        bf %tmp.237 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_192_8_201_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_192_8_201_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_192_27_201_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 193 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_12_199_12_if_stmt:
+        %tmp.238 = lgetv %dm.15;
+        symbol [ dm %tmp.238 193 16 18 ];
+        %tmp.239 = 0.0;
+        %tmp.240 = gt %tmp.238 %tmp.239;
+        bf %tmp.240 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_12_199_12_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_12_199_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_26_196_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 194 16 ]
+        %tmp.241 = lgetv %dvx.13;
+        symbol [ dvx %tmp.241 194 22 25 ];
+        %tmp.242 = lgetv %dm.15;
+        symbol [ dm %tmp.242 194 28 30 ];
+        %tmp.243 = div %tmp.241 %tmp.242;
+        symbol [ minSpeed %tmp.245 194 33 41 ];
+        %tmp.245 = getv ? :minSpeed;
+        %tmp.246 = mul %tmp.243 %tmp.245;
+        lputv %dvx.13 %tmp.246;
+        symbol [ dvx %dvx.13 194 16 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 195 16 ]
+        %tmp.247 = lgetv %dvy.14;
+        symbol [ dvy %tmp.247 195 22 25 ];
+        %tmp.248 = lgetv %dm.15;
+        symbol [ dm %tmp.248 195 28 30 ];
+        %tmp.249 = div %tmp.247 %tmp.248;
+        symbol [ minSpeed %tmp.251 195 33 41 ];
+        %tmp.251 = getv ? :minSpeed;
+        %tmp.252 = mul %tmp.249 %tmp.251;
+        lputv %dvy.14 %tmp.252;
+        symbol [ dvy %dvy.14 195 16 19 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_26_196_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_12_199_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_12_199_12_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_196_19_199_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 197 16 ]
+        symbol [ minSpeed %tmp.254 197 22 30 ];
+        %tmp.254 = getv ? :minSpeed;
+        lputv %dvx.13 %tmp.254;
+        symbol [ dvx %dvx.13 197 16 19 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 198 16 ]
+        %tmp.255 = 0.0;
+        lputv %dvy.14 %tmp.255;
+        symbol [ dvy %dvy.14 198 16 19 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_196_19_199_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_193_12_199_12_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 200 12 ]
+        symbol [ minSpeed %tmp.257 200 17 25 ];
+        %tmp.257 = getv ? :minSpeed;
+        lputv %dm.15 %tmp.257;
+        symbol [ dm %dm.15 200 12 14 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_192_27_201_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_192_8_201_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_192_8_201_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 202 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_202_8_205_8_if_stmt:
+        %tmp.258 = lgetv %dm.15;
+        symbol [ dm %tmp.258 202 12 14 ];
+        symbol [ maxSpeed %tmp.260 202 17 25 ];
+        %tmp.260 = getv ? :maxSpeed;
+        %tmp.261 = gt %tmp.258 %tmp.260;
+        bf %tmp.261 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_202_8_205_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_202_8_205_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_202_27_205_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 203 12 ]
+        %tmp.262 = lgetv %dvx.13;
+        symbol [ dvx %tmp.262 203 18 21 ];
+        %tmp.263 = lgetv %dm.15;
+        symbol [ dm %tmp.263 203 24 26 ];
+        %tmp.264 = div %tmp.262 %tmp.263;
+        symbol [ maxSpeed %tmp.266 203 29 37 ];
+        %tmp.266 = getv ? :maxSpeed;
+        %tmp.267 = mul %tmp.264 %tmp.266;
+        lputv %dvx.13 %tmp.267;
+        symbol [ dvx %dvx.13 203 12 15 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 204 12 ]
+        %tmp.268 = lgetv %dvy.14;
+        symbol [ dvy %tmp.268 204 18 21 ];
+        %tmp.269 = lgetv %dm.15;
+        symbol [ dm %tmp.269 204 24 26 ];
+        %tmp.270 = div %tmp.268 %tmp.269;
+        symbol [ maxSpeed %tmp.272 204 29 37 ];
+        %tmp.272 = getv ? :maxSpeed;
+        %tmp.273 = mul %tmp.270 %tmp.272;
+        lputv %dvy.14 %tmp.273;
+        symbol [ dvy %dvy.14 204 12 15 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_202_27_205_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_202_8_205_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_202_8_205_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 206 8 ]
+        %tmp.274 = lgetv %dvx.13;
+        symbol [ dvx %tmp.274 206 13 16 ];
+        symbol [ vx ? 206 8 10 ];
+        putv self :vx %tmp.274;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 207 8 ]
+        %tmp.275 = lgetv %dvy.14;
+        symbol [ dvy %tmp.275 207 13 16 ];
+        symbol [ vy ? 207 8 10 ];
+        putv self :vy %tmp.275;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 208 8 ]
+        symbol [ px %tmp.276 208 8 10 ];
+        %tmp.276 = getv self :px;
+        symbol [ vx %tmp.278 208 14 16 ];
+        %tmp.278 = getv ? :vx;
+        %tmp.279 = lgetv %dt;
+        symbol [ dt %tmp.279 208 19 21 ];
+        %tmp.280 = mul %tmp.278 %tmp.279;
+        %tmp.281 = add %tmp.276 %tmp.280;
+        symbol [ px ? 208 8 10 ];
+        putv self :px dup %tmp.281;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 209 8 ]
+        symbol [ py %tmp.282 209 8 10 ];
+        %tmp.282 = getv self :py;
+        symbol [ vy %tmp.284 209 14 16 ];
+        %tmp.284 = getv ? :vy;
+        %tmp.285 = lgetv %dt;
+        symbol [ dt %tmp.285 209 19 21 ];
+        %tmp.286 = mul %tmp.284 %tmp.285;
+        %tmp.287 = add %tmp.282 %tmp.286;
+        symbol [ py ? 209 8 10 ];
+        putv self :py dup %tmp.287;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 210 8 ]
+        %tmp.288 = 0.0;
+        symbol [ ax ? 210 8 10 ];
+        putv self :ax %tmp.288;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 211 8 ]
+        %tmp.289 = 0.0;
+        symbol [ ay ? 211 8 10 ];
+        putv self :ay %tmp.289;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 212 8 ]
+        symbol [ Math %tmp.290 212 16 20 ];
+        %tmp.290 = getm $.Toybox.Math;
+        symbol [ atan2 %tmp.291 212 21 26 ];
+        %tmp.291 = getv function %tmp.290 :atan2;
+        symbol [ vy %tmp.293 212 27 29 ];
+        %tmp.293 = getv ? :vy;
+        symbol [ vx %tmp.295 212 31 33 ];
+        %tmp.295 = getv ? :vx;
+        %tmp.296 = invoke %tmp.290 %tmp.291(%tmp.293, %tmp.295);
+        symbol [ angle ? 212 8 13 ];
+        putv self :angle %tmp.296;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 213 8 ]
+        %tmp.297 = false;
+        symbol [ followingFood ? 213 8 21 ];
+        putv self :followingFood %tmp.297;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_128_48_214_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 217; @symbol_functiondef = [physSpeed,217,13,22]; ]
+    function physSpeed() {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_217_25_219_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 218 8 ]
+        symbol [ Math %tmp.1 218 15 19 ];
+        %tmp.1 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.2 218 20 24 ];
+        %tmp.2 = getv function %tmp.1 :sqrt;
+        symbol [ vx %tmp.4 218 25 27 ];
+        %tmp.4 = getv ? :vx;
+        symbol [ vx %tmp.6 218 30 32 ];
+        %tmp.6 = getv ? :vx;
+        %tmp.7 = mul %tmp.4 %tmp.6;
+        symbol [ vy %tmp.9 218 35 37 ];
+        %tmp.9 = getv ? :vy;
+        symbol [ vy %tmp.11 218 40 42 ];
+        %tmp.11 = getv ? :vy;
+        %tmp.12 = mul %tmp.9 %tmp.11;
+        %tmp.13 = add %tmp.7 %tmp.12;
+        %tmp.14 = invoke %tmp.1 %tmp.2(%tmp.13);
+        symbol [ Cfg %tmp.16 218 46 49 ];
+        %tmp.16 = getv ? :Cfg;
+        symbol [ PHYS %tmp.17 218 50 54 ];
+        %tmp.17 = getv %tmp.16 :PHYS;
+        %tmp.18 = mul %tmp.14 %tmp.17;
+        ret %tmp.18;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_217_25_219_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 221; @symbol_functiondef = [followFood,221,13,23]; @symbol_param<0> = [x,221,24,25]; @symbol_param<1> = [y,221,27,28]; ]
+    function followFood(x, y) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_221_30_225_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 222 8 ]
+        %tmp.1 = lgetv %x;
+        symbol [ x %tmp.1 222 16 17 ];
+        symbol [ foodX ? 222 8 13 ];
+        putv self :foodX %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 223 8 ]
+        %tmp.2 = lgetv %y;
+        symbol [ y %tmp.2 223 16 17 ];
+        symbol [ foodY ? 223 8 13 ];
+        putv self :foodY %tmp.2;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 224 8 ]
+        %tmp.3 = true;
+        symbol [ followingFood ? 224 8 21 ];
+        putv self :followingFood %tmp.3;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_221_30_225_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 227; @symbol_functiondef = [startWiggle,227,13,24]; @symbol_param<0> = [nowMs,227,25,30]; @symbol_param<1> = [durationMs,227,32,42]; ]
+    function startWiggle(nowMs, durationMs) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_227_44_230_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 228 8 ]
+        %tmp.1 = true;
+        symbol [ wiggling ? 228 8 16 ];
+        putv self :wiggling %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 229 8 ]
+        %tmp.2 = lgetv %nowMs;
+        symbol [ nowMs %tmp.2 229 22 27 ];
+        %tmp.3 = lgetv %durationMs;
+        symbol [ durationMs %tmp.3 229 30 40 ];
+        %tmp.4 = add %tmp.2 %tmp.3;
+        symbol [ wiggleUntil ? 229 8 19 ];
+        putv self :wiggleUntil %tmp.4;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_227_44_230_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 232; @symbol_functiondef = [scareFrom,232,13,22]; @symbol_param<0> = [x,232,23,24]; @symbol_param<1> = [y,232,26,27]; ]
+    function scareFrom(x, y) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_232_29_236_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 233 8 ]
+        %tmp.1 = lgetv %x;
+        symbol [ x %tmp.1 233 17 18 ];
+        symbol [ scareX ? 233 8 14 ];
+        putv self :scareX %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 234 8 ]
+        %tmp.2 = lgetv %y;
+        symbol [ y %tmp.2 234 17 18 ];
+        symbol [ scareY ? 234 8 14 ];
+        putv self :scareY %tmp.2;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 235 8 ]
+        %tmp.3 = true;
+        symbol [ scared ? 235 8 14 ];
+        putv self :scared %tmp.3;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_232_29_236_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 238; @symbol_functiondef = [schoolToward,238,13,25]; @symbol_param<0> = [x,238,26,27]; @symbol_param<1> = [y,238,29,30]; ]
+    function schoolToward(x, y) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_238_32_242_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 239 8 ]
+        %tmp.1 = lgetv %x;
+        symbol [ x %tmp.1 239 18 19 ];
+        symbol [ schoolX ? 239 8 15 ];
+        putv self :schoolX %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 240 8 ]
+        %tmp.2 = lgetv %y;
+        symbol [ y %tmp.2 240 18 19 ];
+        symbol [ schoolY ? 240 8 15 ];
+        putv self :schoolY %tmp.2;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc" 241 8 ]
+        %tmp.3 = true;
+        symbol [ schooling ? 241 8 17 ];
+        putv self :schooling %tmp.3;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Motion_mc_238_32_242_4_stop:
+    }
+}
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Motion.mc"; @line = 1; ]
+<init> {
+}

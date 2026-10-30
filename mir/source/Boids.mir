@@ -1,0 +1,1986 @@
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 1; @symbol_usingdef<0> = [Toybox,1,6,12]; @symbol_usingdef<1> = [Math,1,13,17]; ]
+using Toybox.Math;
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 7; @symbol_classdef = [Boid,7,6,10]; ]
+class Boid {
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 8; @position = 8; @symbol_vardef = [x,8,8,9]; ]
+    var x;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 9; @position = 8; @symbol_vardef = [y,9,8,9]; ]
+    var y;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 10; @position = 8; @symbol_vardef = [vx,10,8,10]; ]
+    var vx;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 11; @position = 8; @symbol_vardef = [vy,11,8,10]; ]
+    var vy;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 12; @position = 8; @symbol_vardef = [ax,12,8,10]; ]
+    var ax = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 13; @position = 8; @symbol_vardef = [ay,13,8,10]; ]
+    var ay = 0.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 14; @position = 8; @symbol_vardef = [maxSpeed,14,8,16]; ]
+    var maxSpeed;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 15; @position = 8; @symbol_vardef = [maxForce,15,8,16]; ]
+    var maxForce;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 17; @symbol_functiondef = [initialize,17,13,23]; @symbol_param<0> = [px,17,24,26]; @symbol_param<1> = [py,17,28,30]; ]
+    function initialize(px, py) as Void {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_17_32_24_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 18 8 ]
+        %tmp.1 = lgetv %px;
+        symbol [ px %tmp.1 18 12 14 ];
+        symbol [ x ? 18 8 9 ];
+        putv self :x %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 19 8 ]
+        %tmp.2 = lgetv %py;
+        symbol [ py %tmp.2 19 12 14 ];
+        symbol [ y ? 19 8 9 ];
+        putv self :y %tmp.2;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 20 8 ]
+        symbol [ Rnd %tmp.4 20 13 16 ];
+        %tmp.4 = getv ? :Rnd;
+        symbol [ below %tmp.5 20 17 22 ];
+        %tmp.5 = getv function %tmp.4 :below;
+        %tmp.6 = 256;
+        %tmp.7 = invoke %tmp.4 %tmp.5(%tmp.6);
+        %tmp.8 = 255.0;
+        %tmp.9 = div %tmp.7 %tmp.8;
+        %tmp.10 = 0.5;
+        %tmp.11 = sub %tmp.9 %tmp.10;
+        symbol [ vx ? 20 8 10 ];
+        putv self :vx %tmp.11;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 21 8 ]
+        symbol [ Rnd %tmp.13 21 13 16 ];
+        %tmp.13 = getv ? :Rnd;
+        symbol [ below %tmp.14 21 17 22 ];
+        %tmp.14 = getv function %tmp.13 :below;
+        %tmp.15 = 256;
+        %tmp.16 = invoke %tmp.13 %tmp.14(%tmp.15);
+        %tmp.17 = 255.0;
+        %tmp.18 = div %tmp.16 %tmp.17;
+        %tmp.19 = 0.5;
+        %tmp.20 = sub %tmp.18 %tmp.19;
+        symbol [ vy ? 21 8 10 ];
+        putv self :vy %tmp.20;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 22 8 ]
+        symbol [ Rnd %tmp.22 22 19 22 ];
+        %tmp.22 = getv ? :Rnd;
+        symbol [ range %tmp.23 22 23 28 ];
+        %tmp.23 = getv function %tmp.22 :range;
+        %tmp.24 = 4;
+        %tmp.25 = 8;
+        %tmp.26 = invoke %tmp.22 %tmp.23(%tmp.24, %tmp.25);
+        %tmp.27 = 10.0;
+        %tmp.28 = div %tmp.26 %tmp.27;
+        symbol [ maxSpeed ? 22 8 16 ];
+        putv self :maxSpeed %tmp.28;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 23 8 ]
+        symbol [ Rnd %tmp.30 23 19 22 ];
+        %tmp.30 = getv ? :Rnd;
+        symbol [ range %tmp.31 23 23 28 ];
+        %tmp.31 = getv function %tmp.30 :range;
+        %tmp.32 = 1;
+        %tmp.33 = 2;
+        %tmp.34 = invoke %tmp.30 %tmp.31(%tmp.32, %tmp.33);
+        %tmp.35 = 10.0;
+        %tmp.36 = div %tmp.34 %tmp.35;
+        symbol [ maxForce ? 23 8 16 ];
+        putv self :maxForce %tmp.36;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_17_32_24_4_stop:
+    }
+}
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 27; @symbol_classdef = [Boids,27,6,11]; ]
+class Boids {
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 27; ]
+    <init> {
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 28 8 ]
+        %tmp.37 = newa 0;
+        putv self :groups %tmp.37;
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 27; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 28; @position = 8; @symbol_vardef = [groups,28,8,14]; ]
+    var groups;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 29; @position = 8; @symbol_vardef = [sep,29,8,11]; ]
+    var sep = 4.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 30; @position = 8; @symbol_vardef = [nbr,30,8,11]; ]
+    var nbr = 8.0;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 32; @symbol_functiondef = [initialize,32,13,23]; ]
+    function initialize() as Void {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_32_26_43_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 33 8 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_end" ]
+        %g.1 = local;
+        symbol [ g %g.1 33 17 18 ];
+        %tmp.1 = 0;
+        lputv %g.1 %tmp.1;
+        symbol [ g %g.1 33 17 18 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_test:
+        %tmp.2 = lgetv %g.1;
+        symbol [ g %tmp.2 33 24 25 ];
+        symbol [ Cfg %tmp.4 33 28 31 ];
+        %tmp.4 = getv ? :Cfg;
+        symbol [ BOID_GROUPS %tmp.5 33 32 43 ];
+        %tmp.5 = getv %tmp.4 :BOID_GROUPS;
+        %tmp.6 = lt %tmp.2 %tmp.5;
+        bf %tmp.6 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_50_42_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 34 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_50_42_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_50_42_8_stop" ]
+        %group.2 = local;
+        symbol [ group %group.2 34 16 21 ];
+        %tmp.7 = newa 0;
+        lputv %group.2 %tmp.7;
+        symbol [ group %group.2 34 16 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 35 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_50_42_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_50_42_8_stop" ]
+        %n.3 = local;
+        symbol [ n %n.3 35 16 17 ];
+        symbol [ Rnd %tmp.9 35 20 23 ];
+        %tmp.9 = getv ? :Rnd;
+        symbol [ range %tmp.10 35 24 29 ];
+        %tmp.10 = getv function %tmp.9 :range;
+        symbol [ Cfg %tmp.12 35 30 33 ];
+        %tmp.12 = getv ? :Cfg;
+        symbol [ BOIDS_MIN %tmp.13 35 34 43 ];
+        %tmp.13 = getv %tmp.12 :BOIDS_MIN;
+        symbol [ Cfg %tmp.15 35 45 48 ];
+        %tmp.15 = getv ? :Cfg;
+        symbol [ BOIDS_MAX %tmp.16 35 49 58 ];
+        %tmp.16 = getv %tmp.15 :BOIDS_MAX;
+        %tmp.17 = invoke %tmp.9 %tmp.10(%tmp.13, %tmp.16);
+        lputv %n.3 %tmp.17;
+        symbol [ n %n.3 35 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 36 12 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 36 21 22 ];
+        %tmp.18 = 0;
+        lputv %i.4 %tmp.18;
+        symbol [ i %i.4 36 21 22 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_test:
+        %tmp.19 = lgetv %i.4;
+        symbol [ i %tmp.19 36 28 29 ];
+        %tmp.20 = lgetv %n.3;
+        symbol [ n %tmp.20 36 32 33 ];
+        %tmp.21 = lt %tmp.19 %tmp.20;
+        bf %tmp.21 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_40_40_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 37 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_40_40_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_40_40_12_stop" ]
+        %a.5 = local;
+        symbol [ a %a.5 37 20 21 ];
+        symbol [ Rnd %tmp.23 37 24 27 ];
+        %tmp.23 = getv ? :Rnd;
+        symbol [ unit %tmp.24 37 28 32 ];
+        %tmp.24 = getv function %tmp.23 :unit;
+        %tmp.25 = invoke %tmp.23 %tmp.24();
+        %tmp.26 = 6.283185;
+        %tmp.27 = mul %tmp.25 %tmp.26;
+        lputv %a.5 %tmp.27;
+        symbol [ a %a.5 37 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 38 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_40_40_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_40_40_12_stop" ]
+        %r.6 = local;
+        symbol [ r %r.6 38 20 21 ];
+        symbol [ Rnd %tmp.29 38 24 27 ];
+        %tmp.29 = getv ? :Rnd;
+        symbol [ unit %tmp.30 38 28 32 ];
+        %tmp.30 = getv function %tmp.29 :unit;
+        %tmp.31 = invoke %tmp.29 %tmp.30();
+        symbol [ Cfg %tmp.33 38 38 41 ];
+        %tmp.33 = getv ? :Cfg;
+        symbol [ R %tmp.34 38 42 43 ];
+        %tmp.34 = getv %tmp.33 :R;
+        %tmp.35 = 4.0;
+        %tmp.36 = sub %tmp.34 %tmp.35;
+        %tmp.37 = mul %tmp.31 %tmp.36;
+        lputv %r.6 %tmp.37;
+        symbol [ r %r.6 38 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 39 16 ]
+        %tmp.38 = lgetv %group.2;
+        symbol [ group %tmp.38 39 16 21 ];
+        symbol [ add %tmp.39 39 22 25 ];
+        %tmp.39 = getv function %tmp.38 :add;
+        symbol [ Boid %tmp.43 39 30 34 ];
+        %tmp.43 = getv ? :Boid;
+        symbol [ Cfg %tmp.45 39 35 38 ];
+        %tmp.45 = getv ? :Cfg;
+        symbol [ C %tmp.46 39 39 40 ];
+        %tmp.46 = getv %tmp.45 :C;
+        symbol [ Math %tmp.47 39 43 47 ];
+        %tmp.47 = getm $.Toybox.Math;
+        symbol [ cos %tmp.48 39 48 51 ];
+        %tmp.48 = getv function %tmp.47 :cos;
+        %tmp.49 = lgetv %a.5;
+        symbol [ a %tmp.49 39 52 53 ];
+        %tmp.50 = invoke %tmp.47 %tmp.48(%tmp.49);
+        %tmp.51 = lgetv %r.6;
+        symbol [ r %tmp.51 39 57 58 ];
+        %tmp.52 = mul %tmp.50 %tmp.51;
+        %tmp.53 = add %tmp.46 %tmp.52;
+        symbol [ Cfg %tmp.55 39 60 63 ];
+        %tmp.55 = getv ? :Cfg;
+        symbol [ C %tmp.56 39 64 65 ];
+        %tmp.56 = getv %tmp.55 :C;
+        symbol [ Math %tmp.57 39 68 72 ];
+        %tmp.57 = getm $.Toybox.Math;
+        symbol [ sin %tmp.58 39 73 76 ];
+        %tmp.58 = getv function %tmp.57 :sin;
+        %tmp.59 = lgetv %a.5;
+        symbol [ a %tmp.59 39 77 78 ];
+        %tmp.60 = invoke %tmp.57 %tmp.58(%tmp.59);
+        %tmp.61 = lgetv %r.6;
+        symbol [ r %tmp.61 39 82 83 ];
+        %tmp.62 = mul %tmp.60 %tmp.61;
+        %tmp.63 = add %tmp.56 %tmp.62;
+        %tmp.40 = newc %tmp.43 (%tmp.53, %tmp.63);
+        invoke %tmp.38 %tmp.39(%tmp.40);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_40_40_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 36 ]
+        %tmp.66 = lgetv %i.4;
+        symbol [ i %tmp.66 36 35 36 ];
+        %tmp.67 = add %tmp.66 1;
+        lputv %i.4 %tmp.67;
+        symbol [ i %i.4 36 35 36 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_36_12_40_12_for_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 41 12 ]
+        symbol [ groups %tmp.69 41 12 18 ];
+        %tmp.69 = getv ? :groups;
+        symbol [ add %tmp.70 41 19 22 ];
+        %tmp.70 = getv function %tmp.69 :add;
+        %tmp.71 = lgetv %group.2;
+        symbol [ group %tmp.71 41 23 28 ];
+        invoke %tmp.69 %tmp.70(%tmp.71);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_50_42_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 33 ]
+        %tmp.74 = lgetv %g.1;
+        symbol [ g %tmp.74 33 45 46 ];
+        %tmp.75 = add %tmp.74 1;
+        lputv %g.1 %tmp.75;
+        symbol [ g %g.1 33 45 46 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_33_8_42_8_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_32_26_43_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 45; @symbol_functiondef = [setWeekend,45,13,23]; @symbol_param<0> = [on,45,24,26]; ]
+    function setWeekend(on) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_45_28_53_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 46 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_8_52_8_if_stmt:
+        %tmp.1 = lgetv %on;
+        symbol [ on %tmp.1 46 12 14 ];
+        bf %tmp.1 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_8_52_8_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_8_52_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_16_49_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 47 12 ]
+        %tmp.2 = 2.0;
+        symbol [ sep ? 47 12 15 ];
+        putv self :sep %tmp.2;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 48 12 ]
+        %tmp.3 = 14.0;
+        symbol [ nbr ? 48 12 15 ];
+        putv self :nbr %tmp.3;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_16_49_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_8_52_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_8_52_8_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_49_15_52_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 50 12 ]
+        %tmp.4 = 4.0;
+        symbol [ sep ? 50 12 15 ];
+        putv self :sep %tmp.4;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 51 12 ]
+        %tmp.5 = 8.0;
+        symbol [ nbr ? 51 12 15 ];
+        putv self :nbr %tmp.5;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_49_15_52_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_46_8_52_8_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_45_28_53_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 57; @symbol_functiondef = [update,57,13,19]; @symbol_param<0> = [dt,57,20,22]; ]
+    function update(dt) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_57_24_151_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 58 8 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_end" ]
+        %g.1 = local;
+        symbol [ g %g.1 58 17 18 ];
+        %tmp.1 = 0;
+        lputv %g.1 %tmp.1;
+        symbol [ g %g.1 58 17 18 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_test:
+        %tmp.2 = lgetv %g.1;
+        symbol [ g %tmp.2 58 24 25 ];
+        symbol [ groups %tmp.4 58 28 34 ];
+        %tmp.4 = getv ? :groups;
+        symbol [ size %tmp.5 58 35 39 ];
+        %tmp.5 = getv function %tmp.4 :size;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = lt %tmp.2 %tmp.6;
+        bf %tmp.7 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_48_150_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 59 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_48_150_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_48_150_8_stop" ]
+        %group.2 = local;
+        symbol [ group %group.2 59 16 21 ];
+        symbol [ groups %tmp.9 59 24 30 ];
+        %tmp.9 = getv ? :groups;
+        %tmp.10 = lgetv %g.1;
+        symbol [ g %tmp.10 59 31 32 ];
+        %tmp.11 = agetv %tmp.9 %tmp.10;
+        lputv %group.2 %tmp.11;
+        symbol [ group %group.2 59 16 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 60 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_48_150_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_48_150_8_stop" ]
+        %n.3 = local;
+        symbol [ n %n.3 60 16 17 ];
+        %tmp.12 = lgetv %group.2;
+        symbol [ group %tmp.12 60 20 25 ];
+        symbol [ size %tmp.13 60 26 30 ];
+        %tmp.13 = getv function %tmp.12 :size;
+        %tmp.14 = invoke %tmp.12 %tmp.13();
+        lputv %n.3 %tmp.14;
+        symbol [ n %n.3 60 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 61 12 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 61 21 22 ];
+        %tmp.15 = 0;
+        lputv %i.4 %tmp.15;
+        symbol [ i %i.4 61 21 22 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_test:
+        %tmp.16 = lgetv %i.4;
+        symbol [ i %tmp.16 61 28 29 ];
+        %tmp.17 = lgetv %n.3;
+        symbol [ n %tmp.17 61 32 33 ];
+        %tmp.18 = lt %tmp.16 %tmp.17;
+        bf %tmp.18 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 62 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %b.5 = local;
+        symbol [ b %b.5 62 20 21 ];
+        %tmp.19 = lgetv %group.2;
+        symbol [ group %tmp.19 62 24 29 ];
+        %tmp.20 = lgetv %i.4;
+        symbol [ i %tmp.20 62 30 31 ];
+        %tmp.21 = agetv %tmp.19 %tmp.20;
+        lputv %b.5 %tmp.21;
+        symbol [ b %b.5 62 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 63 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %sepX.6 = local;
+        symbol [ sepX %sepX.6 63 20 24 ];
+        %tmp.22 = 0.0;
+        lputv %sepX.6 %tmp.22;
+        symbol [ sepX %sepX.6 63 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 64 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %sepY.7 = local;
+        symbol [ sepY %sepY.7 64 20 24 ];
+        %tmp.23 = 0.0;
+        lputv %sepY.7 %tmp.23;
+        symbol [ sepY %sepY.7 64 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 65 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %sepN.8 = local;
+        symbol [ sepN %sepN.8 65 20 24 ];
+        %tmp.24 = 0;
+        lputv %sepN.8 %tmp.24;
+        symbol [ sepN %sepN.8 65 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 66 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %aliX.9 = local;
+        symbol [ aliX %aliX.9 66 20 24 ];
+        %tmp.25 = 0.0;
+        lputv %aliX.9 %tmp.25;
+        symbol [ aliX %aliX.9 66 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 67 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %aliY.10 = local;
+        symbol [ aliY %aliY.10 67 20 24 ];
+        %tmp.26 = 0.0;
+        lputv %aliY.10 %tmp.26;
+        symbol [ aliY %aliY.10 67 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 68 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %aliN.11 = local;
+        symbol [ aliN %aliN.11 68 20 24 ];
+        %tmp.27 = 0;
+        lputv %aliN.11 %tmp.27;
+        symbol [ aliN %aliN.11 68 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 69 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %cohX.12 = local;
+        symbol [ cohX %cohX.12 69 20 24 ];
+        %tmp.28 = 0.0;
+        lputv %cohX.12 %tmp.28;
+        symbol [ cohX %cohX.12 69 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 70 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %cohY.13 = local;
+        symbol [ cohY %cohY.13 70 20 24 ];
+        %tmp.29 = 0.0;
+        lputv %cohY.13 %tmp.29;
+        symbol [ cohY %cohY.13 70 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 71 16 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_end" ]
+        %k.14 = local;
+        symbol [ k %k.14 71 25 26 ];
+        %tmp.30 = 0;
+        lputv %k.14 %tmp.30;
+        symbol [ k %k.14 71 25 26 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_test:
+        %tmp.31 = lgetv %k.14;
+        symbol [ k %tmp.31 71 32 33 ];
+        %tmp.32 = lgetv %n.3;
+        symbol [ n %tmp.32 71 36 37 ];
+        %tmp.33 = lt %tmp.31 %tmp.32;
+        bf %tmp.33 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 72 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_72_20_72_44_if_stmt:
+        %tmp.34 = lgetv %k.14;
+        symbol [ k %tmp.34 72 24 25 ];
+        %tmp.35 = lgetv %i.4;
+        symbol [ i %tmp.35 72 29 30 ];
+        %tmp.36 = eq %tmp.34 %tmp.35;
+        bf %tmp.36 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_72_20_72_44_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_72_20_72_44_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_72_32_72_44_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 72 34 ]
+        goto break @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_incr;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_72_32_72_44_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_72_20_72_44_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_72_20_72_44_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 73 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_stop" ]
+        %o.15 = local;
+        symbol [ o %o.15 73 24 25 ];
+        %tmp.37 = lgetv %group.2;
+        symbol [ group %tmp.37 73 28 33 ];
+        %tmp.38 = lgetv %k.14;
+        symbol [ k %tmp.38 73 34 35 ];
+        %tmp.39 = agetv %tmp.37 %tmp.38;
+        lputv %o.15 %tmp.39;
+        symbol [ o %o.15 73 24 25 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 74 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_stop" ]
+        %dx.16 = local;
+        symbol [ dx %dx.16 74 24 26 ];
+        %tmp.40 = lgetv %b.5;
+        symbol [ b %tmp.40 74 29 30 ];
+        symbol [ x %tmp.41 74 31 32 ];
+        %tmp.41 = getv %tmp.40 :x;
+        %tmp.42 = lgetv %o.15;
+        symbol [ o %tmp.42 74 35 36 ];
+        symbol [ x %tmp.43 74 37 38 ];
+        %tmp.43 = getv %tmp.42 :x;
+        %tmp.44 = sub %tmp.41 %tmp.43;
+        lputv %dx.16 %tmp.44;
+        symbol [ dx %dx.16 74 24 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 75 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_stop" ]
+        %dy.17 = local;
+        symbol [ dy %dy.17 75 24 26 ];
+        %tmp.45 = lgetv %b.5;
+        symbol [ b %tmp.45 75 29 30 ];
+        symbol [ y %tmp.46 75 31 32 ];
+        %tmp.46 = getv %tmp.45 :y;
+        %tmp.47 = lgetv %o.15;
+        symbol [ o %tmp.47 75 35 36 ];
+        symbol [ y %tmp.48 75 37 38 ];
+        %tmp.48 = getv %tmp.47 :y;
+        %tmp.49 = sub %tmp.46 %tmp.48;
+        lputv %dy.17 %tmp.49;
+        symbol [ dy %dy.17 75 24 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 76 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_stop" ]
+        %d.18 = local;
+        symbol [ d %d.18 76 24 25 ];
+        symbol [ Math %tmp.50 76 28 32 ];
+        %tmp.50 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.51 76 33 37 ];
+        %tmp.51 = getv function %tmp.50 :sqrt;
+        %tmp.52 = lgetv %dx.16;
+        symbol [ dx %tmp.52 76 38 40 ];
+        %tmp.53 = lgetv %dx.16;
+        symbol [ dx %tmp.53 76 43 45 ];
+        %tmp.54 = mul %tmp.52 %tmp.53;
+        %tmp.55 = lgetv %dy.17;
+        symbol [ dy %tmp.55 76 48 50 ];
+        %tmp.56 = lgetv %dy.17;
+        symbol [ dy %tmp.56 76 53 55 ];
+        %tmp.57 = mul %tmp.55 %tmp.56;
+        %tmp.58 = add %tmp.54 %tmp.57;
+        %tmp.59 = invoke %tmp.50 %tmp.51(%tmp.58);
+        lputv %d.18 %tmp.59;
+        symbol [ d %d.18 76 24 25 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 77 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_77_20_77_46_if_stmt:
+        %tmp.60 = lgetv %d.18;
+        symbol [ d %tmp.60 77 24 25 ];
+        %tmp.61 = 0.0;
+        %tmp.62 = lte %tmp.60 %tmp.61;
+        bf %tmp.62 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_77_20_77_46_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_77_20_77_46_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_77_34_77_46_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 77 36 ]
+        goto break @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_incr;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_77_34_77_46_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_77_20_77_46_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_77_20_77_46_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 78 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_78_20_82_20_if_stmt:
+        %tmp.63 = lgetv %d.18;
+        symbol [ d %tmp.63 78 24 25 ];
+        symbol [ sep %tmp.65 78 28 31 ];
+        %tmp.65 = getv ? :sep;
+        %tmp.66 = lt %tmp.63 %tmp.65;
+        bf %tmp.66 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_78_20_82_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_78_20_82_20_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_78_33_82_20_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 79 24 ]
+        %tmp.67 = lgetv %sepX.6;
+        symbol [ sepX %tmp.67 79 24 28 ];
+        %tmp.68 = lgetv %dx.16;
+        symbol [ dx %tmp.68 79 32 34 ];
+        %tmp.69 = lgetv %d.18;
+        symbol [ d %tmp.69 79 37 38 ];
+        %tmp.70 = div %tmp.68 %tmp.69;
+        %tmp.71 = lgetv %d.18;
+        symbol [ d %tmp.71 79 41 42 ];
+        %tmp.72 = div %tmp.70 %tmp.71;
+        %tmp.73 = add %tmp.67 %tmp.72;
+        lputv %sepX.6 %tmp.73;
+        symbol [ sepX %sepX.6 79 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 80 24 ]
+        %tmp.74 = lgetv %sepY.7;
+        symbol [ sepY %tmp.74 80 24 28 ];
+        %tmp.75 = lgetv %dy.17;
+        symbol [ dy %tmp.75 80 32 34 ];
+        %tmp.76 = lgetv %d.18;
+        symbol [ d %tmp.76 80 37 38 ];
+        %tmp.77 = div %tmp.75 %tmp.76;
+        %tmp.78 = lgetv %d.18;
+        symbol [ d %tmp.78 80 41 42 ];
+        %tmp.79 = div %tmp.77 %tmp.78;
+        %tmp.80 = add %tmp.74 %tmp.79;
+        lputv %sepY.7 %tmp.80;
+        symbol [ sepY %sepY.7 80 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 81 24 ]
+        %tmp.83 = lgetv %sepN.8;
+        symbol [ sepN %tmp.83 81 24 28 ];
+        %tmp.84 = add %tmp.83 1;
+        lputv %sepN.8 %tmp.84;
+        symbol [ sepN %sepN.8 81 24 28 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_78_33_82_20_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_78_20_82_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_78_20_82_20_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 83 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_83_20_89_20_if_stmt:
+        %tmp.85 = lgetv %d.18;
+        symbol [ d %tmp.85 83 24 25 ];
+        symbol [ nbr %tmp.87 83 28 31 ];
+        %tmp.87 = getv ? :nbr;
+        %tmp.88 = lt %tmp.85 %tmp.87;
+        bf %tmp.88 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_83_20_89_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_83_20_89_20_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_83_33_89_20_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 84 24 ]
+        %tmp.89 = lgetv %aliX.9;
+        symbol [ aliX %tmp.89 84 24 28 ];
+        %tmp.90 = lgetv %o.15;
+        symbol [ o %tmp.90 84 32 33 ];
+        symbol [ vx %tmp.91 84 34 36 ];
+        %tmp.91 = getv %tmp.90 :vx;
+        %tmp.92 = add %tmp.89 %tmp.91;
+        lputv %aliX.9 %tmp.92;
+        symbol [ aliX %aliX.9 84 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 85 24 ]
+        %tmp.93 = lgetv %aliY.10;
+        symbol [ aliY %tmp.93 85 24 28 ];
+        %tmp.94 = lgetv %o.15;
+        symbol [ o %tmp.94 85 32 33 ];
+        symbol [ vy %tmp.95 85 34 36 ];
+        %tmp.95 = getv %tmp.94 :vy;
+        %tmp.96 = add %tmp.93 %tmp.95;
+        lputv %aliY.10 %tmp.96;
+        symbol [ aliY %aliY.10 85 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 86 24 ]
+        %tmp.97 = lgetv %cohX.12;
+        symbol [ cohX %tmp.97 86 24 28 ];
+        %tmp.98 = lgetv %o.15;
+        symbol [ o %tmp.98 86 32 33 ];
+        symbol [ x %tmp.99 86 34 35 ];
+        %tmp.99 = getv %tmp.98 :x;
+        %tmp.100 = add %tmp.97 %tmp.99;
+        lputv %cohX.12 %tmp.100;
+        symbol [ cohX %cohX.12 86 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 87 24 ]
+        %tmp.101 = lgetv %cohY.13;
+        symbol [ cohY %tmp.101 87 24 28 ];
+        %tmp.102 = lgetv %o.15;
+        symbol [ o %tmp.102 87 32 33 ];
+        symbol [ y %tmp.103 87 34 35 ];
+        %tmp.103 = getv %tmp.102 :y;
+        %tmp.104 = add %tmp.101 %tmp.103;
+        lputv %cohY.13 %tmp.104;
+        symbol [ cohY %cohY.13 87 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 88 24 ]
+        %tmp.107 = lgetv %aliN.11;
+        symbol [ aliN %tmp.107 88 24 28 ];
+        %tmp.108 = add %tmp.107 1;
+        lputv %aliN.11 %tmp.108;
+        symbol [ aliN %aliN.11 88 24 28 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_83_33_89_20_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_83_20_89_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_83_20_89_20_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_44_90_16_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 71 ]
+        %tmp.111 = lgetv %k.14;
+        symbol [ k %tmp.111 71 39 40 ];
+        %tmp.112 = add %tmp.111 1;
+        lputv %k.14 %tmp.112;
+        symbol [ k %k.14 71 39 40 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_71_16_90_16_for_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 91 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_16_100_16_if_stmt:
+        %tmp.113 = lgetv %sepN.8;
+        symbol [ sepN %tmp.113 91 20 24 ];
+        %tmp.114 = 0;
+        %tmp.115 = gt %tmp.113 %tmp.114;
+        bf %tmp.115 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_16_100_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_16_100_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_30_100_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 92 20 ]
+        %tmp.116 = lgetv %sepX.6;
+        symbol [ sepX %tmp.116 92 27 31 ];
+        %tmp.117 = lgetv %sepN.8;
+        symbol [ sepN %tmp.117 92 34 38 ];
+        %tmp.118 = div %tmp.116 %tmp.117;
+        lputv %sepX.6 %tmp.118;
+        symbol [ sepX %sepX.6 92 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 93 20 ]
+        %tmp.119 = lgetv %sepY.7;
+        symbol [ sepY %tmp.119 93 27 31 ];
+        %tmp.120 = lgetv %sepN.8;
+        symbol [ sepN %tmp.120 93 34 38 ];
+        %tmp.121 = div %tmp.119 %tmp.120;
+        lputv %sepY.7 %tmp.121;
+        symbol [ sepY %sepY.7 93 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 94 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_30_100_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_30_100_16_stop" ]
+        %sm.19 = local;
+        symbol [ sm %sm.19 94 24 26 ];
+        symbol [ Math %tmp.122 94 29 33 ];
+        %tmp.122 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.123 94 34 38 ];
+        %tmp.123 = getv function %tmp.122 :sqrt;
+        %tmp.124 = lgetv %sepX.6;
+        symbol [ sepX %tmp.124 94 39 43 ];
+        %tmp.125 = lgetv %sepX.6;
+        symbol [ sepX %tmp.125 94 46 50 ];
+        %tmp.126 = mul %tmp.124 %tmp.125;
+        %tmp.127 = lgetv %sepY.7;
+        symbol [ sepY %tmp.127 94 53 57 ];
+        %tmp.128 = lgetv %sepY.7;
+        symbol [ sepY %tmp.128 94 60 64 ];
+        %tmp.129 = mul %tmp.127 %tmp.128;
+        %tmp.130 = add %tmp.126 %tmp.129;
+        %tmp.131 = invoke %tmp.122 %tmp.123(%tmp.130);
+        lputv %sm.19 %tmp.131;
+        symbol [ sm %sm.19 94 24 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 95 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_95_20_99_20_if_stmt:
+        %tmp.132 = lgetv %sm.19;
+        symbol [ sm %tmp.132 95 24 26 ];
+        %tmp.133 = 0.0;
+        %tmp.134 = gt %tmp.132 %tmp.133;
+        bf %tmp.134 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_95_20_99_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_95_20_99_20_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_95_34_99_20_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 96 24 ]
+        %tmp.135 = lgetv %sepX.6;
+        symbol [ sepX %tmp.135 96 31 35 ];
+        %tmp.136 = lgetv %sm.19;
+        symbol [ sm %tmp.136 96 38 40 ];
+        %tmp.137 = div %tmp.135 %tmp.136;
+        %tmp.138 = lgetv %b.5;
+        symbol [ b %tmp.138 96 43 44 ];
+        symbol [ maxSpeed %tmp.139 96 45 53 ];
+        %tmp.139 = getv %tmp.138 :maxSpeed;
+        %tmp.140 = mul %tmp.137 %tmp.139;
+        %tmp.141 = lgetv %b.5;
+        symbol [ b %tmp.141 96 56 57 ];
+        symbol [ vx %tmp.142 96 58 60 ];
+        %tmp.142 = getv %tmp.141 :vx;
+        %tmp.143 = sub %tmp.140 %tmp.142;
+        lputv %sepX.6 %tmp.143;
+        symbol [ sepX %sepX.6 96 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 97 24 ]
+        %tmp.144 = lgetv %sepY.7;
+        symbol [ sepY %tmp.144 97 31 35 ];
+        %tmp.145 = lgetv %sm.19;
+        symbol [ sm %tmp.145 97 38 40 ];
+        %tmp.146 = div %tmp.144 %tmp.145;
+        %tmp.147 = lgetv %b.5;
+        symbol [ b %tmp.147 97 43 44 ];
+        symbol [ maxSpeed %tmp.148 97 45 53 ];
+        %tmp.148 = getv %tmp.147 :maxSpeed;
+        %tmp.149 = mul %tmp.146 %tmp.148;
+        %tmp.150 = lgetv %b.5;
+        symbol [ b %tmp.150 97 56 57 ];
+        symbol [ vy %tmp.151 97 58 60 ];
+        %tmp.151 = getv %tmp.150 :vy;
+        %tmp.152 = sub %tmp.149 %tmp.151;
+        lputv %sepY.7 %tmp.152;
+        symbol [ sepY %sepY.7 97 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 98 24 ]
+        %tmp.153 = self;
+        symbol [ limitInto %tmp.154 98 24 33 ];
+        %tmp.154 = getv function %tmp.153 :limitInto;
+        %tmp.155 = lgetv %b.5;
+        symbol [ b %tmp.155 98 34 35 ];
+        %tmp.156 = lgetv %sepX.6;
+        symbol [ sepX %tmp.156 98 37 41 ];
+        %tmp.157 = lgetv %sepY.7;
+        symbol [ sepY %tmp.157 98 43 47 ];
+        %tmp.158 = 1.5;
+        invoke %tmp.153 %tmp.154(%tmp.155, %tmp.156, %tmp.157, %tmp.158);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_95_34_99_20_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_95_20_99_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_95_20_99_20_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_30_100_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_16_100_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_91_16_100_16_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 101 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_16_119_16_if_stmt:
+        %tmp.159 = lgetv %aliN.11;
+        symbol [ aliN %tmp.159 101 20 24 ];
+        %tmp.160 = 0;
+        %tmp.161 = gt %tmp.159 %tmp.160;
+        bf %tmp.161 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_16_119_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_16_119_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_30_119_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 102 20 ]
+        %tmp.162 = lgetv %aliX.9;
+        symbol [ aliX %tmp.162 102 27 31 ];
+        %tmp.163 = lgetv %aliN.11;
+        symbol [ aliN %tmp.163 102 34 38 ];
+        %tmp.164 = div %tmp.162 %tmp.163;
+        lputv %aliX.9 %tmp.164;
+        symbol [ aliX %aliX.9 102 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 103 20 ]
+        %tmp.165 = lgetv %aliY.10;
+        symbol [ aliY %tmp.165 103 27 31 ];
+        %tmp.166 = lgetv %aliN.11;
+        symbol [ aliN %tmp.166 103 34 38 ];
+        %tmp.167 = div %tmp.165 %tmp.166;
+        lputv %aliY.10 %tmp.167;
+        symbol [ aliY %aliY.10 103 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 104 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_30_119_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_30_119_16_stop" ]
+        %am.20 = local;
+        symbol [ am %am.20 104 24 26 ];
+        symbol [ Math %tmp.168 104 29 33 ];
+        %tmp.168 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.169 104 34 38 ];
+        %tmp.169 = getv function %tmp.168 :sqrt;
+        %tmp.170 = lgetv %aliX.9;
+        symbol [ aliX %tmp.170 104 39 43 ];
+        %tmp.171 = lgetv %aliX.9;
+        symbol [ aliX %tmp.171 104 46 50 ];
+        %tmp.172 = mul %tmp.170 %tmp.171;
+        %tmp.173 = lgetv %aliY.10;
+        symbol [ aliY %tmp.173 104 53 57 ];
+        %tmp.174 = lgetv %aliY.10;
+        symbol [ aliY %tmp.174 104 60 64 ];
+        %tmp.175 = mul %tmp.173 %tmp.174;
+        %tmp.176 = add %tmp.172 %tmp.175;
+        %tmp.177 = invoke %tmp.168 %tmp.169(%tmp.176);
+        lputv %am.20 %tmp.177;
+        symbol [ am %am.20 104 24 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 105 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_105_20_109_20_if_stmt:
+        %tmp.178 = lgetv %am.20;
+        symbol [ am %tmp.178 105 24 26 ];
+        %tmp.179 = 0.0;
+        %tmp.180 = gt %tmp.178 %tmp.179;
+        bf %tmp.180 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_105_20_109_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_105_20_109_20_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_105_34_109_20_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 106 24 ]
+        %tmp.181 = lgetv %aliX.9;
+        symbol [ aliX %tmp.181 106 31 35 ];
+        %tmp.182 = lgetv %am.20;
+        symbol [ am %tmp.182 106 38 40 ];
+        %tmp.183 = div %tmp.181 %tmp.182;
+        %tmp.184 = lgetv %b.5;
+        symbol [ b %tmp.184 106 43 44 ];
+        symbol [ maxSpeed %tmp.185 106 45 53 ];
+        %tmp.185 = getv %tmp.184 :maxSpeed;
+        %tmp.186 = mul %tmp.183 %tmp.185;
+        %tmp.187 = lgetv %b.5;
+        symbol [ b %tmp.187 106 56 57 ];
+        symbol [ vx %tmp.188 106 58 60 ];
+        %tmp.188 = getv %tmp.187 :vx;
+        %tmp.189 = sub %tmp.186 %tmp.188;
+        lputv %aliX.9 %tmp.189;
+        symbol [ aliX %aliX.9 106 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 107 24 ]
+        %tmp.190 = lgetv %aliY.10;
+        symbol [ aliY %tmp.190 107 31 35 ];
+        %tmp.191 = lgetv %am.20;
+        symbol [ am %tmp.191 107 38 40 ];
+        %tmp.192 = div %tmp.190 %tmp.191;
+        %tmp.193 = lgetv %b.5;
+        symbol [ b %tmp.193 107 43 44 ];
+        symbol [ maxSpeed %tmp.194 107 45 53 ];
+        %tmp.194 = getv %tmp.193 :maxSpeed;
+        %tmp.195 = mul %tmp.192 %tmp.194;
+        %tmp.196 = lgetv %b.5;
+        symbol [ b %tmp.196 107 56 57 ];
+        symbol [ vy %tmp.197 107 58 60 ];
+        %tmp.197 = getv %tmp.196 :vy;
+        %tmp.198 = sub %tmp.195 %tmp.197;
+        lputv %aliY.10 %tmp.198;
+        symbol [ aliY %aliY.10 107 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 108 24 ]
+        %tmp.199 = self;
+        symbol [ limitInto %tmp.200 108 24 33 ];
+        %tmp.200 = getv function %tmp.199 :limitInto;
+        %tmp.201 = lgetv %b.5;
+        symbol [ b %tmp.201 108 34 35 ];
+        %tmp.202 = lgetv %aliX.9;
+        symbol [ aliX %tmp.202 108 37 41 ];
+        %tmp.203 = lgetv %aliY.10;
+        symbol [ aliY %tmp.203 108 43 47 ];
+        %tmp.204 = 1.0;
+        invoke %tmp.199 %tmp.200(%tmp.201, %tmp.202, %tmp.203, %tmp.204);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_105_34_109_20_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_105_20_109_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_105_20_109_20_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 111 20 ]
+        %tmp.205 = lgetv %cohX.12;
+        symbol [ cohX %tmp.205 111 27 31 ];
+        %tmp.206 = lgetv %aliN.11;
+        symbol [ aliN %tmp.206 111 34 38 ];
+        %tmp.207 = div %tmp.205 %tmp.206;
+        %tmp.208 = lgetv %b.5;
+        symbol [ b %tmp.208 111 41 42 ];
+        symbol [ x %tmp.209 111 43 44 ];
+        %tmp.209 = getv %tmp.208 :x;
+        %tmp.210 = sub %tmp.207 %tmp.209;
+        lputv %cohX.12 %tmp.210;
+        symbol [ cohX %cohX.12 111 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 112 20 ]
+        %tmp.211 = lgetv %cohY.13;
+        symbol [ cohY %tmp.211 112 27 31 ];
+        %tmp.212 = lgetv %aliN.11;
+        symbol [ aliN %tmp.212 112 34 38 ];
+        %tmp.213 = div %tmp.211 %tmp.212;
+        %tmp.214 = lgetv %b.5;
+        symbol [ b %tmp.214 112 41 42 ];
+        symbol [ y %tmp.215 112 43 44 ];
+        %tmp.215 = getv %tmp.214 :y;
+        %tmp.216 = sub %tmp.213 %tmp.215;
+        lputv %cohY.13 %tmp.216;
+        symbol [ cohY %cohY.13 112 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 113 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_30_119_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_30_119_16_stop" ]
+        %cm.21 = local;
+        symbol [ cm %cm.21 113 24 26 ];
+        symbol [ Math %tmp.217 113 29 33 ];
+        %tmp.217 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.218 113 34 38 ];
+        %tmp.218 = getv function %tmp.217 :sqrt;
+        %tmp.219 = lgetv %cohX.12;
+        symbol [ cohX %tmp.219 113 39 43 ];
+        %tmp.220 = lgetv %cohX.12;
+        symbol [ cohX %tmp.220 113 46 50 ];
+        %tmp.221 = mul %tmp.219 %tmp.220;
+        %tmp.222 = lgetv %cohY.13;
+        symbol [ cohY %tmp.222 113 53 57 ];
+        %tmp.223 = lgetv %cohY.13;
+        symbol [ cohY %tmp.223 113 60 64 ];
+        %tmp.224 = mul %tmp.222 %tmp.223;
+        %tmp.225 = add %tmp.221 %tmp.224;
+        %tmp.226 = invoke %tmp.217 %tmp.218(%tmp.225);
+        lputv %cm.21 %tmp.226;
+        symbol [ cm %cm.21 113 24 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 114 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_114_20_118_20_if_stmt:
+        %tmp.227 = lgetv %cm.21;
+        symbol [ cm %tmp.227 114 24 26 ];
+        %tmp.228 = 0.0;
+        %tmp.229 = gt %tmp.227 %tmp.228;
+        bf %tmp.229 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_114_20_118_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_114_20_118_20_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_114_34_118_20_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 115 24 ]
+        %tmp.230 = lgetv %cohX.12;
+        symbol [ cohX %tmp.230 115 31 35 ];
+        %tmp.231 = lgetv %cm.21;
+        symbol [ cm %tmp.231 115 38 40 ];
+        %tmp.232 = div %tmp.230 %tmp.231;
+        %tmp.233 = lgetv %b.5;
+        symbol [ b %tmp.233 115 43 44 ];
+        symbol [ maxSpeed %tmp.234 115 45 53 ];
+        %tmp.234 = getv %tmp.233 :maxSpeed;
+        %tmp.235 = mul %tmp.232 %tmp.234;
+        %tmp.236 = lgetv %b.5;
+        symbol [ b %tmp.236 115 56 57 ];
+        symbol [ vx %tmp.237 115 58 60 ];
+        %tmp.237 = getv %tmp.236 :vx;
+        %tmp.238 = sub %tmp.235 %tmp.237;
+        lputv %cohX.12 %tmp.238;
+        symbol [ cohX %cohX.12 115 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 116 24 ]
+        %tmp.239 = lgetv %cohY.13;
+        symbol [ cohY %tmp.239 116 31 35 ];
+        %tmp.240 = lgetv %cm.21;
+        symbol [ cm %tmp.240 116 38 40 ];
+        %tmp.241 = div %tmp.239 %tmp.240;
+        %tmp.242 = lgetv %b.5;
+        symbol [ b %tmp.242 116 43 44 ];
+        symbol [ maxSpeed %tmp.243 116 45 53 ];
+        %tmp.243 = getv %tmp.242 :maxSpeed;
+        %tmp.244 = mul %tmp.241 %tmp.243;
+        %tmp.245 = lgetv %b.5;
+        symbol [ b %tmp.245 116 56 57 ];
+        symbol [ vy %tmp.246 116 58 60 ];
+        %tmp.246 = getv %tmp.245 :vy;
+        %tmp.247 = sub %tmp.244 %tmp.246;
+        lputv %cohY.13 %tmp.247;
+        symbol [ cohY %cohY.13 116 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 117 24 ]
+        %tmp.248 = self;
+        symbol [ limitInto %tmp.249 117 24 33 ];
+        %tmp.249 = getv function %tmp.248 :limitInto;
+        %tmp.250 = lgetv %b.5;
+        symbol [ b %tmp.250 117 34 35 ];
+        %tmp.251 = lgetv %cohX.12;
+        symbol [ cohX %tmp.251 117 37 41 ];
+        %tmp.252 = lgetv %cohY.13;
+        symbol [ cohY %tmp.252 117 43 47 ];
+        %tmp.253 = 1.0;
+        invoke %tmp.248 %tmp.249(%tmp.250, %tmp.251, %tmp.252, %tmp.253);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_114_34_118_20_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_114_20_118_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_114_20_118_20_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_30_119_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_16_119_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_101_16_119_16_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 121 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %ex.22 = local;
+        symbol [ ex %ex.22 121 20 22 ];
+        %tmp.254 = lgetv %b.5;
+        symbol [ b %tmp.254 121 25 26 ];
+        symbol [ x %tmp.255 121 27 28 ];
+        %tmp.255 = getv %tmp.254 :x;
+        symbol [ Cfg %tmp.257 121 31 34 ];
+        %tmp.257 = getv ? :Cfg;
+        symbol [ C %tmp.258 121 35 36 ];
+        %tmp.258 = getv %tmp.257 :C;
+        %tmp.259 = sub %tmp.255 %tmp.258;
+        lputv %ex.22 %tmp.259;
+        symbol [ ex %ex.22 121 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 122 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %ey.23 = local;
+        symbol [ ey %ey.23 122 20 22 ];
+        %tmp.260 = lgetv %b.5;
+        symbol [ b %tmp.260 122 25 26 ];
+        symbol [ y %tmp.261 122 27 28 ];
+        %tmp.261 = getv %tmp.260 :y;
+        symbol [ Cfg %tmp.263 122 31 34 ];
+        %tmp.263 = getv ? :Cfg;
+        symbol [ C %tmp.264 122 35 36 ];
+        %tmp.264 = getv %tmp.263 :C;
+        %tmp.265 = sub %tmp.261 %tmp.264;
+        lputv %ey.23 %tmp.265;
+        symbol [ ey %ey.23 122 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 123 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %ed.24 = local;
+        symbol [ ed %ed.24 123 20 22 ];
+        symbol [ Math %tmp.266 123 25 29 ];
+        %tmp.266 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.267 123 30 34 ];
+        %tmp.267 = getv function %tmp.266 :sqrt;
+        %tmp.268 = lgetv %ex.22;
+        symbol [ ex %tmp.268 123 35 37 ];
+        %tmp.269 = lgetv %ex.22;
+        symbol [ ex %tmp.269 123 40 42 ];
+        %tmp.270 = mul %tmp.268 %tmp.269;
+        %tmp.271 = lgetv %ey.23;
+        symbol [ ey %tmp.271 123 45 47 ];
+        %tmp.272 = lgetv %ey.23;
+        symbol [ ey %tmp.272 123 50 52 ];
+        %tmp.273 = mul %tmp.271 %tmp.272;
+        %tmp.274 = add %tmp.270 %tmp.273;
+        %tmp.275 = invoke %tmp.266 %tmp.267(%tmp.274);
+        lputv %ed.24 %tmp.275;
+        symbol [ ed %ed.24 123 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 124 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_16_128_16_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_20_124_45_begin:
+        %tmp.276 = lgetv %ed.24;
+        symbol [ ed %tmp.276 124 20 22 ];
+        symbol [ Cfg %tmp.278 124 25 28 ];
+        %tmp.278 = getv ? :Cfg;
+        symbol [ R %tmp.279 124 29 30 ];
+        %tmp.279 = getv %tmp.278 :R;
+        %tmp.280 = 2.0;
+        %tmp.281 = sub %tmp.279 %tmp.280;
+        %tmp.282 = gt %tmp.276 %tmp.281;
+        bf %tmp.282 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_16_128_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_40_124_45_true:
+        %tmp.283 = lgetv %ed.24;
+        symbol [ ed %tmp.283 124 40 42 ];
+        %tmp.284 = 0.0;
+        %tmp.285 = gt %tmp.283 %tmp.284;
+        push %tmp.285;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_40_124_45_end:
+        %tmp.286 = phi [%tmp.282 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_20_124_45_begin] [%tmp.285 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_40_124_45_true] [%tmp.286 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_40_124_45_end];
+        bf %tmp.286 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_16_128_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_16_128_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_50_128_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 125 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_50_128_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_50_128_16_stop" ]
+        %wx.25 = local;
+        symbol [ wx %wx.25 125 24 26 ];
+        %tmp.287 = lgetv %ex.22;
+        symbol [ ex %tmp.287 125 30 32 ];
+        %tmp.288 = sub 0 %tmp.287;
+        %tmp.289 = lgetv %ed.24;
+        symbol [ ed %tmp.289 125 35 37 ];
+        %tmp.290 = div %tmp.288 %tmp.289;
+        %tmp.291 = lgetv %b.5;
+        symbol [ b %tmp.291 125 40 41 ];
+        symbol [ maxSpeed %tmp.292 125 42 50 ];
+        %tmp.292 = getv %tmp.291 :maxSpeed;
+        %tmp.293 = mul %tmp.290 %tmp.292;
+        %tmp.294 = lgetv %b.5;
+        symbol [ b %tmp.294 125 53 54 ];
+        symbol [ vx %tmp.295 125 55 57 ];
+        %tmp.295 = getv %tmp.294 :vx;
+        %tmp.296 = sub %tmp.293 %tmp.295;
+        lputv %wx.25 %tmp.296;
+        symbol [ wx %wx.25 125 24 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 126 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_50_128_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_50_128_16_stop" ]
+        %wy.26 = local;
+        symbol [ wy %wy.26 126 24 26 ];
+        %tmp.297 = lgetv %ey.23;
+        symbol [ ey %tmp.297 126 30 32 ];
+        %tmp.298 = sub 0 %tmp.297;
+        %tmp.299 = lgetv %ed.24;
+        symbol [ ed %tmp.299 126 35 37 ];
+        %tmp.300 = div %tmp.298 %tmp.299;
+        %tmp.301 = lgetv %b.5;
+        symbol [ b %tmp.301 126 40 41 ];
+        symbol [ maxSpeed %tmp.302 126 42 50 ];
+        %tmp.302 = getv %tmp.301 :maxSpeed;
+        %tmp.303 = mul %tmp.300 %tmp.302;
+        %tmp.304 = lgetv %b.5;
+        symbol [ b %tmp.304 126 53 54 ];
+        symbol [ vy %tmp.305 126 55 57 ];
+        %tmp.305 = getv %tmp.304 :vy;
+        %tmp.306 = sub %tmp.303 %tmp.305;
+        lputv %wy.26 %tmp.306;
+        symbol [ wy %wy.26 126 24 26 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 127 20 ]
+        %tmp.307 = self;
+        symbol [ limitInto %tmp.308 127 20 29 ];
+        %tmp.308 = getv function %tmp.307 :limitInto;
+        %tmp.309 = lgetv %b.5;
+        symbol [ b %tmp.309 127 30 31 ];
+        %tmp.310 = lgetv %wx.25;
+        symbol [ wx %tmp.310 127 33 35 ];
+        %tmp.311 = lgetv %wy.26;
+        symbol [ wy %tmp.311 127 37 39 ];
+        %tmp.312 = 1.0;
+        invoke %tmp.307 %tmp.308(%tmp.309, %tmp.310, %tmp.311, %tmp.312);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_50_128_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_16_128_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_124_16_128_16_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 130 16 ]
+        %tmp.313 = lgetv %b.5;
+        symbol [ b %tmp.313 130 16 17 ];
+        %tmp.314 = lgetv %b.5;
+        symbol [ b %tmp.314 130 16 17 ];
+        symbol [ vx %tmp.315 130 18 20 ];
+        %tmp.315 = getv %tmp.314 :vx;
+        %tmp.316 = lgetv %b.5;
+        symbol [ b %tmp.316 130 24 25 ];
+        symbol [ ax %tmp.317 130 26 28 ];
+        %tmp.317 = getv %tmp.316 :ax;
+        %tmp.318 = lgetv %dt;
+        symbol [ dt %tmp.318 130 31 33 ];
+        %tmp.319 = mul %tmp.317 %tmp.318;
+        %tmp.320 = add %tmp.315 %tmp.319;
+        symbol [ vx ? 130 18 20 ];
+        putv %tmp.313 :vx dup %tmp.320;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 131 16 ]
+        %tmp.321 = lgetv %b.5;
+        symbol [ b %tmp.321 131 16 17 ];
+        %tmp.322 = lgetv %b.5;
+        symbol [ b %tmp.322 131 16 17 ];
+        symbol [ vy %tmp.323 131 18 20 ];
+        %tmp.323 = getv %tmp.322 :vy;
+        %tmp.324 = lgetv %b.5;
+        symbol [ b %tmp.324 131 24 25 ];
+        symbol [ ay %tmp.325 131 26 28 ];
+        %tmp.325 = getv %tmp.324 :ay;
+        %tmp.326 = lgetv %dt;
+        symbol [ dt %tmp.326 131 31 33 ];
+        %tmp.327 = mul %tmp.325 %tmp.326;
+        %tmp.328 = add %tmp.323 %tmp.327;
+        symbol [ vy ? 131 18 20 ];
+        putv %tmp.321 :vy dup %tmp.328;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 132 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop" ]
+        %vm.27 = local;
+        symbol [ vm %vm.27 132 20 22 ];
+        symbol [ Math %tmp.329 132 25 29 ];
+        %tmp.329 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.330 132 30 34 ];
+        %tmp.330 = getv function %tmp.329 :sqrt;
+        %tmp.331 = lgetv %b.5;
+        symbol [ b %tmp.331 132 35 36 ];
+        symbol [ vx %tmp.332 132 37 39 ];
+        %tmp.332 = getv %tmp.331 :vx;
+        %tmp.333 = lgetv %b.5;
+        symbol [ b %tmp.333 132 42 43 ];
+        symbol [ vx %tmp.334 132 44 46 ];
+        %tmp.334 = getv %tmp.333 :vx;
+        %tmp.335 = mul %tmp.332 %tmp.334;
+        %tmp.336 = lgetv %b.5;
+        symbol [ b %tmp.336 132 49 50 ];
+        symbol [ vy %tmp.337 132 51 53 ];
+        %tmp.337 = getv %tmp.336 :vy;
+        %tmp.338 = lgetv %b.5;
+        symbol [ b %tmp.338 132 56 57 ];
+        symbol [ vy %tmp.339 132 58 60 ];
+        %tmp.339 = getv %tmp.338 :vy;
+        %tmp.340 = mul %tmp.337 %tmp.339;
+        %tmp.341 = add %tmp.335 %tmp.340;
+        %tmp.342 = invoke %tmp.329 %tmp.330(%tmp.341);
+        lputv %vm.27 %tmp.342;
+        symbol [ vm %vm.27 132 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 133 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_16_136_16_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_20_133_44_begin:
+        %tmp.343 = lgetv %vm.27;
+        symbol [ vm %tmp.343 133 20 22 ];
+        %tmp.344 = lgetv %b.5;
+        symbol [ b %tmp.344 133 25 26 ];
+        symbol [ maxSpeed %tmp.345 133 27 35 ];
+        %tmp.345 = getv %tmp.344 :maxSpeed;
+        %tmp.346 = gt %tmp.343 %tmp.345;
+        bf %tmp.346 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_16_136_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_39_133_44_true:
+        %tmp.347 = lgetv %vm.27;
+        symbol [ vm %tmp.347 133 39 41 ];
+        %tmp.348 = 0.0;
+        %tmp.349 = gt %tmp.347 %tmp.348;
+        push %tmp.349;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_39_133_44_end:
+        %tmp.350 = phi [%tmp.346 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_20_133_44_begin] [%tmp.349 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_39_133_44_true] [%tmp.350 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_39_133_44_end];
+        bf %tmp.350 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_16_136_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_16_136_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_49_136_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 134 20 ]
+        %tmp.351 = lgetv %b.5;
+        symbol [ b %tmp.351 134 20 21 ];
+        %tmp.352 = lgetv %b.5;
+        symbol [ b %tmp.352 134 27 28 ];
+        symbol [ vx %tmp.353 134 29 31 ];
+        %tmp.353 = getv %tmp.352 :vx;
+        %tmp.354 = lgetv %vm.27;
+        symbol [ vm %tmp.354 134 34 36 ];
+        %tmp.355 = div %tmp.353 %tmp.354;
+        %tmp.356 = lgetv %b.5;
+        symbol [ b %tmp.356 134 39 40 ];
+        symbol [ maxSpeed %tmp.357 134 41 49 ];
+        %tmp.357 = getv %tmp.356 :maxSpeed;
+        %tmp.358 = mul %tmp.355 %tmp.357;
+        symbol [ vx ? 134 22 24 ];
+        putv %tmp.351 :vx %tmp.358;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 135 20 ]
+        %tmp.359 = lgetv %b.5;
+        symbol [ b %tmp.359 135 20 21 ];
+        %tmp.360 = lgetv %b.5;
+        symbol [ b %tmp.360 135 27 28 ];
+        symbol [ vy %tmp.361 135 29 31 ];
+        %tmp.361 = getv %tmp.360 :vy;
+        %tmp.362 = lgetv %vm.27;
+        symbol [ vm %tmp.362 135 34 36 ];
+        %tmp.363 = div %tmp.361 %tmp.362;
+        %tmp.364 = lgetv %b.5;
+        symbol [ b %tmp.364 135 39 40 ];
+        symbol [ maxSpeed %tmp.365 135 41 49 ];
+        %tmp.365 = getv %tmp.364 :maxSpeed;
+        %tmp.366 = mul %tmp.363 %tmp.365;
+        symbol [ vy ? 135 22 24 ];
+        putv %tmp.359 :vy %tmp.366;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_49_136_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_16_136_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_133_16_136_16_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 137 16 ]
+        %tmp.367 = lgetv %b.5;
+        symbol [ b %tmp.367 137 16 17 ];
+        %tmp.368 = lgetv %b.5;
+        symbol [ b %tmp.368 137 16 17 ];
+        symbol [ x %tmp.369 137 18 19 ];
+        %tmp.369 = getv %tmp.368 :x;
+        %tmp.370 = lgetv %b.5;
+        symbol [ b %tmp.370 137 23 24 ];
+        symbol [ vx %tmp.371 137 25 27 ];
+        %tmp.371 = getv %tmp.370 :vx;
+        %tmp.372 = lgetv %dt;
+        symbol [ dt %tmp.372 137 30 32 ];
+        %tmp.373 = mul %tmp.371 %tmp.372;
+        %tmp.374 = add %tmp.369 %tmp.373;
+        symbol [ x ? 137 18 19 ];
+        putv %tmp.367 :x dup %tmp.374;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 138 16 ]
+        %tmp.375 = lgetv %b.5;
+        symbol [ b %tmp.375 138 16 17 ];
+        %tmp.376 = lgetv %b.5;
+        symbol [ b %tmp.376 138 16 17 ];
+        symbol [ y %tmp.377 138 18 19 ];
+        %tmp.377 = getv %tmp.376 :y;
+        %tmp.378 = lgetv %b.5;
+        symbol [ b %tmp.378 138 23 24 ];
+        symbol [ vy %tmp.379 138 25 27 ];
+        %tmp.379 = getv %tmp.378 :vy;
+        %tmp.380 = lgetv %dt;
+        symbol [ dt %tmp.380 138 30 32 ];
+        %tmp.381 = mul %tmp.379 %tmp.380;
+        %tmp.382 = add %tmp.377 %tmp.381;
+        symbol [ y ? 138 18 19 ];
+        putv %tmp.375 :y dup %tmp.382;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 139 16 ]
+        %tmp.383 = lgetv %b.5;
+        symbol [ b %tmp.383 139 16 17 ];
+        %tmp.384 = 0.0;
+        symbol [ ax ? 139 18 20 ];
+        putv %tmp.383 :ax %tmp.384;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 140 16 ]
+        %tmp.385 = lgetv %b.5;
+        symbol [ b %tmp.385 140 16 17 ];
+        %tmp.386 = 0.0;
+        symbol [ ay ? 140 18 20 ];
+        putv %tmp.385 :ay %tmp.386;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 142 16 ]
+        %tmp.387 = lgetv %b.5;
+        symbol [ b %tmp.387 142 21 22 ];
+        symbol [ x %tmp.388 142 23 24 ];
+        %tmp.388 = getv %tmp.387 :x;
+        symbol [ Cfg %tmp.390 142 27 30 ];
+        %tmp.390 = getv ? :Cfg;
+        symbol [ C %tmp.391 142 31 32 ];
+        %tmp.391 = getv %tmp.390 :C;
+        %tmp.392 = sub %tmp.388 %tmp.391;
+        lputv %ex.22 %tmp.392;
+        symbol [ ex %ex.22 142 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 143 16 ]
+        %tmp.393 = lgetv %b.5;
+        symbol [ b %tmp.393 143 21 22 ];
+        symbol [ y %tmp.394 143 23 24 ];
+        %tmp.394 = getv %tmp.393 :y;
+        symbol [ Cfg %tmp.396 143 27 30 ];
+        %tmp.396 = getv ? :Cfg;
+        symbol [ C %tmp.397 143 31 32 ];
+        %tmp.397 = getv %tmp.396 :C;
+        %tmp.398 = sub %tmp.394 %tmp.397;
+        lputv %ey.23 %tmp.398;
+        symbol [ ey %ey.23 143 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 144 16 ]
+        symbol [ Math %tmp.399 144 21 25 ];
+        %tmp.399 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.400 144 26 30 ];
+        %tmp.400 = getv function %tmp.399 :sqrt;
+        %tmp.401 = lgetv %ex.22;
+        symbol [ ex %tmp.401 144 31 33 ];
+        %tmp.402 = lgetv %ex.22;
+        symbol [ ex %tmp.402 144 36 38 ];
+        %tmp.403 = mul %tmp.401 %tmp.402;
+        %tmp.404 = lgetv %ey.23;
+        symbol [ ey %tmp.404 144 41 43 ];
+        %tmp.405 = lgetv %ey.23;
+        symbol [ ey %tmp.405 144 46 48 ];
+        %tmp.406 = mul %tmp.404 %tmp.405;
+        %tmp.407 = add %tmp.403 %tmp.406;
+        %tmp.408 = invoke %tmp.399 %tmp.400(%tmp.407);
+        lputv %ed.24 %tmp.408;
+        symbol [ ed %ed.24 144 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 145 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_16_148_16_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_20_145_45_begin:
+        %tmp.409 = lgetv %ed.24;
+        symbol [ ed %tmp.409 145 20 22 ];
+        symbol [ Cfg %tmp.411 145 25 28 ];
+        %tmp.411 = getv ? :Cfg;
+        symbol [ R %tmp.412 145 29 30 ];
+        %tmp.412 = getv %tmp.411 :R;
+        %tmp.413 = 1.0;
+        %tmp.414 = sub %tmp.412 %tmp.413;
+        %tmp.415 = gt %tmp.409 %tmp.414;
+        bf %tmp.415 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_16_148_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_40_145_45_true:
+        %tmp.416 = lgetv %ed.24;
+        symbol [ ed %tmp.416 145 40 42 ];
+        %tmp.417 = 0.0;
+        %tmp.418 = gt %tmp.416 %tmp.417;
+        push %tmp.418;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_40_145_45_end:
+        %tmp.419 = phi [%tmp.415 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_20_145_45_begin] [%tmp.418 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_40_145_45_true] [%tmp.419 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_40_145_45_end];
+        bf %tmp.419 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_16_148_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_16_148_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_50_148_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 146 20 ]
+        %tmp.420 = lgetv %b.5;
+        symbol [ b %tmp.420 146 20 21 ];
+        symbol [ Cfg %tmp.422 146 26 29 ];
+        %tmp.422 = getv ? :Cfg;
+        symbol [ C %tmp.423 146 30 31 ];
+        %tmp.423 = getv %tmp.422 :C;
+        %tmp.424 = lgetv %ex.22;
+        symbol [ ex %tmp.424 146 34 36 ];
+        %tmp.425 = lgetv %ed.24;
+        symbol [ ed %tmp.425 146 39 41 ];
+        %tmp.426 = div %tmp.424 %tmp.425;
+        symbol [ Cfg %tmp.428 146 45 48 ];
+        %tmp.428 = getv ? :Cfg;
+        symbol [ R %tmp.429 146 49 50 ];
+        %tmp.429 = getv %tmp.428 :R;
+        %tmp.430 = 1.0;
+        %tmp.431 = sub %tmp.429 %tmp.430;
+        %tmp.432 = mul %tmp.426 %tmp.431;
+        %tmp.433 = add %tmp.423 %tmp.432;
+        symbol [ x ? 146 22 23 ];
+        putv %tmp.420 :x %tmp.433;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 147 20 ]
+        %tmp.434 = lgetv %b.5;
+        symbol [ b %tmp.434 147 20 21 ];
+        symbol [ Cfg %tmp.436 147 26 29 ];
+        %tmp.436 = getv ? :Cfg;
+        symbol [ C %tmp.437 147 30 31 ];
+        %tmp.437 = getv %tmp.436 :C;
+        %tmp.438 = lgetv %ey.23;
+        symbol [ ey %tmp.438 147 34 36 ];
+        %tmp.439 = lgetv %ed.24;
+        symbol [ ed %tmp.439 147 39 41 ];
+        %tmp.440 = div %tmp.438 %tmp.439;
+        symbol [ Cfg %tmp.442 147 45 48 ];
+        %tmp.442 = getv ? :Cfg;
+        symbol [ R %tmp.443 147 49 50 ];
+        %tmp.443 = getv %tmp.442 :R;
+        %tmp.444 = 1.0;
+        %tmp.445 = sub %tmp.443 %tmp.444;
+        %tmp.446 = mul %tmp.440 %tmp.445;
+        %tmp.447 = add %tmp.437 %tmp.446;
+        symbol [ y ? 147 22 23 ];
+        putv %tmp.434 :y %tmp.447;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_50_148_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_16_148_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_145_16_148_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_40_149_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 61 ]
+        %tmp.450 = lgetv %i.4;
+        symbol [ i %tmp.450 61 35 36 ];
+        %tmp.451 = add %tmp.450 1;
+        lputv %i.4 %tmp.451;
+        symbol [ i %i.4 61 35 36 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_61_12_149_12_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_48_150_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 58 ]
+        %tmp.454 = lgetv %g.1;
+        symbol [ g %tmp.454 58 43 44 ];
+        %tmp.455 = add %tmp.454 1;
+        lputv %g.1 %tmp.455;
+        symbol [ g %g.1 58 43 44 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_58_8_150_8_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_57_24_151_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 154; @symbol_functiondef = [limitInto,154,13,22]; @symbol_param<0> = [b,154,23,24]; @symbol_param<1> = [fx,154,26,28]; @symbol_param<2> = [fy,154,30,32]; @symbol_param<3> = [weight,154,34,40]; ]
+    function limitInto(b, fx, fy, weight) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_154_42_162_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 155 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_154_42_162_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_154_42_162_4_stop" ]
+        %fm.1 = local;
+        symbol [ fm %fm.1 155 12 14 ];
+        symbol [ Math %tmp.1 155 17 21 ];
+        %tmp.1 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.2 155 22 26 ];
+        %tmp.2 = getv function %tmp.1 :sqrt;
+        %tmp.3 = lgetv %fx;
+        symbol [ fx %tmp.3 155 27 29 ];
+        %tmp.4 = lgetv %fx;
+        symbol [ fx %tmp.4 155 32 34 ];
+        %tmp.5 = mul %tmp.3 %tmp.4;
+        %tmp.6 = lgetv %fy;
+        symbol [ fy %tmp.6 155 37 39 ];
+        %tmp.7 = lgetv %fy;
+        symbol [ fy %tmp.7 155 42 44 ];
+        %tmp.8 = mul %tmp.6 %tmp.7;
+        %tmp.9 = add %tmp.5 %tmp.8;
+        %tmp.10 = invoke %tmp.1 %tmp.2(%tmp.9);
+        lputv %fm.1 %tmp.10;
+        symbol [ fm %fm.1 155 12 14 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 156 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_8_159_8_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_12_156_36_begin:
+        %tmp.11 = lgetv %fm.1;
+        symbol [ fm %tmp.11 156 12 14 ];
+        %tmp.12 = lgetv %b;
+        symbol [ b %tmp.12 156 17 18 ];
+        symbol [ maxForce %tmp.13 156 19 27 ];
+        %tmp.13 = getv %tmp.12 :maxForce;
+        %tmp.14 = gt %tmp.11 %tmp.13;
+        bf %tmp.14 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_8_159_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_31_156_36_true:
+        %tmp.15 = lgetv %fm.1;
+        symbol [ fm %tmp.15 156 31 33 ];
+        %tmp.16 = 0.0;
+        %tmp.17 = gt %tmp.15 %tmp.16;
+        push %tmp.17;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_31_156_36_end:
+        %tmp.18 = phi [%tmp.14 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_12_156_36_begin] [%tmp.17 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_31_156_36_true] [%tmp.18 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_31_156_36_end];
+        bf %tmp.18 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_8_159_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_8_159_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_41_159_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 157 12 ]
+        %tmp.19 = lgetv %fx;
+        symbol [ fx %tmp.19 157 17 19 ];
+        %tmp.20 = lgetv %fm.1;
+        symbol [ fm %tmp.20 157 22 24 ];
+        %tmp.21 = div %tmp.19 %tmp.20;
+        %tmp.22 = lgetv %b;
+        symbol [ b %tmp.22 157 27 28 ];
+        symbol [ maxForce %tmp.23 157 29 37 ];
+        %tmp.23 = getv %tmp.22 :maxForce;
+        %tmp.24 = mul %tmp.21 %tmp.23;
+        lputv %fx %tmp.24;
+        symbol [ fx %fx 157 12 14 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 158 12 ]
+        %tmp.25 = lgetv %fy;
+        symbol [ fy %tmp.25 158 17 19 ];
+        %tmp.26 = lgetv %fm.1;
+        symbol [ fm %tmp.26 158 22 24 ];
+        %tmp.27 = div %tmp.25 %tmp.26;
+        %tmp.28 = lgetv %b;
+        symbol [ b %tmp.28 158 27 28 ];
+        symbol [ maxForce %tmp.29 158 29 37 ];
+        %tmp.29 = getv %tmp.28 :maxForce;
+        %tmp.30 = mul %tmp.27 %tmp.29;
+        lputv %fy %tmp.30;
+        symbol [ fy %fy 158 12 14 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_41_159_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_8_159_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_156_8_159_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 160 8 ]
+        %tmp.31 = lgetv %b;
+        symbol [ b %tmp.31 160 8 9 ];
+        %tmp.32 = lgetv %b;
+        symbol [ b %tmp.32 160 8 9 ];
+        symbol [ ax %tmp.33 160 10 12 ];
+        %tmp.33 = getv %tmp.32 :ax;
+        %tmp.34 = lgetv %fx;
+        symbol [ fx %tmp.34 160 16 18 ];
+        %tmp.35 = lgetv %weight;
+        symbol [ weight %tmp.35 160 21 27 ];
+        %tmp.36 = mul %tmp.34 %tmp.35;
+        %tmp.37 = add %tmp.33 %tmp.36;
+        symbol [ ax ? 160 10 12 ];
+        putv %tmp.31 :ax dup %tmp.37;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 161 8 ]
+        %tmp.38 = lgetv %b;
+        symbol [ b %tmp.38 161 8 9 ];
+        %tmp.39 = lgetv %b;
+        symbol [ b %tmp.39 161 8 9 ];
+        symbol [ ay %tmp.40 161 10 12 ];
+        %tmp.40 = getv %tmp.39 :ay;
+        %tmp.41 = lgetv %fy;
+        symbol [ fy %tmp.41 161 16 18 ];
+        %tmp.42 = lgetv %weight;
+        symbol [ weight %tmp.42 161 21 27 ];
+        %tmp.43 = mul %tmp.41 %tmp.42;
+        %tmp.44 = add %tmp.40 %tmp.43;
+        symbol [ ay ? 161 10 12 ];
+        putv %tmp.38 :ay dup %tmp.44;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_154_42_162_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 164; @symbol_functiondef = [scareFrom,164,13,22]; @symbol_param<0> = [sx,164,23,25]; @symbol_param<1> = [sy,164,27,29]; @symbol_param<2> = [radius,164,31,37]; ]
+    function scareFrom(sx, sy, radius) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_164_39_178_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 165 8 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_end" ]
+        %g.1 = local;
+        symbol [ g %g.1 165 17 18 ];
+        %tmp.1 = 0;
+        lputv %g.1 %tmp.1;
+        symbol [ g %g.1 165 17 18 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_test:
+        %tmp.2 = lgetv %g.1;
+        symbol [ g %tmp.2 165 24 25 ];
+        symbol [ groups %tmp.4 165 28 34 ];
+        %tmp.4 = getv ? :groups;
+        symbol [ size %tmp.5 165 35 39 ];
+        %tmp.5 = getv function %tmp.4 :size;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        %tmp.7 = lt %tmp.2 %tmp.6;
+        bf %tmp.7 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_48_177_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 166 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_48_177_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_48_177_8_stop" ]
+        %group.2 = local;
+        symbol [ group %group.2 166 16 21 ];
+        symbol [ groups %tmp.9 166 24 30 ];
+        %tmp.9 = getv ? :groups;
+        %tmp.10 = lgetv %g.1;
+        symbol [ g %tmp.10 166 31 32 ];
+        %tmp.11 = agetv %tmp.9 %tmp.10;
+        lputv %group.2 %tmp.11;
+        symbol [ group %group.2 166 16 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 167 12 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_end" ]
+        %i.3 = local;
+        symbol [ i %i.3 167 21 22 ];
+        %tmp.12 = 0;
+        lputv %i.3 %tmp.12;
+        symbol [ i %i.3 167 21 22 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_test:
+        %tmp.13 = lgetv %i.3;
+        symbol [ i %tmp.13 167 28 29 ];
+        %tmp.14 = lgetv %group.2;
+        symbol [ group %tmp.14 167 32 37 ];
+        symbol [ size %tmp.15 167 38 42 ];
+        %tmp.15 = getv function %tmp.14 :size;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        %tmp.17 = lt %tmp.13 %tmp.16;
+        bf %tmp.17 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 168 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_stop" ]
+        %b.4 = local;
+        symbol [ b %b.4 168 20 21 ];
+        %tmp.18 = lgetv %group.2;
+        symbol [ group %tmp.18 168 24 29 ];
+        %tmp.19 = lgetv %i.3;
+        symbol [ i %tmp.19 168 30 31 ];
+        %tmp.20 = agetv %tmp.18 %tmp.19;
+        lputv %b.4 %tmp.20;
+        symbol [ b %b.4 168 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 169 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_stop" ]
+        %dx.5 = local;
+        symbol [ dx %dx.5 169 20 22 ];
+        %tmp.21 = lgetv %b.4;
+        symbol [ b %tmp.21 169 25 26 ];
+        symbol [ x %tmp.22 169 27 28 ];
+        %tmp.22 = getv %tmp.21 :x;
+        %tmp.23 = lgetv %b.4;
+        symbol [ b %tmp.23 169 31 32 ];
+        symbol [ vx %tmp.24 169 33 35 ];
+        %tmp.24 = getv %tmp.23 :vx;
+        %tmp.25 = add %tmp.22 %tmp.24;
+        %tmp.26 = lgetv %sx;
+        symbol [ sx %tmp.26 169 38 40 ];
+        %tmp.27 = sub %tmp.25 %tmp.26;
+        lputv %dx.5 %tmp.27;
+        symbol [ dx %dx.5 169 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 170 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_stop" ]
+        %dy.6 = local;
+        symbol [ dy %dy.6 170 20 22 ];
+        %tmp.28 = lgetv %b.4;
+        symbol [ b %tmp.28 170 25 26 ];
+        symbol [ y %tmp.29 170 27 28 ];
+        %tmp.29 = getv %tmp.28 :y;
+        %tmp.30 = lgetv %b.4;
+        symbol [ b %tmp.30 170 31 32 ];
+        symbol [ vy %tmp.31 170 33 35 ];
+        %tmp.31 = getv %tmp.30 :vy;
+        %tmp.32 = add %tmp.29 %tmp.31;
+        %tmp.33 = lgetv %sy;
+        symbol [ sy %tmp.33 170 38 40 ];
+        %tmp.34 = sub %tmp.32 %tmp.33;
+        lputv %dy.6 %tmp.34;
+        symbol [ dy %dy.6 170 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 171 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_stop" ]
+        %d.7 = local;
+        symbol [ d %d.7 171 20 21 ];
+        symbol [ Math %tmp.35 171 24 28 ];
+        %tmp.35 = getm $.Toybox.Math;
+        symbol [ sqrt %tmp.36 171 29 33 ];
+        %tmp.36 = getv function %tmp.35 :sqrt;
+        %tmp.37 = lgetv %dx.5;
+        symbol [ dx %tmp.37 171 34 36 ];
+        %tmp.38 = lgetv %dx.5;
+        symbol [ dx %tmp.38 171 39 41 ];
+        %tmp.39 = mul %tmp.37 %tmp.38;
+        %tmp.40 = lgetv %dy.6;
+        symbol [ dy %tmp.40 171 44 46 ];
+        %tmp.41 = lgetv %dy.6;
+        symbol [ dy %tmp.41 171 49 51 ];
+        %tmp.42 = mul %tmp.40 %tmp.41;
+        %tmp.43 = add %tmp.39 %tmp.42;
+        %tmp.44 = invoke %tmp.35 %tmp.36(%tmp.43);
+        lputv %d.7 %tmp.44;
+        symbol [ d %d.7 171 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 172 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_16_175_16_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_20_172_39_begin:
+        %tmp.45 = lgetv %d.7;
+        symbol [ d %tmp.45 172 20 21 ];
+        %tmp.46 = lgetv %radius;
+        symbol [ radius %tmp.46 172 25 31 ];
+        %tmp.47 = lte %tmp.45 %tmp.46;
+        bf %tmp.47 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_16_175_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_35_172_39_true:
+        %tmp.48 = lgetv %d.7;
+        symbol [ d %tmp.48 172 35 36 ];
+        %tmp.49 = 0.0;
+        %tmp.50 = gt %tmp.48 %tmp.49;
+        push %tmp.50;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_35_172_39_end:
+        %tmp.51 = phi [%tmp.47 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_20_172_39_begin] [%tmp.50 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_35_172_39_true] [%tmp.51 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_35_172_39_end];
+        bf %tmp.51 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_16_175_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_16_175_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_44_175_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 173 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_44_175_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_44_175_16_stop" ]
+        %mag.8 = local;
+        symbol [ mag %mag.8 173 24 27 ];
+        %tmp.52 = lgetv %b.4;
+        symbol [ b %tmp.52 173 30 31 ];
+        symbol [ maxSpeed %tmp.53 173 32 40 ];
+        %tmp.53 = getv %tmp.52 :maxSpeed;
+        %tmp.54 = lgetv %radius;
+        symbol [ radius %tmp.54 173 44 50 ];
+        %tmp.55 = lgetv %d.7;
+        symbol [ d %tmp.55 173 53 54 ];
+        %tmp.56 = sub %tmp.54 %tmp.55;
+        %tmp.57 = mul %tmp.53 %tmp.56;
+        %tmp.58 = lgetv %radius;
+        symbol [ radius %tmp.58 173 58 64 ];
+        %tmp.59 = div %tmp.57 %tmp.58;
+        lputv %mag.8 %tmp.59;
+        symbol [ mag %mag.8 173 24 27 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 174 20 ]
+        %tmp.60 = self;
+        symbol [ limitInto %tmp.61 174 20 29 ];
+        %tmp.61 = getv function %tmp.60 :limitInto;
+        %tmp.62 = lgetv %b.4;
+        symbol [ b %tmp.62 174 30 31 ];
+        %tmp.63 = lgetv %dx.5;
+        symbol [ dx %tmp.63 174 33 35 ];
+        %tmp.64 = lgetv %d.7;
+        symbol [ d %tmp.64 174 38 39 ];
+        %tmp.65 = div %tmp.63 %tmp.64;
+        %tmp.66 = lgetv %mag.8;
+        symbol [ mag %tmp.66 174 42 45 ];
+        %tmp.67 = mul %tmp.65 %tmp.66;
+        %tmp.68 = lgetv %b.4;
+        symbol [ b %tmp.68 174 48 49 ];
+        symbol [ vx %tmp.69 174 50 52 ];
+        %tmp.69 = getv %tmp.68 :vx;
+        %tmp.70 = sub %tmp.67 %tmp.69;
+        %tmp.71 = lgetv %dy.6;
+        symbol [ dy %tmp.71 174 54 56 ];
+        %tmp.72 = lgetv %d.7;
+        symbol [ d %tmp.72 174 59 60 ];
+        %tmp.73 = div %tmp.71 %tmp.72;
+        %tmp.74 = lgetv %mag.8;
+        symbol [ mag %tmp.74 174 63 66 ];
+        %tmp.75 = mul %tmp.73 %tmp.74;
+        %tmp.76 = lgetv %b.4;
+        symbol [ b %tmp.76 174 69 70 ];
+        symbol [ vy %tmp.77 174 71 73 ];
+        %tmp.77 = getv %tmp.76 :vy;
+        %tmp.78 = sub %tmp.75 %tmp.77;
+        %tmp.79 = 1.0;
+        invoke %tmp.60 %tmp.61(%tmp.62, %tmp.70, %tmp.78, %tmp.79);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_44_175_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_16_175_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_172_16_175_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_51_176_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 167 ]
+        %tmp.82 = lgetv %i.3;
+        symbol [ i %tmp.82 167 46 47 ];
+        %tmp.83 = add %tmp.82 1;
+        lputv %i.3 %tmp.83;
+        symbol [ i %i.3 167 46 47 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_167_12_176_12_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_48_177_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 165 ]
+        %tmp.86 = lgetv %g.1;
+        symbol [ g %tmp.86 165 43 44 ];
+        %tmp.87 = add %tmp.86 1;
+        lputv %g.1 %tmp.87;
+        symbol [ g %g.1 165 43 44 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_165_8_177_8_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_164_39_178_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 181; @symbol_functiondef = [draw,181,13,17]; @symbol_param<0> = [dc,181,18,20]; ]
+    function draw(dc) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_181_22_196_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 182 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_181_22_196_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_181_22_196_4_stop" ]
+        %body.1 = local;
+        symbol [ body %body.1 182 12 16 ];
+        %tmp.1 = 0x288CDC;
+        lputv %body.1 %tmp.1;
+        symbol [ body %body.1 182 12 16 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 183 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_181_22_196_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_181_22_196_4_stop" ]
+        %tail.2 = local;
+        symbol [ tail %tail.2 183 12 16 ];
+        %tmp.2 = 0x145AB4;
+        lputv %tail.2 %tmp.2;
+        symbol [ tail %tail.2 183 12 16 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 184 8 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_end" ]
+        %g.3 = local;
+        symbol [ g %g.3 184 17 18 ];
+        %tmp.3 = 0;
+        lputv %g.3 %tmp.3;
+        symbol [ g %g.3 184 17 18 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_test:
+        %tmp.4 = lgetv %g.3;
+        symbol [ g %tmp.4 184 24 25 ];
+        symbol [ groups %tmp.6 184 28 34 ];
+        %tmp.6 = getv ? :groups;
+        symbol [ size %tmp.7 184 35 39 ];
+        %tmp.7 = getv function %tmp.6 :size;
+        %tmp.8 = invoke %tmp.6 %tmp.7();
+        %tmp.9 = lt %tmp.4 %tmp.8;
+        bf %tmp.9 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_48_195_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 185 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_48_195_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_48_195_8_stop" ]
+        %group.4 = local;
+        symbol [ group %group.4 185 16 21 ];
+        symbol [ groups %tmp.11 185 24 30 ];
+        %tmp.11 = getv ? :groups;
+        %tmp.12 = lgetv %g.3;
+        symbol [ g %tmp.12 185 31 32 ];
+        %tmp.13 = agetv %tmp.11 %tmp.12;
+        lputv %group.4 %tmp.13;
+        symbol [ group %group.4 185 16 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 186 12 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_end" ]
+        %i.5 = local;
+        symbol [ i %i.5 186 21 22 ];
+        %tmp.14 = 0;
+        lputv %i.5 %tmp.14;
+        symbol [ i %i.5 186 21 22 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_test:
+        %tmp.15 = lgetv %i.5;
+        symbol [ i %tmp.15 186 28 29 ];
+        %tmp.16 = lgetv %group.4;
+        symbol [ group %tmp.16 186 32 37 ];
+        symbol [ size %tmp.17 186 38 42 ];
+        %tmp.17 = getv function %tmp.16 :size;
+        %tmp.18 = invoke %tmp.16 %tmp.17();
+        %tmp.19 = lt %tmp.15 %tmp.18;
+        bf %tmp.19 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 187 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_stop" ]
+        %b.6 = local;
+        symbol [ b %b.6 187 20 21 ];
+        %tmp.20 = lgetv %group.4;
+        symbol [ group %tmp.20 187 24 29 ];
+        %tmp.21 = lgetv %i.5;
+        symbol [ i %tmp.21 187 30 31 ];
+        %tmp.22 = agetv %tmp.20 %tmp.21;
+        lputv %b.6 %tmp.22;
+        symbol [ b %b.6 187 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 188 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_stop" ]
+        %a.7 = local;
+        symbol [ a %a.7 188 20 21 ];
+        symbol [ Math %tmp.23 188 24 28 ];
+        %tmp.23 = getm $.Toybox.Math;
+        symbol [ atan2 %tmp.24 188 29 34 ];
+        %tmp.24 = getv function %tmp.23 :atan2;
+        %tmp.25 = lgetv %b.6;
+        symbol [ b %tmp.25 188 35 36 ];
+        symbol [ vy %tmp.26 188 37 39 ];
+        %tmp.26 = getv %tmp.25 :vy;
+        %tmp.27 = lgetv %b.6;
+        symbol [ b %tmp.27 188 41 42 ];
+        symbol [ vx %tmp.28 188 43 45 ];
+        %tmp.28 = getv %tmp.27 :vx;
+        %tmp.29 = invoke %tmp.23 %tmp.24(%tmp.26, %tmp.28);
+        lputv %a.7 %tmp.29;
+        symbol [ a %a.7 188 20 21 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 189 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_stop" ]
+        %cx.8 = local;
+        symbol [ cx %cx.8 189 20 22 ];
+        symbol [ Math %tmp.30 189 25 29 ];
+        %tmp.30 = getm $.Toybox.Math;
+        symbol [ cos %tmp.31 189 30 33 ];
+        %tmp.31 = getv function %tmp.30 :cos;
+        %tmp.32 = lgetv %a.7;
+        symbol [ a %tmp.32 189 34 35 ];
+        %tmp.33 = invoke %tmp.30 %tmp.31(%tmp.32);
+        lputv %cx.8 %tmp.33;
+        symbol [ cx %cx.8 189 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 190 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_stop" ]
+        %cy.9 = local;
+        symbol [ cy %cy.9 190 20 22 ];
+        symbol [ Math %tmp.34 190 25 29 ];
+        %tmp.34 = getm $.Toybox.Math;
+        symbol [ sin %tmp.35 190 30 33 ];
+        %tmp.35 = getv function %tmp.34 :sin;
+        %tmp.36 = lgetv %a.7;
+        symbol [ a %tmp.36 190 34 35 ];
+        %tmp.37 = invoke %tmp.34 %tmp.35(%tmp.36);
+        lputv %cy.9 %tmp.37;
+        symbol [ cy %cy.9 190 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 191 16 ]
+        symbol [ Gfx %tmp.39 191 16 19 ];
+        %tmp.39 = getv ? :Gfx;
+        symbol [ px %tmp.40 191 20 22 ];
+        %tmp.40 = getv function %tmp.39 :px;
+        %tmp.41 = lgetv %dc;
+        symbol [ dc %tmp.41 191 23 25 ];
+        %tmp.42 = lgetv %b.6;
+        symbol [ b %tmp.42 191 27 28 ];
+        symbol [ x %tmp.43 191 29 30 ];
+        %tmp.43 = getv %tmp.42 :x;
+        %tmp.44 = lgetv %cx.8;
+        symbol [ cx %tmp.44 191 33 35 ];
+        %tmp.45 = add %tmp.43 %tmp.44;
+        %tmp.46 = lgetv %b.6;
+        symbol [ b %tmp.46 191 37 38 ];
+        symbol [ y %tmp.47 191 39 40 ];
+        %tmp.47 = getv %tmp.46 :y;
+        %tmp.48 = lgetv %cy.9;
+        symbol [ cy %tmp.48 191 43 45 ];
+        %tmp.49 = add %tmp.47 %tmp.48;
+        %tmp.50 = lgetv %body.1;
+        symbol [ body %tmp.50 191 47 51 ];
+        invoke %tmp.39 %tmp.40(%tmp.41, %tmp.45, %tmp.49, %tmp.50);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 192 16 ]
+        symbol [ Gfx %tmp.52 192 16 19 ];
+        %tmp.52 = getv ? :Gfx;
+        symbol [ px %tmp.53 192 20 22 ];
+        %tmp.53 = getv function %tmp.52 :px;
+        %tmp.54 = lgetv %dc;
+        symbol [ dc %tmp.54 192 23 25 ];
+        %tmp.55 = lgetv %b.6;
+        symbol [ b %tmp.55 192 27 28 ];
+        symbol [ x %tmp.56 192 29 30 ];
+        %tmp.56 = getv %tmp.55 :x;
+        %tmp.57 = lgetv %b.6;
+        symbol [ b %tmp.57 192 32 33 ];
+        symbol [ y %tmp.58 192 34 35 ];
+        %tmp.58 = getv %tmp.57 :y;
+        %tmp.59 = lgetv %body.1;
+        symbol [ body %tmp.59 192 37 41 ];
+        invoke %tmp.52 %tmp.53(%tmp.54, %tmp.56, %tmp.58, %tmp.59);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 193 16 ]
+        symbol [ Gfx %tmp.61 193 16 19 ];
+        %tmp.61 = getv ? :Gfx;
+        symbol [ px %tmp.62 193 20 22 ];
+        %tmp.62 = getv function %tmp.61 :px;
+        %tmp.63 = lgetv %dc;
+        symbol [ dc %tmp.63 193 23 25 ];
+        %tmp.64 = lgetv %b.6;
+        symbol [ b %tmp.64 193 27 28 ];
+        symbol [ x %tmp.65 193 29 30 ];
+        %tmp.65 = getv %tmp.64 :x;
+        %tmp.66 = lgetv %cx.8;
+        symbol [ cx %tmp.66 193 33 35 ];
+        %tmp.67 = sub %tmp.65 %tmp.66;
+        %tmp.68 = lgetv %b.6;
+        symbol [ b %tmp.68 193 37 38 ];
+        symbol [ y %tmp.69 193 39 40 ];
+        %tmp.69 = getv %tmp.68 :y;
+        %tmp.70 = lgetv %cy.9;
+        symbol [ cy %tmp.70 193 43 45 ];
+        %tmp.71 = sub %tmp.69 %tmp.70;
+        %tmp.72 = lgetv %tail.2;
+        symbol [ tail %tmp.72 193 47 51 ];
+        invoke %tmp.61 %tmp.62(%tmp.63, %tmp.67, %tmp.71, %tmp.72);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_51_194_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 186 ]
+        %tmp.75 = lgetv %i.5;
+        symbol [ i %tmp.75 186 46 47 ];
+        %tmp.76 = add %tmp.75 1;
+        lputv %i.5 %tmp.76;
+        symbol [ i %i.5 186 46 47 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_186_12_194_12_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_48_195_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc" 184 ]
+        %tmp.79 = lgetv %g.3;
+        symbol [ g %tmp.79 184 43 44 ];
+        %tmp.80 = add %tmp.79 1;
+        lputv %g.3 %tmp.80;
+        symbol [ g %g.3 184 43 44 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_184_8_195_8_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Boids_mc_181_22_196_4_stop:
+    }
+}
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Boids.mc"; @line = 1; ]
+<init> {
+}

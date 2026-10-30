@@ -1,0 +1,10 @@
+Aquarium (Garmin Connect IQ app for the fenix 7S)
+
+A hand translation to Monkey C of the tank from
+https://github.com/francistse/esp32-cyd-aquarium (commit 80449b3, 18 Oct 2026),
+itself a fork of Lagerpun/esp32-cyd-aquarium, adapted from Livegrid OpenMatrix.
+Those projects are licensed under the GNU Affero General Public License v3.0,
+and so is this one (see LICENSE). Not an official Livegrid project.
+
+Colour conversion (Colour.mc) follows FastLED's hsv2rgb_rainbow as shipped in
+drvkmr/GFX_Lite.

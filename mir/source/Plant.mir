@@ -1,0 +1,912 @@
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 1; @symbol_usingdef<0> = [Toybox,1,6,12]; @symbol_usingdef<1> = [Math,1,13,17]; ]
+using Toybox.Math;
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 5; @symbol_classdef = [Plant,5,6,11]; ]
+class Plant {
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 5; ]
+    <init> {
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 11 8 ]
+        %tmp.1 = newa 0;
+        putv self :nodeX %tmp.1;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 12 8 ]
+        %tmp.2 = newa 0;
+        putv self :nodeY %tmp.2;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 13 8 ]
+        %tmp.3 = newa 0;
+        putv self :phase %tmp.3;
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 5; ]
+    static
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 6; @position = 8; @symbol_vardef = [x,6,8,9]; ]
+    var x;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 7; @position = 8; @symbol_vardef = [y,7,8,9]; ]
+    var y;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 8; @position = 8; @symbol_vardef = [species,8,8,15]; ]
+    var species;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 9; @position = 8; @symbol_vardef = [numBranches,9,8,19]; ]
+    var numBranches;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 10; @position = 8; @symbol_vardef = [branchSize,10,8,18]; ]
+    var branchSize;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 11; @position = 8; @symbol_vardef = [nodeX,11,8,13]; ]
+    var nodeX;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 12; @position = 8; @symbol_vardef = [nodeY,12,8,13]; ]
+    var nodeY;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 13; @position = 8; @symbol_vardef = [phase,13,8,13]; ]
+    var phase;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 15; @position = 10; @symbol_constdef = [TWO_PI,15,10,16]; ]
+    const TWO_PI = 6.283185;
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 17; @symbol_functiondef = [initialize,17,13,23]; @symbol_param<0> = [px,17,24,26]; @symbol_param<1> = [py,17,28,30]; @symbol_param<2> = [speciesId,17,32,41]; ]
+    function initialize(px, py, speciesId) as Void {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_17_43_60_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 18 8 ]
+        %tmp.1 = lgetv %px;
+        symbol [ px %tmp.1 18 12 14 ];
+        symbol [ toFloat %tmp.2 18 15 22 ];
+        %tmp.2 = getv function %tmp.1 :toFloat;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        symbol [ x ? 18 8 9 ];
+        putv self :x %tmp.3;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 19 8 ]
+        %tmp.4 = lgetv %py;
+        symbol [ py %tmp.4 19 12 14 ];
+        symbol [ toFloat %tmp.5 19 15 22 ];
+        %tmp.5 = getv function %tmp.4 :toFloat;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        symbol [ y ? 19 8 9 ];
+        putv self :y %tmp.6;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 20 8 ]
+        %tmp.7 = lgetv %speciesId;
+        symbol [ speciesId %tmp.7 20 18 27 ];
+        symbol [ species ? 20 8 15 ];
+        putv self :species %tmp.7;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 21 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_8_27_8_if_stmt:
+        symbol [ species %tmp.9 21 12 19 ];
+        %tmp.9 = getv ? :species;
+        symbol [ Species %tmp.11 21 23 30 ];
+        %tmp.11 = getv ? :Species;
+        symbol [ ID_ANEMONE %tmp.12 21 31 41 ];
+        %tmp.12 = getv %tmp.11 :ID_ANEMONE;
+        %tmp.13 = eq %tmp.9 %tmp.12;
+        bf %tmp.13 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_8_27_8_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_8_27_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_43_24_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 22 12 ]
+        symbol [ Rnd %tmp.15 22 26 29 ];
+        %tmp.15 = getv ? :Rnd;
+        symbol [ range %tmp.16 22 30 35 ];
+        %tmp.16 = getv function %tmp.15 :range;
+        %tmp.17 = 8;
+        %tmp.18 = 12;
+        %tmp.19 = invoke %tmp.15 %tmp.16(%tmp.17, %tmp.18);
+        symbol [ numBranches ? 22 12 23 ];
+        putv self :numBranches %tmp.19;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 23 12 ]
+        %tmp.20 = 2.0;
+        symbol [ branchSize ? 23 12 22 ];
+        putv self :branchSize %tmp.20;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_43_24_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_8_27_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_8_27_8_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_24_15_27_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 25 12 ]
+        symbol [ Rnd %tmp.22 25 26 29 ];
+        %tmp.22 = getv ? :Rnd;
+        symbol [ range %tmp.23 25 30 35 ];
+        %tmp.23 = getv function %tmp.22 :range;
+        %tmp.24 = 6;
+        %tmp.25 = 10;
+        %tmp.26 = invoke %tmp.22 %tmp.23(%tmp.24, %tmp.25);
+        symbol [ numBranches ? 25 12 23 ];
+        putv self :numBranches %tmp.26;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 26 12 ]
+        %tmp.27 = 3.0;
+        symbol [ branchSize ? 26 12 22 ];
+        putv self :branchSize %tmp.27;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_24_15_27_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_21_8_27_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 28 8 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_end" ]
+        %i.1 = local;
+        symbol [ i %i.1 28 17 18 ];
+        %tmp.28 = 0;
+        lputv %i.1 %tmp.28;
+        symbol [ i %i.1 28 17 18 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_test:
+        %tmp.29 = lgetv %i.1;
+        symbol [ i %tmp.29 28 24 25 ];
+        symbol [ numBranches %tmp.31 28 28 39 ];
+        %tmp.31 = getv ? :numBranches;
+        %tmp.32 = lt %tmp.29 %tmp.31;
+        bf %tmp.32 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 30 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_stop" ]
+        %a.2 = local;
+        symbol [ a %a.2 30 16 17 ];
+        symbol [ Rnd %tmp.34 30 20 23 ];
+        %tmp.34 = getv ? :Rnd;
+        symbol [ range %tmp.35 30 24 29 ];
+        %tmp.35 = getv function %tmp.34 :range;
+        %tmp.36 = 3142;
+        %tmp.37 = 6283;
+        %tmp.38 = invoke %tmp.34 %tmp.35(%tmp.36, %tmp.37);
+        %tmp.39 = 1000.0;
+        %tmp.40 = div %tmp.38 %tmp.39;
+        lputv %a.2 %tmp.40;
+        symbol [ a %a.2 30 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 31 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_stop" ]
+        %sx.3 = local;
+        symbol [ sx %sx.3 31 16 18 ];
+        symbol [ Math %tmp.41 31 21 25 ];
+        %tmp.41 = getm $.Toybox.Math;
+        symbol [ cos %tmp.42 31 26 29 ];
+        %tmp.42 = getv function %tmp.41 :cos;
+        %tmp.43 = lgetv %a.2;
+        symbol [ a %tmp.43 31 30 31 ];
+        %tmp.44 = invoke %tmp.41 %tmp.42(%tmp.43);
+        symbol [ branchSize %tmp.46 31 35 45 ];
+        %tmp.46 = getv ? :branchSize;
+        %tmp.47 = mul %tmp.44 %tmp.46;
+        lputv %sx.3 %tmp.47;
+        symbol [ sx %sx.3 31 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 32 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_stop" ]
+        %sy.4 = local;
+        symbol [ sy %sy.4 32 16 18 ];
+        symbol [ Math %tmp.48 32 21 25 ];
+        %tmp.48 = getm $.Toybox.Math;
+        symbol [ sin %tmp.49 32 26 29 ];
+        %tmp.49 = getv function %tmp.48 :sin;
+        %tmp.50 = lgetv %a.2;
+        symbol [ a %tmp.50 32 30 31 ];
+        %tmp.51 = invoke %tmp.48 %tmp.49(%tmp.50);
+        symbol [ branchSize %tmp.53 32 35 45 ];
+        %tmp.53 = getv ? :branchSize;
+        %tmp.54 = mul %tmp.51 %tmp.53;
+        lputv %sy.4 %tmp.54;
+        symbol [ sy %sy.4 32 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 33 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_stop" ]
+        %n.5 = local;
+        symbol [ n %n.5 33 16 17 ];
+        %tmp.55 = 0;
+        lputv %n.5 %tmp.55;
+        symbol [ n %n.5 33 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 34 12 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_12_38_12_if_stmt:
+        symbol [ species %tmp.57 34 16 23 ];
+        %tmp.57 = getv ? :species;
+        symbol [ Species %tmp.59 34 27 34 ];
+        %tmp.59 = getv ? :Species;
+        symbol [ ID_ANEMONE %tmp.60 34 35 45 ];
+        %tmp.60 = getv %tmp.59 :ID_ANEMONE;
+        %tmp.61 = eq %tmp.57 %tmp.60;
+        bf %tmp.61 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_12_38_12_if_else_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_12_38_12_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_47_36_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 35 16 ]
+        symbol [ Rnd %tmp.63 35 20 23 ];
+        %tmp.63 = getv ? :Rnd;
+        symbol [ range %tmp.64 35 24 29 ];
+        %tmp.64 = getv function %tmp.63 :range;
+        %tmp.65 = 3;
+        %tmp.66 = 6;
+        %tmp.67 = invoke %tmp.63 %tmp.64(%tmp.65, %tmp.66);
+        lputv %n.5 %tmp.67;
+        symbol [ n %n.5 35 16 17 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_47_36_12_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_12_38_12_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_12_38_12_if_else_false:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_36_19_38_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 37 16 ]
+        symbol [ Rnd %tmp.69 37 20 23 ];
+        %tmp.69 = getv ? :Rnd;
+        symbol [ range %tmp.70 37 24 29 ];
+        %tmp.70 = getv function %tmp.69 :range;
+        %tmp.71 = 4;
+        %tmp.72 = 8;
+        %tmp.73 = invoke %tmp.69 %tmp.70(%tmp.71, %tmp.72);
+        lputv %n.5 %tmp.73;
+        symbol [ n %n.5 37 16 17 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_36_19_38_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_34_12_38_12_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 39 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_stop" ]
+        %xs.6 = local;
+        symbol [ xs %xs.6 39 16 18 ];
+        %tmp.75 = lgetv %n.5;
+        symbol [ n %tmp.75 39 26 27 ];
+        %tmp.74 = newa %tmp.75;
+        lputv %xs.6 %tmp.74;
+        symbol [ xs %xs.6 39 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 40 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_stop" ]
+        %ys.7 = local;
+        symbol [ ys %ys.7 40 16 18 ];
+        %tmp.77 = lgetv %n.5;
+        symbol [ n %tmp.77 40 26 27 ];
+        %tmp.76 = newa %tmp.77;
+        lputv %ys.7 %tmp.76;
+        symbol [ ys %ys.7 40 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 41 12 ]
+        %tmp.78 = lgetv %xs.6;
+        symbol [ xs %tmp.78 41 12 14 ];
+        %tmp.79 = lgetv %sx.3;
+        symbol [ sx %tmp.79 41 20 22 ];
+        %tmp.80 = 0;
+        aputv %tmp.78 %tmp.80 %tmp.79;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 42 12 ]
+        %tmp.81 = lgetv %ys.7;
+        symbol [ ys %tmp.81 42 12 14 ];
+        %tmp.82 = lgetv %sy.4;
+        symbol [ sy %tmp.82 42 20 22 ];
+        %tmp.83 = 0;
+        aputv %tmp.81 %tmp.83 %tmp.82;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 43 12 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_end" ]
+        %j.8 = local;
+        symbol [ j %j.8 43 21 22 ];
+        %tmp.84 = 1;
+        lputv %j.8 %tmp.84;
+        symbol [ j %j.8 43 21 22 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_test:
+        %tmp.85 = lgetv %j.8;
+        symbol [ j %tmp.85 43 28 29 ];
+        %tmp.86 = lgetv %n.5;
+        symbol [ n %tmp.86 43 32 33 ];
+        %tmp.87 = lt %tmp.85 %tmp.86;
+        bf %tmp.87 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 45 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_stop" ]
+        %theta.9 = local;
+        symbol [ theta %theta.9 45 20 25 ];
+        symbol [ Math %tmp.88 45 28 32 ];
+        %tmp.88 = getm $.Toybox.Math;
+        symbol [ atan2 %tmp.89 45 33 38 ];
+        %tmp.89 = getv function %tmp.88 :atan2;
+        %tmp.90 = lgetv %ys.7;
+        symbol [ ys %tmp.90 45 39 41 ];
+        %tmp.91 = lgetv %j.8;
+        symbol [ j %tmp.91 45 42 43 ];
+        %tmp.92 = 1;
+        %tmp.93 = sub %tmp.91 %tmp.92;
+        %tmp.94 = agetv %tmp.90 %tmp.93;
+        %tmp.95 = lgetv %xs.6;
+        symbol [ xs %tmp.95 45 50 52 ];
+        %tmp.96 = lgetv %j.8;
+        symbol [ j %tmp.96 45 53 54 ];
+        %tmp.97 = 1;
+        %tmp.98 = sub %tmp.96 %tmp.97;
+        %tmp.99 = agetv %tmp.95 %tmp.98;
+        %tmp.100 = invoke %tmp.88 %tmp.89(%tmp.94, %tmp.99);
+        lputv %theta.9 %tmp.100;
+        symbol [ theta %theta.9 45 20 25 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 46 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_stop" ]
+        %diff.10 = local;
+        symbol [ diff %diff.10 46 20 24 ];
+        %tmp.101 = 3.0;
+        symbol [ Math %tmp.102 46 33 37 ];
+        %tmp.102 = getm $.Toybox.Math;
+        symbol [ PI %tmp.103 46 38 40 ];
+        %tmp.103 = getv %tmp.102 :PI;
+        %tmp.104 = mul %tmp.101 %tmp.103;
+        %tmp.105 = 2.0;
+        %tmp.106 = div %tmp.104 %tmp.105;
+        %tmp.107 = lgetv %theta.9;
+        symbol [ theta %tmp.107 46 49 54 ];
+        %tmp.108 = sub %tmp.106 %tmp.107;
+        lputv %diff.10 %tmp.108;
+        symbol [ diff %diff.10 46 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 47 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_16_51_16_if_stmt:
+        %tmp.109 = lgetv %diff.10;
+        symbol [ diff %tmp.109 47 20 24 ];
+        symbol [ Math %tmp.110 47 27 31 ];
+        %tmp.110 = getm $.Toybox.Math;
+        symbol [ PI %tmp.111 47 32 34 ];
+        %tmp.111 = getv %tmp.110 :PI;
+        %tmp.112 = gt %tmp.109 %tmp.111;
+        bf %tmp.112 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_16_51_16_if_false;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_16_51_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_36_49_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 48 20 ]
+        %tmp.113 = lgetv %diff.10;
+        symbol [ diff %tmp.113 48 20 24 ];
+        symbol [ TWO_PI %tmp.115 48 28 34 ];
+        %tmp.115 = getv ? :TWO_PI;
+        %tmp.116 = sub %tmp.113 %tmp.115;
+        lputv %diff.10 %tmp.116;
+        symbol [ diff %diff.10 48 20 24 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_36_49_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_16_51_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_16_51_16_if_false:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 49 23 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_49_23_51_16_if_stmt:
+        %tmp.117 = lgetv %diff.10;
+        symbol [ diff %tmp.117 49 27 31 ];
+        symbol [ Math %tmp.118 49 35 39 ];
+        %tmp.118 = getm $.Toybox.Math;
+        symbol [ PI %tmp.119 49 40 42 ];
+        %tmp.119 = getv %tmp.118 :PI;
+        %tmp.120 = sub 0 %tmp.119;
+        %tmp.121 = lt %tmp.117 %tmp.120;
+        bf %tmp.121 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_49_23_51_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_49_23_51_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_49_44_51_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 50 20 ]
+        %tmp.122 = lgetv %diff.10;
+        symbol [ diff %tmp.122 50 20 24 ];
+        symbol [ TWO_PI %tmp.124 50 28 34 ];
+        %tmp.124 = getv ? :TWO_PI;
+        %tmp.125 = add %tmp.122 %tmp.124;
+        lputv %diff.10 %tmp.125;
+        symbol [ diff %diff.10 50 20 24 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_49_44_51_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_49_23_51_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_49_23_51_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_47_16_51_16_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 52 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_stop" ]
+        %t2.11 = local;
+        symbol [ t2 %t2.11 52 20 22 ];
+        %tmp.126 = lgetv %theta.9;
+        symbol [ theta %tmp.126 52 25 30 ];
+        %tmp.127 = lgetv %diff.10;
+        symbol [ diff %tmp.127 52 33 37 ];
+        %tmp.128 = 0.5;
+        %tmp.129 = mul %tmp.127 %tmp.128;
+        %tmp.130 = add %tmp.126 %tmp.129;
+        lputv %t2.11 %tmp.130;
+        symbol [ t2 %t2.11 52 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 53 16 ]
+        %tmp.131 = lgetv %xs.6;
+        symbol [ xs %tmp.131 53 16 18 ];
+        %tmp.132 = lgetv %xs.6;
+        symbol [ xs %tmp.132 53 24 26 ];
+        %tmp.133 = lgetv %j.8;
+        symbol [ j %tmp.133 53 27 28 ];
+        %tmp.134 = 1;
+        %tmp.135 = sub %tmp.133 %tmp.134;
+        %tmp.136 = agetv %tmp.132 %tmp.135;
+        symbol [ Math %tmp.137 53 36 40 ];
+        %tmp.137 = getm $.Toybox.Math;
+        symbol [ cos %tmp.138 53 41 44 ];
+        %tmp.138 = getv function %tmp.137 :cos;
+        %tmp.139 = lgetv %t2.11;
+        symbol [ t2 %tmp.139 53 45 47 ];
+        %tmp.140 = invoke %tmp.137 %tmp.138(%tmp.139);
+        symbol [ branchSize %tmp.142 53 51 61 ];
+        %tmp.142 = getv ? :branchSize;
+        %tmp.143 = mul %tmp.140 %tmp.142;
+        %tmp.144 = add %tmp.136 %tmp.143;
+        %tmp.145 = lgetv %j.8;
+        symbol [ j %tmp.145 53 19 20 ];
+        aputv %tmp.131 %tmp.145 %tmp.144;
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 54 16 ]
+        %tmp.146 = lgetv %ys.7;
+        symbol [ ys %tmp.146 54 16 18 ];
+        %tmp.147 = lgetv %ys.7;
+        symbol [ ys %tmp.147 54 24 26 ];
+        %tmp.148 = lgetv %j.8;
+        symbol [ j %tmp.148 54 27 28 ];
+        %tmp.149 = 1;
+        %tmp.150 = sub %tmp.148 %tmp.149;
+        %tmp.151 = agetv %tmp.147 %tmp.150;
+        symbol [ Math %tmp.152 54 36 40 ];
+        %tmp.152 = getm $.Toybox.Math;
+        symbol [ sin %tmp.153 54 41 44 ];
+        %tmp.153 = getv function %tmp.152 :sin;
+        %tmp.154 = lgetv %t2.11;
+        symbol [ t2 %tmp.154 54 45 47 ];
+        %tmp.155 = invoke %tmp.152 %tmp.153(%tmp.154);
+        symbol [ branchSize %tmp.157 54 51 61 ];
+        %tmp.157 = getv ? :branchSize;
+        %tmp.158 = mul %tmp.155 %tmp.157;
+        %tmp.159 = add %tmp.151 %tmp.158;
+        %tmp.160 = lgetv %j.8;
+        symbol [ j %tmp.160 54 19 20 ];
+        aputv %tmp.146 %tmp.160 %tmp.159;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_40_55_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 43 ]
+        %tmp.163 = lgetv %j.8;
+        symbol [ j %tmp.163 43 35 36 ];
+        %tmp.164 = add %tmp.163 1;
+        lputv %j.8 %tmp.164;
+        symbol [ j %j.8 43 35 36 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_43_12_55_12_for_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 56 12 ]
+        symbol [ nodeX %tmp.166 56 12 17 ];
+        %tmp.166 = getv ? :nodeX;
+        symbol [ add %tmp.167 56 18 21 ];
+        %tmp.167 = getv function %tmp.166 :add;
+        %tmp.168 = lgetv %xs.6;
+        symbol [ xs %tmp.168 56 22 24 ];
+        invoke %tmp.166 %tmp.167(%tmp.168);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 57 12 ]
+        symbol [ nodeY %tmp.170 57 12 17 ];
+        %tmp.170 = getv ? :nodeY;
+        symbol [ add %tmp.171 57 18 21 ];
+        %tmp.171 = getv function %tmp.170 :add;
+        %tmp.172 = lgetv %ys.7;
+        symbol [ ys %tmp.172 57 22 24 ];
+        invoke %tmp.170 %tmp.171(%tmp.172);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 58 12 ]
+        symbol [ phase %tmp.174 58 12 17 ];
+        %tmp.174 = getv ? :phase;
+        symbol [ add %tmp.175 58 18 21 ];
+        %tmp.175 = getv function %tmp.174 :add;
+        symbol [ Rnd %tmp.177 58 22 25 ];
+        %tmp.177 = getv ? :Rnd;
+        symbol [ below %tmp.178 58 26 31 ];
+        %tmp.178 = getv function %tmp.177 :below;
+        %tmp.179 = 500;
+        %tmp.180 = invoke %tmp.177 %tmp.178(%tmp.179);
+        %tmp.181 = 100.0;
+        %tmp.182 = div %tmp.180 %tmp.181;
+        invoke %tmp.174 %tmp.175(%tmp.182);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_46_59_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 28 ]
+        %tmp.185 = lgetv %i.1;
+        symbol [ i %tmp.185 28 41 42 ];
+        %tmp.186 = add %tmp.185 1;
+        lputv %i.1 %tmp.186;
+        symbol [ i %i.1 28 41 42 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_28_8_59_8_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_17_43_60_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 63; @symbol_functiondef = [draw,63,13,17]; @symbol_param<0> = [dc,63,18,20]; @symbol_param<1> = [nowMs,63,22,27]; ]
+    function draw(dc, nowMs) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 64 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_stop" ]
+        %sizeFactor.1 = local;
+        symbol [ sizeFactor %sizeFactor.1 64 12 22 ];
+        %tmp.1 = 1.25;
+        lputv %sizeFactor.1 %tmp.1;
+        symbol [ sizeFactor %sizeFactor.1 64 12 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 65 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_stop" ]
+        %stem.2 = local;
+        symbol [ stem %stem.2 65 12 16 ];
+        %tmp.2 = 0x14782D;
+        lputv %stem.2 %tmp.2;
+        symbol [ stem %stem.2 65 12 16 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 66 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_stop" ]
+        %leaf.3 = local;
+        symbol [ leaf %leaf.3 66 12 16 ];
+        %tmp.3 = 0x28B446;
+        lputv %leaf.3 %tmp.3;
+        symbol [ leaf %leaf.3 66 12 16 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 67 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_stop" ]
+        %tip.4 = local;
+        symbol [ tip %tip.4 67 12 15 ];
+        %tmp.4 = 0xFFDC3C;
+        lputv %tip.4 %tmp.4;
+        symbol [ tip %tip.4 67 12 15 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 68 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_68_8_72_8_if_stmt:
+        symbol [ species %tmp.6 68 12 19 ];
+        %tmp.6 = getv ? :species;
+        symbol [ Species %tmp.8 68 23 30 ];
+        %tmp.8 = getv ? :Species;
+        symbol [ ID_ANEMONE %tmp.9 68 31 41 ];
+        %tmp.9 = getv %tmp.8 :ID_ANEMONE;
+        %tmp.10 = eq %tmp.6 %tmp.9;
+        bf %tmp.10 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_68_8_72_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_68_8_72_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_68_43_72_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 69 12 ]
+        %tmp.11 = 0x285A46;
+        lputv %stem.2 %tmp.11;
+        symbol [ stem %stem.2 69 12 16 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 70 12 ]
+        %tmp.12 = 0xDC8C96;
+        lputv %leaf.3 %tmp.12;
+        symbol [ leaf %leaf.3 70 12 16 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 71 12 ]
+        %tmp.13 = 0xFFB4AA;
+        lputv %tip.4 %tmp.13;
+        symbol [ tip %tip.4 71 12 15 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_68_43_72_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_68_8_72_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_68_8_72_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 73 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_stop" ]
+        %tSec.5 = local;
+        symbol [ tSec %tSec.5 73 12 16 ];
+        %tmp.14 = lgetv %nowMs;
+        symbol [ nowMs %tmp.14 73 19 24 ];
+        %tmp.15 = 10000.0;
+        %tmp.16 = div %tmp.14 %tmp.15;
+        lputv %tSec.5 %tmp.16;
+        symbol [ tSec %tSec.5 73 12 16 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 74 8 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_stop" ]
+        %leafT.6 = local;
+        symbol [ leafT %leafT.6 74 12 17 ];
+        %tmp.17 = lgetv %nowMs;
+        symbol [ nowMs %tmp.17 74 20 25 ];
+        %tmp.18 = 8000.0;
+        %tmp.19 = div %tmp.17 %tmp.18;
+        lputv %leafT.6 %tmp.19;
+        symbol [ leafT %leafT.6 74 12 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 75 8 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_end" ]
+        %i.7 = local;
+        symbol [ i %i.7 75 17 18 ];
+        %tmp.20 = 0;
+        lputv %i.7 %tmp.20;
+        symbol [ i %i.7 75 17 18 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_test:
+        %tmp.21 = lgetv %i.7;
+        symbol [ i %tmp.21 75 24 25 ];
+        symbol [ numBranches %tmp.23 75 28 39 ];
+        %tmp.23 = getv ? :numBranches;
+        %tmp.24 = lt %tmp.21 %tmp.23;
+        bf %tmp.24 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 76 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_stop" ]
+        %xs.8 = local;
+        symbol [ xs %xs.8 76 16 18 ];
+        symbol [ nodeX %tmp.26 76 21 26 ];
+        %tmp.26 = getv ? :nodeX;
+        %tmp.27 = lgetv %i.7;
+        symbol [ i %tmp.27 76 27 28 ];
+        %tmp.28 = agetv %tmp.26 %tmp.27;
+        lputv %xs.8 %tmp.28;
+        symbol [ xs %xs.8 76 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 77 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_stop" ]
+        %ys.9 = local;
+        symbol [ ys %ys.9 77 16 18 ];
+        symbol [ nodeY %tmp.30 77 21 26 ];
+        %tmp.30 = getv ? :nodeY;
+        %tmp.31 = lgetv %i.7;
+        symbol [ i %tmp.31 77 27 28 ];
+        %tmp.32 = agetv %tmp.30 %tmp.31;
+        lputv %ys.9 %tmp.32;
+        symbol [ ys %ys.9 77 16 18 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 78 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_stop" ]
+        %n.10 = local;
+        symbol [ n %n.10 78 16 17 ];
+        %tmp.33 = lgetv %xs.8;
+        symbol [ xs %tmp.33 78 20 22 ];
+        symbol [ size %tmp.34 78 23 27 ];
+        %tmp.34 = getv function %tmp.33 :size;
+        %tmp.35 = invoke %tmp.33 %tmp.34();
+        lputv %n.10 %tmp.35;
+        symbol [ n %n.10 78 16 17 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 79 12 ]
+        symbol [ Gfx %tmp.37 79 12 15 ];
+        %tmp.37 = getv ? :Gfx;
+        symbol [ line %tmp.38 79 16 20 ];
+        %tmp.38 = getv function %tmp.37 :line;
+        %tmp.39 = lgetv %dc;
+        symbol [ dc %tmp.39 79 21 23 ];
+        %tmp.40 = lgetv %xs.8;
+        symbol [ xs %tmp.40 79 25 27 ];
+        %tmp.41 = 0;
+        %tmp.42 = agetv %tmp.40 %tmp.41;
+        %tmp.43 = lgetv %sizeFactor.1;
+        symbol [ sizeFactor %tmp.43 79 33 43 ];
+        %tmp.44 = mul %tmp.42 %tmp.43;
+        symbol [ x %tmp.46 79 46 47 ];
+        %tmp.46 = getv ? :x;
+        %tmp.47 = add %tmp.44 %tmp.46;
+        %tmp.48 = lgetv %ys.9;
+        symbol [ ys %tmp.48 79 49 51 ];
+        %tmp.49 = 0;
+        %tmp.50 = agetv %tmp.48 %tmp.49;
+        %tmp.51 = lgetv %sizeFactor.1;
+        symbol [ sizeFactor %tmp.51 79 57 67 ];
+        %tmp.52 = mul %tmp.50 %tmp.51;
+        symbol [ y %tmp.54 79 70 71 ];
+        %tmp.54 = getv ? :y;
+        %tmp.55 = add %tmp.52 %tmp.54;
+        symbol [ x %tmp.57 79 73 74 ];
+        %tmp.57 = getv ? :x;
+        symbol [ y %tmp.59 79 76 77 ];
+        %tmp.59 = getv ? :y;
+        %tmp.60 = lgetv %stem.2;
+        symbol [ stem %tmp.60 79 79 83 ];
+        invoke %tmp.37 %tmp.38(%tmp.39, %tmp.47, %tmp.55, %tmp.57, %tmp.59, %tmp.60);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 80 12 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_stop" ]
+        %swayBase.11 = local;
+        symbol [ swayBase %swayBase.11 80 16 24 ];
+        symbol [ Math %tmp.61 80 27 31 ];
+        %tmp.61 = getm $.Toybox.Math;
+        symbol [ sin %tmp.62 80 32 35 ];
+        %tmp.62 = getv function %tmp.61 :sin;
+        %tmp.63 = lgetv %tSec.5;
+        symbol [ tSec %tmp.63 80 36 40 ];
+        symbol [ phase %tmp.65 80 43 48 ];
+        %tmp.65 = getv ? :phase;
+        %tmp.66 = lgetv %i.7;
+        symbol [ i %tmp.66 80 49 50 ];
+        %tmp.67 = agetv %tmp.65 %tmp.66;
+        %tmp.68 = add %tmp.63 %tmp.67;
+        %tmp.69 = invoke %tmp.61 %tmp.62(%tmp.68);
+        lputv %swayBase.11 %tmp.69;
+        symbol [ swayBase %swayBase.11 80 16 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 81 12 ]
+        for @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_test @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_incr @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_init:
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_begin" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_end" ]
+        %j.12 = local;
+        symbol [ j %j.12 81 21 22 ];
+        %tmp.70 = 1;
+        lputv %j.12 %tmp.70;
+        symbol [ j %j.12 81 21 22 ];
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_test:
+        %tmp.71 = lgetv %j.12;
+        symbol [ j %tmp.71 81 28 29 ];
+        %tmp.72 = lgetv %n.10;
+        symbol [ n %tmp.72 81 32 33 ];
+        %tmp.73 = lt %tmp.71 %tmp.72;
+        bf %tmp.73 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_begin:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 82 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_stop" ]
+        %sway.13 = local;
+        symbol [ sway %sway.13 82 20 24 ];
+        %tmp.74 = lgetv %swayBase.11;
+        symbol [ swayBase %tmp.74 82 27 35 ];
+        %tmp.75 = 0.8;
+        %tmp.76 = mul %tmp.74 %tmp.75;
+        %tmp.77 = lgetv %j.12;
+        symbol [ j %tmp.77 82 44 45 ];
+        %tmp.78 = mul %tmp.76 %tmp.77;
+        lputv %sway.13 %tmp.78;
+        symbol [ sway %sway.13 82 20 24 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 83 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_stop" ]
+        %pxj.14 = local;
+        symbol [ pxj %pxj.14 83 20 23 ];
+        %tmp.79 = lgetv %xs.8;
+        symbol [ xs %tmp.79 83 26 28 ];
+        %tmp.80 = lgetv %j.12;
+        symbol [ j %tmp.80 83 29 30 ];
+        %tmp.81 = 1;
+        %tmp.82 = sub %tmp.80 %tmp.81;
+        %tmp.83 = agetv %tmp.79 %tmp.82;
+        %tmp.84 = lgetv %sizeFactor.1;
+        symbol [ sizeFactor %tmp.84 83 38 48 ];
+        %tmp.85 = mul %tmp.83 %tmp.84;
+        %tmp.86 = lgetv %sway.13;
+        symbol [ sway %tmp.86 83 51 55 ];
+        %tmp.87 = add %tmp.85 %tmp.86;
+        symbol [ x %tmp.89 83 58 59 ];
+        %tmp.89 = getv ? :x;
+        %tmp.90 = add %tmp.87 %tmp.89;
+        lputv %pxj.14 %tmp.90;
+        symbol [ pxj %pxj.14 83 20 23 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 84 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_stop" ]
+        %pyj.15 = local;
+        symbol [ pyj %pyj.15 84 20 23 ];
+        %tmp.91 = lgetv %ys.9;
+        symbol [ ys %tmp.91 84 26 28 ];
+        %tmp.92 = lgetv %j.12;
+        symbol [ j %tmp.92 84 29 30 ];
+        %tmp.93 = 1;
+        %tmp.94 = sub %tmp.92 %tmp.93;
+        %tmp.95 = agetv %tmp.91 %tmp.94;
+        %tmp.96 = lgetv %sizeFactor.1;
+        symbol [ sizeFactor %tmp.96 84 38 48 ];
+        %tmp.97 = mul %tmp.95 %tmp.96;
+        symbol [ y %tmp.99 84 51 52 ];
+        %tmp.99 = getv ? :y;
+        %tmp.100 = add %tmp.97 %tmp.99;
+        lputv %pyj.15 %tmp.100;
+        symbol [ pyj %pyj.15 84 20 23 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 85 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_stop" ]
+        %nx.16 = local;
+        symbol [ nx %nx.16 85 20 22 ];
+        %tmp.101 = lgetv %xs.8;
+        symbol [ xs %tmp.101 85 25 27 ];
+        %tmp.102 = lgetv %j.12;
+        symbol [ j %tmp.102 85 28 29 ];
+        %tmp.103 = agetv %tmp.101 %tmp.102;
+        %tmp.104 = lgetv %sizeFactor.1;
+        symbol [ sizeFactor %tmp.104 85 33 43 ];
+        %tmp.105 = mul %tmp.103 %tmp.104;
+        %tmp.106 = lgetv %sway.13;
+        symbol [ sway %tmp.106 85 46 50 ];
+        %tmp.107 = add %tmp.105 %tmp.106;
+        symbol [ x %tmp.109 85 53 54 ];
+        %tmp.109 = getv ? :x;
+        %tmp.110 = add %tmp.107 %tmp.109;
+        lputv %nx.16 %tmp.110;
+        symbol [ nx %nx.16 85 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 86 16 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_stop" ]
+        %ny.17 = local;
+        symbol [ ny %ny.17 86 20 22 ];
+        %tmp.111 = lgetv %ys.9;
+        symbol [ ys %tmp.111 86 25 27 ];
+        %tmp.112 = lgetv %j.12;
+        symbol [ j %tmp.112 86 28 29 ];
+        %tmp.113 = agetv %tmp.111 %tmp.112;
+        %tmp.114 = lgetv %sizeFactor.1;
+        symbol [ sizeFactor %tmp.114 86 33 43 ];
+        %tmp.115 = mul %tmp.113 %tmp.114;
+        symbol [ y %tmp.117 86 46 47 ];
+        %tmp.117 = getv ? :y;
+        %tmp.118 = add %tmp.115 %tmp.117;
+        lputv %ny.17 %tmp.118;
+        symbol [ ny %ny.17 86 20 22 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 87 16 ]
+        symbol [ Gfx %tmp.120 87 16 19 ];
+        %tmp.120 = getv ? :Gfx;
+        symbol [ line %tmp.121 87 20 24 ];
+        %tmp.121 = getv function %tmp.120 :line;
+        %tmp.122 = lgetv %dc;
+        symbol [ dc %tmp.122 87 25 27 ];
+        %tmp.123 = lgetv %pxj.14;
+        symbol [ pxj %tmp.123 87 29 32 ];
+        %tmp.124 = lgetv %pyj.15;
+        symbol [ pyj %tmp.124 87 34 37 ];
+        %tmp.125 = lgetv %nx.16;
+        symbol [ nx %tmp.125 87 39 41 ];
+        %tmp.126 = lgetv %ny.17;
+        symbol [ ny %tmp.126 87 43 45 ];
+        %tmp.127 = lgetv %stem.2;
+        symbol [ stem %tmp.127 87 47 51 ];
+        invoke %tmp.120 %tmp.121(%tmp.122, %tmp.123, %tmp.124, %tmp.125, %tmp.126, %tmp.127);
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 88 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_88_16_90_16_if_stmt:
+        %tmp.128 = lgetv %j.12;
+        symbol [ j %tmp.128 88 20 21 ];
+        %tmp.129 = 2;
+        %tmp.130 = mod %tmp.128 %tmp.129;
+        %tmp.131 = 0;
+        %tmp.132 = eq %tmp.130 %tmp.131;
+        bf %tmp.132 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_88_16_90_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_88_16_90_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_88_32_90_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 89 20 ]
+        symbol [ Gfx %tmp.134 89 20 23 ];
+        %tmp.134 = getv ? :Gfx;
+        symbol [ px %tmp.135 89 24 26 ];
+        %tmp.135 = getv function %tmp.134 :px;
+        %tmp.136 = lgetv %dc;
+        symbol [ dc %tmp.136 89 27 29 ];
+        %tmp.137 = lgetv %nx.16;
+        symbol [ nx %tmp.137 89 31 33 ];
+        symbol [ Math %tmp.138 89 36 40 ];
+        %tmp.138 = getm $.Toybox.Math;
+        symbol [ cos %tmp.139 89 41 44 ];
+        %tmp.139 = getv function %tmp.138 :cos;
+        %tmp.140 = lgetv %leafT.6;
+        symbol [ leafT %tmp.140 89 45 50 ];
+        %tmp.141 = lgetv %i.7;
+        symbol [ i %tmp.141 89 53 54 ];
+        %tmp.142 = add %tmp.140 %tmp.141;
+        %tmp.143 = invoke %tmp.138 %tmp.139(%tmp.142);
+        %tmp.144 = 1.2;
+        %tmp.145 = mul %tmp.143 %tmp.144;
+        %tmp.146 = add %tmp.137 %tmp.145;
+        %tmp.147 = lgetv %ny.17;
+        symbol [ ny %tmp.147 89 63 65 ];
+        %tmp.148 = lgetv %leaf.3;
+        symbol [ leaf %tmp.148 89 67 71 ];
+        invoke %tmp.134 %tmp.135(%tmp.136, %tmp.146, %tmp.147, %tmp.148);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_88_32_90_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_88_16_90_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_88_16_90_16_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 91 16 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_16_96_16_if_stmt:
+        %tmp.149 = lgetv %j.12;
+        symbol [ j %tmp.149 91 20 21 ];
+        %tmp.150 = lgetv %n.10;
+        symbol [ n %tmp.150 91 25 26 ];
+        %tmp.151 = 1;
+        %tmp.152 = sub %tmp.150 %tmp.151;
+        %tmp.153 = eq %tmp.149 %tmp.152;
+        bf %tmp.153 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_16_96_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_16_96_16_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_32_96_16_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 92 20 ]
+        [ "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_32_96_16_start" "_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_32_96_16_stop" ]
+        %glow.18 = local;
+        symbol [ glow %glow.18 92 24 28 ];
+        %tmp.154 = lgetv %swayBase.11;
+        symbol [ swayBase %tmp.154 92 31 39 ];
+        %tmp.155 = 0.5;
+        %tmp.156 = sub %tmp.154 %tmp.155;
+        lputv %glow.18 %tmp.156;
+        symbol [ glow %glow.18 92 24 28 ];
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 93 20 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_20_95_20_if_stmt:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_24_93_57_begin:
+        %tmp.157 = lgetv %glow.18;
+        symbol [ glow %tmp.157 93 24 28 ];
+        %tmp.158 = 0.0;
+        %tmp.159 = gt %tmp.157 %tmp.158;
+        bt %tmp.159 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_20_95_20_if_true;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_38_93_57_false:
+        symbol [ species %tmp.161 93 38 45 ];
+        %tmp.161 = getv ? :species;
+        symbol [ Species %tmp.163 93 49 56 ];
+        %tmp.163 = getv ? :Species;
+        symbol [ ID_ANEMONE %tmp.164 93 57 67 ];
+        %tmp.164 = getv %tmp.163 :ID_ANEMONE;
+        %tmp.165 = eq %tmp.161 %tmp.164;
+        push %tmp.165;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_38_93_57_end:
+        %tmp.166 = phi [%tmp.159 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_24_93_57_begin] [%tmp.165 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_38_93_57_false] [%tmp.166 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_38_93_57_end];
+        bf %tmp.166 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_20_95_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_20_95_20_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_69_95_20_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 94 24 ]
+        symbol [ Gfx %tmp.168 94 24 27 ];
+        %tmp.168 = getv ? :Gfx;
+        symbol [ circle %tmp.169 94 28 34 ];
+        %tmp.169 = getv function %tmp.168 :circle;
+        %tmp.170 = lgetv %dc;
+        symbol [ dc %tmp.170 94 35 37 ];
+        %tmp.171 = lgetv %nx.16;
+        symbol [ nx %tmp.171 94 39 41 ];
+        %tmp.172 = lgetv %ny.17;
+        symbol [ ny %tmp.172 94 43 45 ];
+        %tmp.173 = 1;
+        %tmp.174 = lgetv %tip.4;
+        symbol [ tip %tmp.174 94 50 53 ];
+        invoke %tmp.168 %tmp.169(%tmp.170, %tmp.171, %tmp.172, %tmp.173, %tmp.174);
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_69_95_20_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_20_95_20_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_93_20_95_20_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_32_96_16_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_16_96_16_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_91_16_96_16_if_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_40_97_12_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 81 ]
+        %tmp.177 = lgetv %j.12;
+        symbol [ j %tmp.177 81 35 36 ];
+        %tmp.178 = add %tmp.177 1;
+        lputv %j.12 %tmp.178;
+        symbol [ j %j.12 81 35 36 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_81_12_97_12_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_46_98_8_stop:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_incr:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc" 75 ]
+        %tmp.181 = lgetv %i.7;
+        symbol [ i %tmp.181 75 41 42 ];
+        %tmp.182 = add %tmp.181 1;
+        lputv %i.7 %tmp.182;
+        symbol [ i %i.7 75 41 42 ];
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_test;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_75_8_98_8_for_end:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Plant_mc_63_29_99_4_stop:
+    }
+}
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Plant.mc"; @line = 1; ]
+<init> {
+}

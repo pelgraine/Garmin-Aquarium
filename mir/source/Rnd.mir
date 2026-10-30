@@ -1,0 +1,108 @@
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 1; @symbol_usingdef<0> = [Toybox,1,6,12]; @symbol_usingdef<1> = [Math,1,13,17]; ]
+using Toybox.Math;
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 4; @symbol_moduledef = [Rnd,4,7,10]; ]
+module Rnd {
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 4; ]
+    <init> {
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 6; @symbol_functiondef = [below,6,13,18]; @symbol_param<0> = [n,6,19,20]; ]
+    function below(n) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_6_22_11_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 7 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_7_8_9_8_if_stmt:
+        %tmp.1 = lgetv %n;
+        symbol [ n %tmp.1 7 12 13 ];
+        %tmp.2 = 0;
+        %tmp.3 = lte %tmp.1 %tmp.2;
+        bf %tmp.3 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_7_8_9_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_7_8_9_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_7_20_9_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 8 12 ]
+        %tmp.4 = 0;
+        ret %tmp.4;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_7_20_9_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_7_8_9_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_7_8_9_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 10 8 ]
+        symbol [ Math %tmp.5 10 16 20 ];
+        %tmp.5 = getm $.Toybox.Math;
+        symbol [ rand %tmp.6 10 21 25 ];
+        %tmp.6 = getv function %tmp.5 :rand;
+        %tmp.7 = invoke %tmp.5 %tmp.6();
+        %tmp.8 = 0x7FFFFFFF;
+        %tmp.9 = bitand %tmp.7 %tmp.8;
+        %tmp.10 = lgetv %n;
+        symbol [ n %tmp.10 10 44 45 ];
+        %tmp.11 = mod %tmp.9 %tmp.10;
+        ret %tmp.11;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_6_22_11_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 14; @symbol_functiondef = [range,14,13,18]; @symbol_param<0> = [a,14,19,20]; @symbol_param<1> = [b,14,22,23]; ]
+    function range(a, b) {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_14_25_19_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 15 8 ]
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_15_8_17_8_if_stmt:
+        %tmp.1 = lgetv %b;
+        symbol [ b %tmp.1 15 12 13 ];
+        %tmp.2 = lgetv %a;
+        symbol [ a %tmp.2 15 17 18 ];
+        %tmp.3 = lte %tmp.1 %tmp.2;
+        bf %tmp.3 @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_15_8_17_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_15_8_17_8_if_true:
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_15_20_17_8_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 16 12 ]
+        %tmp.4 = lgetv %a;
+        symbol [ a %tmp.4 16 19 20 ];
+        ret %tmp.4;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_15_20_17_8_stop:
+        goto @_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_15_8_17_8_if_end;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_15_8_17_8_if_end:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 18 8 ]
+        %tmp.5 = lgetv %a;
+        symbol [ a %tmp.5 18 15 16 ];
+        %tmp.6 = self;
+        symbol [ below %tmp.7 18 19 24 ];
+        %tmp.7 = getv function %tmp.6 :below;
+        %tmp.8 = lgetv %b;
+        symbol [ b %tmp.8 18 25 26 ];
+        %tmp.9 = lgetv %a;
+        symbol [ a %tmp.9 18 29 30 ];
+        %tmp.10 = sub %tmp.8 %tmp.9;
+        %tmp.11 = invoke %tmp.6 %tmp.7(%tmp.10);
+        %tmp.12 = add %tmp.5 %tmp.11;
+        ret %tmp.12;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_14_25_19_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 22; @symbol_functiondef = [unit,22,13,17]; ]
+    function unit() {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_22_20_24_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 23 8 ]
+        %tmp.1 = self;
+        symbol [ below %tmp.2 23 15 20 ];
+        %tmp.2 = getv function %tmp.1 :below;
+        %tmp.3 = 10001;
+        %tmp.4 = invoke %tmp.1 %tmp.2(%tmp.3);
+        %tmp.5 = 10000.0;
+        %tmp.6 = div %tmp.4 %tmp.5;
+        ret %tmp.6;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_22_20_24_4_stop:
+    }
+    [ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 27; @symbol_functiondef = [signed,27,13,19]; ]
+    function signed() {
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_27_22_29_4_start:
+[ "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc" 28 8 ]
+        %tmp.1 = self;
+        symbol [ unit %tmp.2 28 15 19 ];
+        %tmp.2 = getv function %tmp.1 :unit;
+        %tmp.3 = invoke %tmp.1 %tmp.2();
+        %tmp.4 = 2.0;
+        %tmp.5 = mul %tmp.3 %tmp.4;
+        %tmp.6 = 1.0;
+        %tmp.7 = sub %tmp.5 %tmp.6;
+        ret %tmp.7;
+_Users_elizabethseabrooke_Documents_aquarium_garmin_source_Rnd_mc_27_22_29_4_stop:
+    }
+}
+[ @file = "/Users/elizabethseabrooke/Documents/aquarium-garmin/source/Rnd.mc"; @line = 1; ]
+<init> {
+}
