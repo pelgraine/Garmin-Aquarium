@@ -1,4 +1,4 @@
-# Aquarium for the fenix 7S: notes (v0.3, 30 Oct 2026)
+# Aquarium for the fenix 7S: notes (v0.4, 30 Oct 2026)
 
 A Connect IQ watch app (Monkey C) carrying the tank from
 francistse/esp32-cyd-aquarium (commit 80449b3) onto the fenix 7S's round
@@ -12,7 +12,9 @@ Not Meck or LoRa related. AGPL-3.0, see LICENSE and NOTICE.
 - Start (top right): the Reef Guide. In the guide: Up/Down move the
   highlight, Start opens the species, Back closes the page, a tap on a
   cell opens it, a swipe left/right turns the page.
-- Down (bottom left): show or hide the frames-per-second figure.
+- Down (bottom left): in a debug build, show or hide the frames-per-second
+  figure; in a release build it does nothing (see "Debug and release
+  builds" below).
 - Back: leave the app.
 
 The Light key (top left) cannot be read by a watch app, which is why the
@@ -60,13 +62,14 @@ with the scare, weekend schooling, the "NEW <species>" discovery bubble,
 the diary line, and the Reef Guide (index of silhouettes, detail page,
 discovery saved on the watch).
 
-## Outline drawings (v0.3)
+## Outline drawings (v0.3, clownfish and blue tang v0.4)
 
 On the watch the CYD's chain-of-circles fish read as blobs (E, 30 Oct
-2026), so nine silhouettes are now drawn as fish outlines, agreed from
+2026), so eleven silhouettes are now drawn as fish outlines, agreed from
 mock-ups: chromis shoal, fusilier, anthias and cardinal (together 93% of
-spawns), the reef sharks (black or white fin tips by species), whale
-shark, humpback, and the manta and turtle, both seen from above. Each is
+spawns), the clownfish and blue tang (v0.4), the reef sharks (black or
+white fin tips by species), whale shark, humpback, and the manta and
+turtle, both seen from above. Each is
 a few filled polygons plus eye and detail pixels, drawn through
 Gfx.polyF at screen-pixel precision rather than snapped to tank cells;
 the dot grid still goes over them. The dorsal side is kept upward
@@ -74,10 +77,27 @@ whichever way the fish faces (mirrored when facing left, as sprite fish
 are), so it flips sides when the heading crosses straight up or down.
 Fins are a lighter tint of the body colour. The big species have fixed
 colours (slate for the whale shark instead of the CYD's near-white, so
-its spots show), faded with age like the rest. The CYD-style drawings
-remain for clownfish, the tangs, Moorish idol, sergeant, sweeper,
-silverside, dartfish, surgeon, unicorn, starfish, moray and octopus. The
-Reef Guide portraits are unchanged.
+its spots show), faded with age like the rest. The clownfish and blue
+tang also have fixed colours, at full strength rather than saturation
+115, faded with age: the clownfish is orange with three white bands (head,
+middle, tail base) edged in black; the blue tang is royal blue with a
+yellow tail and pectoral fin and the black marking from the eye along the
+upper body, enclosing a blue patch. Each of those two silhouettes is used
+by one species only (Clownfish, Blue Tang). The CYD-style drawings remain
+for the yellow tang, Moorish idol, sergeant, sweeper, silverside,
+dartfish, surgeon, unicorn, starfish, moray and octopus. The Reef Guide
+portraits are unchanged.
+
+## Debug and release builds (v0.4)
+
+The frames-per-second figure and the Down key that shows or hides it are
+in debug builds only. TankView.mc has a (:debug) and a (:release) version
+of countFrame, drawFps and toggleFps; the release versions are empty. The
+compiler leaves (:debug) code out of release builds and (:release) code
+out of debug builds. In VS Code, "Monkey C: Build for Device" asks for
+Debug or Release, and an export for the store is always a release build
+(both as described in Connect IQ forum posts, not checked against
+Garmin's own documentation).
 
 ## What is different
 
@@ -89,7 +109,8 @@ Reef Guide portraits are unchanged.
 - Boids: 6 to 10 per group rather than 10 to 20, and they are steered
   back from the rim instead of wrapping across the rectangle.
 - Colours: the CYD draws every creature at saturation 115 with a value that
-  fades with age (ColorPalette::adjustColorByAgeAndHealth); that is kept.
+  fades with age (ColorPalette::adjustColorByAgeAndHealth); that is kept,
+  apart from the fixed outline colours described above.
   The CYD's TFT tone and saturation profile (panel-specific) is not
   applied, and the watch rounds everything to its 64 colours.
 - Discovery is automatic: a species counts as found when it is spawned.
@@ -125,8 +146,10 @@ Reef Guide portraits are unchanged.
 ## Not yet established
 
 - v0.1 measured 3.2 to 3.4 frames a second on the watch at FRAME_MS = 100
-  (E, 27 Oct 2026); v0.2 and v0.3 not yet measured. The outlines are
+  (E, 27 Oct 2026); v0.2 onwards not yet measured. The outlines are
   fewer draw calls per fish than the circle chains were.
+- Whether the compiler accepts the (:debug)/(:release) pairs in
+  TankView.mc as written (v0.4, not yet built).
 - Memory use (Connect IQ gives a watch app on the 7S 768 KB; the guide
   table and bitmaps are far below that, but not measured).
 - How the colours look on the 64-colour screen.

@@ -64,9 +64,11 @@ def hsv(hue, sat, val):
 def scaled(c, f):
     return tuple(int(v * f) for v in c)
 
-# Creature.refreshColours: fixed colours for the big species, otherwise the
-# species hue at saturation 115; everything fades past adult age
-FIXED = {19: (150, 158, 170), 20: (96, 116, 140), 22: (62, 84, 124), 21: (70, 60, 110), 15: (110, 140, 55)}
+# Creature.refreshColours: fixed colours for the big species, the clownfish
+# and the blue tang, otherwise the species hue at saturation 115; everything
+# fades past adult age
+FIXED = {19: (150, 158, 170), 20: (96, 116, 140), 22: (62, 84, 124), 21: (70, 60, 110), 15: (110, 140, 55),
+         11: (255, 110, 10), 12: (25, 75, 235)}
 def creature_colour(sid, age):
     af = 1.0
     if age >= 0.7:
@@ -92,10 +94,7 @@ def draw_species(g, sid, x, y, angle, age=0.6):
     c.size = age_size * 1.8          # Cfg.CREATURE_SCALE; outlines use size / (0.6 * 1.8)
     if sid == 95:
         c.tip = (240, 240, 245)      # whitetip reef shark
-    if fam in ("clownfish", "bluetang"):
-        getattr(c, "cyd_" + fam)()
-    else:
-        getattr(c, "new_" + fam)()
+    getattr(c, "new_" + fam)()
 
 def load_font(name, size):
     try:

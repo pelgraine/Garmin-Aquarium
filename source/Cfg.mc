@@ -22,14 +22,15 @@ module Cfg {
     const PHYS = 80.0;
 
     // Creature drawing scale for the silhouettes still drawn the CYD way
-    // (clownfish, tangs, Moorish idol, sergeant, sweeper, silverside,
+    // (yellow tang, Moorish idol, sergeant, sweeper, silverside,
     // dartfish, surgeon, unicorn, star, moray, octopus). 1.0 is the CYD's
     // own size (tiny on the watch); every body dimension is multiplied by
     // this. Eyes, lines and the dot grid stay one unit.
     const CREATURE_SCALE = 1.8;
 
     // Size of the outline drawings (chromis, fusilier, anthias, cardinal,
-    // sharks, whale shark, humpback, manta, turtle). 1.0 is the size agreed
+    // clownfish, blue tang, sharks, whale shark, humpback, manta, turtle).
+    // 1.0 is the size agreed
     // from the mock-ups (a chromis about 36 px nose to tail, a whale shark
     // about 75 px); everything else scales from it. Age still varies each
     // creature a little either side.

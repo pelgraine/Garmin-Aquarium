@@ -4,8 +4,7 @@
 # truncated coordinates, filled circles, 3-wide lines, filled polygons, then
 # the dot-grid mask. The new_* methods are the outline drawings that
 # Creature.mc was translated from point for point; the cyd_* methods are the
-# CYD-style shapes (only cyd_clownfish and cyd_bluetang are still used by
-# the app's look; the others are the CYD originals the outlines replaced).
+# CYD originals the outlines replaced (none of them is the app's look now).
 # It began as the mock-up script for choosing the outline look, which is why
 # a few unused mock-up helpers remain at the end.
 import math
@@ -248,7 +247,8 @@ class Creature:
 
     # outline size per family: these are the readable sizes on the watch
     # (chromis about 36 px nose to tail), scaled by age like the others
-    KBASE = {"chromis": 1.1, "fusilier": 1.0, "anthias": 1.05, "cardinal": 1.15, "shark": 0.85, "whaleshark": 1.0, "whale": 1.0, "manta": 1.0, "turtle": 1.0}
+    KBASE = {"chromis": 1.1, "fusilier": 1.0, "anthias": 1.05, "cardinal": 1.15, "clownfish": 1.2, "bluetang": 1.0,
+             "shark": 0.85, "whaleshark": 1.0, "whale": 1.0, "manta": 1.0, "turtle": 1.0}
     def kfac(self):
         return self.size / SIZE * self.KBASE[self.fam]
 
@@ -289,6 +289,39 @@ class Creature:
         ex, ey = self.pt((1.6, 0.5), k)
         self.g.circle(ex, ey, 0.7, EYE)
         self.dot((2.2, 0.9), k, (240, 240, 255))
+
+    # ---------- outline clownfish and blue tang (v0.4) ----------
+    def new_clownfish(self):
+        k = self.kfac(); c = self.col; white = (245, 245, 250)
+        # rounded orange body, rounded tail, notched dorsal, anal and pelvic
+        # fins, three white bands edged in black (black shape, white over it)
+        self.body([(-4.5, 0.7), (-5.5, 1.9), (-6.7, 2.5), (-7.7, 2.2), (-8.2, 1.2), (-8.3, 0.0), (-8.2, -1.2), (-7.7, -2.2), (-6.7, -2.5), (-5.5, -1.9), (-4.5, -0.7)], k, c)   # tail
+        self.body([(3.2, 2.4), (1.8, 3.7), (0.4, 2.9), (-0.6, 3.8), (-1.8, 4.2), (-2.9, 3.7), (-3.5, 2.6), (-3.9, 1.0), (-2.8, 1.6), (-1.3, 2.2), (0.6, 2.5), (2.6, 2.5)], k, c)   # dorsal
+        self.body([(-0.4, -2.2), (-1.0, -3.4), (-2.0, -3.9), (-3.0, -3.5), (-3.6, -2.2), (-3.8, -0.9), (-2.8, -1.5), (-1.3, -2.1)], k, c)   # anal
+        self.body([(2.8, -2.1), (2.3, -3.4), (1.4, -3.7), (1.0, -2.3)], k, c)   # pelvic
+        self.body([(6.3, 0.2), (6.0, 1.0), (5.3, 1.8), (4.2, 2.3), (2.6, 2.5), (0.6, 2.5), (-1.3, 2.2), (-2.8, 1.6), (-3.8, 1.0), (-4.7, 0.8), (-4.7, -0.8), (-3.8, -0.9), (-2.8, -1.5), (-1.3, -2.1), (0.4, -2.3), (2.4, -2.2), (4.2, -1.8), (5.4, -1.2), (6.1, -0.5)], k, c)   # body
+        self.body([(2.5, 2.5), (2.6, 2.5), (4.2, 2.3), (4.3, 2.25), (3.9, 1.0), (3.8, 0.0), (3.9, -1.0), (4.2, -1.8), (2.4, -2.2), (2.1, -1.0), (2.0, 0.0), (2.1, 1.0)], k, EYE)   # head band
+        self.body([(2.9, 2.46), (3.9, 2.34), (3.5, 1.0), (3.4, 0.0), (3.5, -1.0), (3.8, -1.89), (2.8, -2.11), (2.5, -1.0), (2.4, 0.0), (2.5, 1.0)], k, white)
+        self.body([(-1.0, 2.25), (0.6, 2.5), (0.9, 2.5), (1.2, 1.2), (1.8, 0.2), (1.2, -0.9), (0.8, -2.28), (0.4, -2.3), (-1.0, -2.14), (-1.2, -0.6), (-1.2, 0.8)], k, EYE)   # middle band
+        self.body([(-0.6, 2.31), (0.5, 2.48), (0.8, 1.2), (1.4, 0.2), (0.8, -0.9), (0.4, -2.3), (-0.6, -2.18), (-0.8, -0.6), (-0.8, 0.8)], k, white)
+        self.body([(-4.4, 0.87), (-3.8, 1.0), (-2.8, 1.6), (-2.8, -1.5), (-3.8, -0.9), (-4.4, -0.83)], k, EYE)   # tail-base band
+        self.body([(-4.0, 0.96), (-3.8, 1.0), (-3.2, 1.36), (-3.2, -1.26), (-3.8, -0.9), (-4.0, -0.88)], k, white)
+        ex, ey = self.pt((4.85, 0.7), k)
+        self.g.circle(ex, ey, 0.5, EYE)
+        self.dot((5.3, 1.05), k, (240, 240, 255))
+    def new_bluetang(self):
+        k = self.kfac(); c = self.col; yellow = (255, 220, 40)
+        # deep oval body, long dorsal and anal fins, yellow tail and pectoral,
+        # black marking from the eye along the upper body round a blue patch
+        self.body([(4.4, 2.9), (2.4, 4.1), (0.0, 4.4), (-2.4, 4.0), (-4.4, 3.0), (-5.6, 1.7), (-5.3, 1.4), (-4.0, 2.4), (-2.2, 3.2), (0.0, 3.6), (2.2, 3.5)], k, c)   # dorsal
+        self.body([(1.4, -3.2), (-0.6, -4.1), (-2.8, -3.9), (-4.6, -2.6), (-5.6, -1.4), (-5.0, -1.3), (-3.6, -2.3), (-1.8, -3.0)], k, c)   # anal
+        self.body([(4.2, -2.4), (3.4, -3.6), (2.6, -3.8), (2.8, -2.8)], k, c)   # pelvic
+        self.body([(7.0, 0.3), (6.6, 1.0), (5.7, 2.1), (4.2, 3.0), (2.2, 3.5), (0.0, 3.6), (-2.2, 3.2), (-4.0, 2.4), (-5.3, 1.4), (-6.1, 0.8), (-6.1, -0.8), (-5.0, -1.3), (-3.6, -2.3), (-1.8, -3.0), (0.4, -3.3), (2.6, -3.0), (4.6, -2.3), (6.0, -1.2), (6.8, -0.4)], k, c)   # body
+        self.body([(-5.4, 0.7), (-8.4, 2.7), (-9.2, 2.5), (-8.7, 0.0), (-9.2, -2.5), (-8.4, -2.7), (-5.4, -0.7)], k, yellow)   # tail
+        self.body([(6.2, 1.2), (5.4, 2.4), (3.8, 3.1), (1.8, 3.35), (-0.4, 3.35), (-2.6, 2.95), (-4.4, 2.1), (-5.6, 1.0), (-5.9, 0.2), (-5.5, -0.4), (-4.0, -0.9), (-2.0, -1.1), (0.0, -0.9), (1.6, -0.4), (2.6, 0.6), (4.0, 0.9), (5.0, 0.4)], k, EYE)   # marking
+        self.body([(0.9, 1.15), (0.68, 1.45), (0.07, 1.7), (-0.81, 1.83), (-1.79, 1.83), (-2.67, 1.7), (-3.28, 1.45), (-3.5, 1.15), (-3.28, 0.85), (-2.67, 0.6), (-1.79, 0.47), (-0.81, 0.47), (0.07, 0.6), (0.68, 0.85)], k, c)   # blue patch
+        self.body([(4.0, -0.4), (2.0, -1.0), (0.6, -2.2), (1.4, -2.6), (3.0, -1.8)], k, yellow)   # pectoral
+        self.dot((5.4, 1.3), k, (240, 240, 255))
 
     # ---------- outline versions of the big three ----------
     def new_shark(self):
@@ -373,7 +406,7 @@ def draw_creature(g, fam, x, y, angle, new=False, detail=False):
     col, sc = FAMILIES[fam]
     c = Creature(g, x, y, angle, sc, col, detail)
     c.fam = fam
-    if new and fam in ("chromis", "fusilier", "anthias", "cardinal", "shark", "whaleshark", "whale", "manta", "turtle"):
+    if new and fam in ("chromis", "fusilier", "anthias", "cardinal", "clownfish", "bluetang", "shark", "whaleshark", "whale", "manta", "turtle"):
         getattr(c, "new_" + fam)()
     else:
         getattr(c, "cyd_" + fam)()

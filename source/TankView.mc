@@ -6,11 +6,13 @@ using Toybox.Timer;
 // The tank screen. One timer (the app's only one) asks for a redraw every
 // Cfg.FRAME_MS; each redraw advances the simulation one frame and paints it:
 // black water, boids, creatures, food, plants, visitor, then the dot grid
-// over the lot, then the text overlays (discovery bubble, diary, fps).
+// over the lot, then the text overlays (discovery bubble, diary, and in
+// debug builds the fps figure).
 //   tap        drop a food flake at that x
 //   Up         show the diary line for 8 s
 //   Start      open the Reef Guide (the tank pauses while it is open)
-//   Down       show or hide the frames-per-second figure
+//   Down       debug builds: show or hide the frames-per-second figure;
+//              release builds: nothing
 //   Back       leave the app
 class TankView extends WatchUi.View {
     const FONT = Graphics.FONT_XTINY;
@@ -48,9 +50,44 @@ class TankView extends WatchUi.View {
         WatchUi.requestUpdate();
     }
 
+    // The frames-per-second figure is in debug builds only. The compiler
+    // leaves (:debug) code out of release builds and (:release) code out of
+    // debug builds, so a release build gets the empty versions of these
+    // three: no counting, no figure, and Down does nothing.
+    (:debug)
+    function countFrame(now) {
+        _frames++;
+        if (now - _fpsAt >= 1000) {
+            _fps = _frames * 1000.0 / (now - _fpsAt);
+            _frames = 0;
+            _fpsAt = now;
+        }
+    }
+
+    (:release)
+    function countFrame(now) {
+    }
+
+    (:debug)
+    function drawFps(dc) {
+        if (_showFps) {
+            dc.setColor(Cfg.COL_FPS, Graphics.COLOR_TRANSPARENT);
+            dc.drawText(120, 212, FONT, _fps.format("%.1f") + " fps", MID);
+        }
+    }
+
+    (:release)
+    function drawFps(dc) {
+    }
+
+    (:debug)
     function toggleFps() {
         _showFps = !_showFps;
         WatchUi.requestUpdate();
+    }
+
+    (:release)
+    function toggleFps() {
     }
 
     function onUpdate(dc) {
@@ -58,12 +95,7 @@ class TankView extends WatchUi.View {
         if (_stepDue) {
             _stepDue = false;
             gTank.step(now);
-            _frames++;
-            if (now - _fpsAt >= 1000) {
-                _fps = _frames * 1000.0 / (now - _fpsAt);
-                _frames = 0;
-                _fpsAt = now;
-            }
+            countFrame(now);
         }
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_BLACK);
         dc.clear();
@@ -88,10 +120,7 @@ class TankView extends WatchUi.View {
             dc.setColor(Cfg.COL_DIARY, Graphics.COLOR_TRANSPARENT);
             dc.drawText(120, 114, FONT, d, MID);
         }
-        if (_showFps) {
-            dc.setColor(Cfg.COL_FPS, Graphics.COLOR_TRANSPARENT);
-            dc.drawText(120, 212, FONT, _fps.format("%.1f") + " fps", MID);
-        }
+        drawFps(dc);
     }
 }
 
@@ -103,7 +132,7 @@ class TankDelegate extends WatchUi.BehaviorDelegate {
         _v = v;
     }
 
-    // Up: diary. Down: fps figure on or off.
+    // Up: diary. Down: fps figure on or off (debug builds only).
     function onPreviousPage() {
         gTank.showDiary(System.getTimer());
         WatchUi.requestUpdate();

@@ -91,6 +91,8 @@ class Creature {
         else if (sil == Species.SIL_FUSILIER) { outline = true; kbase = 1.0; }
         else if (sil == Species.SIL_ANTHIAS) { outline = true; kbase = 1.05; }
         else if (sil == Species.SIL_CARDINAL) { outline = true; kbase = 1.15; }
+        else if (sil == Species.SIL_CLOWNFISH) { outline = true; kbase = 1.2; }
+        else if (sil == Species.SIL_BLUE_TANG) { outline = true; kbase = 1.0; }
         else if (sil == Species.SIL_SHARK) { outline = true; kbase = 0.85; }
         else if (sil == Species.SIL_WHALE_SHARK) { outline = true; kbase = 1.0; }
         else if (sil == Species.SIL_WHALE) { outline = true; kbase = 1.0; }
@@ -112,8 +114,13 @@ class Creature {
         if (v > 255) { v = 255; }
         // Outline colours for the big species are fixed (the CYD's whale
         // shark is near white, which would hide its spots), faded by age
-        // the same way.
-        if (sil == Species.SIL_SHARK) {
+        // the same way. So are the clownfish's orange and the blue tang's
+        // blue, at full strength rather than saturation 115.
+        if (sil == Species.SIL_CLOWNFISH) {
+            col = Colour.scaled(0xFF6E0A, af);
+        } else if (sil == Species.SIL_BLUE_TANG) {
+            col = Colour.scaled(0x194BEB, af);
+        } else if (sil == Species.SIL_SHARK) {
             col = Colour.scaled(0x969EAA, af);
         } else if (sil == Species.SIL_WHALE_SHARK) {
             col = Colour.scaled(0x60748C, af);
@@ -209,10 +216,10 @@ class Creature {
         else if (sil == Species.SIL_WHALE) { outWhale(dc); }
         else if (sil == Species.SIL_MANTA) { outManta(dc); }
         else if (sil == Species.SIL_TURTLE) { outTurtle(dc); }
-        else if (sil == Species.SIL_BLUE_TANG) { drawBlueTang(dc); }
+        else if (sil == Species.SIL_BLUE_TANG) { outBlueTang(dc); }
         else if (sil == Species.SIL_YELLOW_TANG) { drawYellowTang(dc); }
         else if (sil == Species.SIL_MOORISH_IDOL) { drawMoorishIdol(dc); }
-        else if (sil == Species.SIL_CLOWNFISH) { drawClownfish(dc); }
+        else if (sil == Species.SIL_CLOWNFISH) { outClownfish(dc); }
         else if (sil == Species.SIL_SERGEANT) { drawSergeant(dc); }
         else if (sil == Species.SIL_SWEEPER) { drawSweeper(dc); }
         else if (sil == Species.SIL_DARTFISH) { drawDartfish(dc); }
@@ -226,7 +233,8 @@ class Creature {
 
     // ---- outline drawings ---------------------------------------------
     // Fish outlines for the families the CYD drew as chains of circles,
-    // and for the big species, agreed from mock-ups (30 Oct 2026). Local
+    // for the big species, and for the clownfish and blue tang, agreed
+    // from mock-ups (30 Oct 2026). Local
     // coordinates: +x forward, +u up (the dorsal side), in tank units at
     // k = 1; k comes from kfac(). The dorsal side stays upward whichever
     // way the creature faces (mirrored when facing left), the way sprite
@@ -322,6 +330,47 @@ class Creature {
         var q = placePts([[1.6, 0.5]], k);
         Gfx.circle(dc, q[0][0], q[0][1], 0.7, EYE);
         dotAt(dc, [2.2, 0.9], k, 0xF0F0FF);
+    }
+
+    // clownfish: rounded orange body, rounded tail, notched dorsal, anal
+    // and pelvic fins, three white bands (head, middle, tail base) edged in
+    // black. Each band is the black shape with the white one drawn over it.
+    function outClownfish(dc) {
+        var k = kfac();
+        var c = col;
+        var white = 0xF5F5FA;
+        shape(dc, [[-4.5, 0.7], [-5.5, 1.9], [-6.7, 2.5], [-7.7, 2.2], [-8.2, 1.2], [-8.3, 0.0], [-8.2, -1.2], [-7.7, -2.2], [-6.7, -2.5], [-5.5, -1.9], [-4.5, -0.7]], k, c);
+        shape(dc, [[3.2, 2.4], [1.8, 3.7], [0.4, 2.9], [-0.6, 3.8], [-1.8, 4.2], [-2.9, 3.7], [-3.5, 2.6], [-3.9, 1.0], [-2.8, 1.6], [-1.3, 2.2], [0.6, 2.5], [2.6, 2.5]], k, c);
+        shape(dc, [[-0.4, -2.2], [-1.0, -3.4], [-2.0, -3.9], [-3.0, -3.5], [-3.6, -2.2], [-3.8, -0.9], [-2.8, -1.5], [-1.3, -2.1]], k, c);
+        shape(dc, [[2.8, -2.1], [2.3, -3.4], [1.4, -3.7], [1.0, -2.3]], k, c);
+        shape(dc, [[6.3, 0.2], [6.0, 1.0], [5.3, 1.8], [4.2, 2.3], [2.6, 2.5], [0.6, 2.5], [-1.3, 2.2], [-2.8, 1.6], [-3.8, 1.0], [-4.7, 0.8], [-4.7, -0.8], [-3.8, -0.9], [-2.8, -1.5], [-1.3, -2.1], [0.4, -2.3], [2.4, -2.2], [4.2, -1.8], [5.4, -1.2], [6.1, -0.5]], k, c);
+        shape(dc, [[2.5, 2.5], [2.6, 2.5], [4.2, 2.3], [4.3, 2.25], [3.9, 1.0], [3.8, 0.0], [3.9, -1.0], [4.2, -1.8], [2.4, -2.2], [2.1, -1.0], [2.0, 0.0], [2.1, 1.0]], k, EYE);
+        shape(dc, [[2.9, 2.46], [3.9, 2.34], [3.5, 1.0], [3.4, 0.0], [3.5, -1.0], [3.8, -1.89], [2.8, -2.11], [2.5, -1.0], [2.4, 0.0], [2.5, 1.0]], k, white);
+        shape(dc, [[-1.0, 2.25], [0.6, 2.5], [0.9, 2.5], [1.2, 1.2], [1.8, 0.2], [1.2, -0.9], [0.8, -2.28], [0.4, -2.3], [-1.0, -2.14], [-1.2, -0.6], [-1.2, 0.8]], k, EYE);
+        shape(dc, [[-0.6, 2.31], [0.5, 2.48], [0.8, 1.2], [1.4, 0.2], [0.8, -0.9], [0.4, -2.3], [-0.6, -2.18], [-0.8, -0.6], [-0.8, 0.8]], k, white);
+        shape(dc, [[-4.4, 0.87], [-3.8, 1.0], [-2.8, 1.6], [-2.8, -1.5], [-3.8, -0.9], [-4.4, -0.83]], k, EYE);
+        shape(dc, [[-4.0, 0.96], [-3.8, 1.0], [-3.2, 1.36], [-3.2, -1.26], [-3.8, -0.9], [-4.0, -0.88]], k, white);
+        var q = placePts([[4.85, 0.7]], k);
+        Gfx.circle(dc, q[0][0], q[0][1], 0.5, EYE);
+        dotAt(dc, [5.3, 1.05], k, 0xF0F0FF);
+    }
+
+    // blue tang: deep oval body with long dorsal and anal fins, yellow
+    // forked tail and pectoral, and the black marking that runs from the
+    // eye along the upper body to the tail, enclosing a blue patch
+    function outBlueTang(dc) {
+        var k = kfac();
+        var c = col;
+        var yellow = 0xFFDC28;
+        shape(dc, [[4.4, 2.9], [2.4, 4.1], [0.0, 4.4], [-2.4, 4.0], [-4.4, 3.0], [-5.6, 1.7], [-5.3, 1.4], [-4.0, 2.4], [-2.2, 3.2], [0.0, 3.6], [2.2, 3.5]], k, c);
+        shape(dc, [[1.4, -3.2], [-0.6, -4.1], [-2.8, -3.9], [-4.6, -2.6], [-5.6, -1.4], [-5.0, -1.3], [-3.6, -2.3], [-1.8, -3.0]], k, c);
+        shape(dc, [[4.2, -2.4], [3.4, -3.6], [2.6, -3.8], [2.8, -2.8]], k, c);
+        shape(dc, [[7.0, 0.3], [6.6, 1.0], [5.7, 2.1], [4.2, 3.0], [2.2, 3.5], [0.0, 3.6], [-2.2, 3.2], [-4.0, 2.4], [-5.3, 1.4], [-6.1, 0.8], [-6.1, -0.8], [-5.0, -1.3], [-3.6, -2.3], [-1.8, -3.0], [0.4, -3.3], [2.6, -3.0], [4.6, -2.3], [6.0, -1.2], [6.8, -0.4]], k, c);
+        shape(dc, [[-5.4, 0.7], [-8.4, 2.7], [-9.2, 2.5], [-8.7, 0.0], [-9.2, -2.5], [-8.4, -2.7], [-5.4, -0.7]], k, yellow);
+        shape(dc, [[6.2, 1.2], [5.4, 2.4], [3.8, 3.1], [1.8, 3.35], [-0.4, 3.35], [-2.6, 2.95], [-4.4, 2.1], [-5.6, 1.0], [-5.9, 0.2], [-5.5, -0.4], [-4.0, -0.9], [-2.0, -1.1], [0.0, -0.9], [1.6, -0.4], [2.6, 0.6], [4.0, 0.9], [5.0, 0.4]], k, EYE);
+        shape(dc, [[0.9, 1.15], [0.68, 1.45], [0.07, 1.7], [-0.81, 1.83], [-1.79, 1.83], [-2.67, 1.7], [-3.28, 1.45], [-3.5, 1.15], [-3.28, 0.85], [-2.67, 0.6], [-1.79, 0.47], [-0.81, 0.47], [0.07, 0.6], [0.68, 0.85]], k, c);
+        shape(dc, [[4.0, -0.4], [2.0, -1.0], [0.6, -2.2], [1.4, -2.6], [3.0, -1.8]], k, yellow);
+        dotAt(dc, [5.4, 1.3], k, 0xF0F0FF);
     }
 
     // reef shark: pointed snout, tall first dorsal, pectoral, second
@@ -539,44 +588,6 @@ class Creature {
         if (r < 1.0) { r = 1.0; }
         Gfx.circle(dc, m.px + cosA * size * 2.0 * sc, m.py + sinA * size * 2.0 * sc, r, col);
         drawEye(dc, m.px + cosA * size * 1.2 * sc, m.py + sinA * size * 1.2 * sc);
-    }
-
-    function drawClownfish(dc) {
-        var cosA = Math.cos(m.angle);
-        var sinA = Math.sin(m.angle);
-        var white = 0xF5F5FA;
-        placeSegments(cosA, sinA);
-        for (var i = 0; i < 6; i++) {
-            var r = segs[i] * size * sc;
-            if (r < 1.0) { r = 1.0; }
-            Gfx.circle(dc, segX[i], segY[i], r, col);
-        }
-        for (var band = 1; band <= 3; band++) {
-            var idx = band;
-            if (idx > 5) { idx = 5; }
-            var rb = segs[idx] * size * sc * 0.85;
-            if (rb < 1.0) { rb = 1.0; }
-            Gfx.circle(dc, segX[idx], segY[idx], rb, white);
-        }
-        var tx = segX[5];
-        var ty = segY[5];
-        Gfx.tri(dc, tx - cosA * size * 3.0 * sc, ty - sinA * size * 3.0 * sc,
-                tx - sinA * size * 2.0 * sc, ty + cosA * size * 2.0 * sc,
-                tx + sinA * size * 2.0 * sc, ty - cosA * size * 2.0 * sc, col);
-        drawEye(dc, m.px + cosA * size * 1.2 * sc, m.py + sinA * size * 1.2 * sc);
-    }
-
-    function drawBlueTang(dc) {
-        var cosA = Math.cos(m.angle);
-        var sinA = Math.sin(m.angle);
-        var yellow = 0xFFDC28;
-        var rad = 3.5 * size * sc;
-        if (rad < 2.0) { rad = 2.0; }
-        Gfx.circle(dc, m.px, m.py, rad, col);
-        Gfx.tri(dc, m.px - cosA * rad * 1.4, m.py - sinA * rad * 1.4,
-                m.px - sinA * rad * 0.9, m.py + cosA * rad * 0.9,
-                m.px + sinA * rad * 0.9, m.py - cosA * rad * 0.9, yellow);
-        drawEye(dc, m.px + cosA * rad * 0.55, m.py + sinA * rad * 0.55);
     }
 
     function drawYellowTang(dc) {

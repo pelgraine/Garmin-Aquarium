@@ -52,7 +52,8 @@ that is normal and the app stays installed.
 3. File > Open Folder on this repository, then "Monkey C: Build for
    Device". The first build generates a developer key; keep it. The build
    may print warnings; it should finish without errors. The `.prg` lands in
-   the project folder.
+   the project folder. When it asks for Debug or Release, Release is the
+   normal choice; Debug adds the frames-per-second figure.
 4. Install it as above.
 
 ## Using it
@@ -64,7 +65,7 @@ Navigation is by the buttons, with one touch gesture.
 | Tap the screen | Drops a food flake from the surface above where you tap. The nearest fish not already chasing food goes after it. |
 | Up (middle left) | Shows the diary line for eight seconds: hours since the app was opened, creatures alive, flakes eaten. |
 | Start (top right) | Opens the Reef Guide. |
-| Down (bottom left) | Shows or hides the frames-per-second figure (shown when the app starts). |
+| Down (bottom left) | Debug builds only: shows or hides the frames-per-second figure (shown when the app starts). In a release build it does nothing. |
 | Back | Leaves the app. |
 
 In the Reef Guide: Up and Down move the highlight, Start or a tap on a cell
@@ -129,8 +130,9 @@ build, what was changed and why.
 - The tank is a circle, radius 40 tank units, rather than an 80 x 106
   rectangle, and creatures are steered back from the rim. It holds eight
   creatures rather than twelve.
-- Nine silhouettes (the four common fish families, the reef sharks, the
-  whale shark, humpback, manta and turtle) are drawn as fish outlines
+- Eleven silhouettes (the four common fish families, the clownfish, the
+  blue tang, the reef sharks, the whale shark, humpback, manta and turtle)
+  are drawn as fish outlines
   instead of the CYD's circle-based shapes, which read as blobs at watch
   size. The other species keep the CYD drawings.
 - The big species are weighted up so they are seen.
