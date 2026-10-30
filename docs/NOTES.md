@@ -83,7 +83,12 @@ tang also have fixed colours, at full strength rather than saturation
 middle, tail base) edged in black; the blue tang is royal blue with a
 yellow tail and pectoral fin and the black marking from the eye along the
 upper body, enclosing a blue patch. Each of those two silhouettes is used
-by one species only (Clownfish, Blue Tang). The CYD-style drawings remain
+by one species only (Clownfish, Blue Tang). Sizes (E, 30 Oct 2026): the
+clownfish is smaller than the blue tang (size factor 0.8 against 1.0,
+about 35 px against 49 px at age 0.6), and the reef sharks are a quarter
+longer than in v0.3 (factor 1.0625, was 0.85; about 69 px at age 0.6).
+These compare creatures of the same age; each creature's age still
+scales it, so an old clownfish can outsize a young tang. The CYD-style drawings remain
 for the yellow tang, Moorish idol, sergeant, sweeper, silverside,
 dartfish, surgeon, unicorn, starfish, moray and octopus. The Reef Guide
 portraits are unchanged.

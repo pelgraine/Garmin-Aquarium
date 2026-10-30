@@ -247,8 +247,8 @@ class Creature:
 
     # outline size per family: these are the readable sizes on the watch
     # (chromis about 36 px nose to tail), scaled by age like the others
-    KBASE = {"chromis": 1.1, "fusilier": 1.0, "anthias": 1.05, "cardinal": 1.15, "clownfish": 1.2, "bluetang": 1.0,
-             "shark": 0.85, "whaleshark": 1.0, "whale": 1.0, "manta": 1.0, "turtle": 1.0}
+    KBASE = {"chromis": 1.1, "fusilier": 1.0, "anthias": 1.05, "cardinal": 1.15, "clownfish": 0.8, "bluetang": 1.0,
+             "shark": 1.0625, "whaleshark": 1.0, "whale": 1.0, "manta": 1.0, "turtle": 1.0}
     def kfac(self):
         return self.size / SIZE * self.KBASE[self.fam]
 

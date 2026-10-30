@@ -91,9 +91,9 @@ class Creature {
         else if (sil == Species.SIL_FUSILIER) { outline = true; kbase = 1.0; }
         else if (sil == Species.SIL_ANTHIAS) { outline = true; kbase = 1.05; }
         else if (sil == Species.SIL_CARDINAL) { outline = true; kbase = 1.15; }
-        else if (sil == Species.SIL_CLOWNFISH) { outline = true; kbase = 1.2; }
+        else if (sil == Species.SIL_CLOWNFISH) { outline = true; kbase = 0.8; }
         else if (sil == Species.SIL_BLUE_TANG) { outline = true; kbase = 1.0; }
-        else if (sil == Species.SIL_SHARK) { outline = true; kbase = 0.85; }
+        else if (sil == Species.SIL_SHARK) { outline = true; kbase = 1.0625; }
         else if (sil == Species.SIL_WHALE_SHARK) { outline = true; kbase = 1.0; }
         else if (sil == Species.SIL_WHALE) { outline = true; kbase = 1.0; }
         else if (sil == Species.SIL_MANTA) { outline = true; kbase = 1.0; }
