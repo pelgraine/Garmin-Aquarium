@@ -10,7 +10,7 @@ flakes that the fish chase. A Reef Guide records the species you have seen.
 It runs on the watch alone; no phone or network is needed.
 
 <p align="center">
-  <img src="docs/images/demo.gif" alt="An example tank on a first run" width="480">
+  <img src="docs/images/demo.gif" alt="An example tank on a first run" width="500">
 </p>
 
 The pictures on this page are not taken from the watch. They are drawn by a

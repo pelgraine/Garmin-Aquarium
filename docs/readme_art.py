@@ -7,7 +7,8 @@
 # about the frame rate measured on the watch (one frame every 300 ms).
 #   creatures.png  a sheet of the creatures
 #   guide.png      the Reef Guide index and a species page
-#   demo.gif       an example tank on a first run, 15 seconds
+#   demo.gif       an example tank on a first run, 15 seconds, with a grey
+#                  ring marking the edge of the watch screen
 # Usage (needs Pillow): python3 readme_art.py <source/Species.mc> <output dir>
 import math, re, sys, random
 from PIL import Image, ImageDraw, ImageFont
@@ -553,11 +554,27 @@ class Tank:
 CAST = [88, 0, 94, 28, 97, 38, 57, 72]
 tank = Tank(CAST, Rnd(24))   # a start with the fish spread out
 FRAME_MS = 300
+
+# A grey ring just outside the screen circle, so it is clear where the watch
+# screen ends. The screen is 480 px here (2x); the ring sits outside it.
+RING_W = 6
+RING_GAP = 1
+MARGIN = RING_GAP + RING_W + 3
+def with_border(screen):
+    size = screen.width + 2 * MARGIN
+    out = Image.new("RGB", (size, size), (0, 0, 0))
+    out.paste(screen, (MARGIN, MARGIN))
+    c = size / 2.0
+    r_out = screen.width / 2.0 + RING_GAP + RING_W
+    ImageDraw.Draw(out).ellipse((c - r_out, c - r_out, c + r_out - 1, c + r_out - 1),
+                                outline=(110, 110, 110), width=RING_W)
+    return out
+
 frames = []
 for f in range(50):
     now = f * FRAME_MS
     if f > 0:
         tank.step(now)
-    frames.append(tank.draw(now).resize((480, 480), Image.NEAREST))
+    frames.append(with_border(tank.draw(now).resize((480, 480), Image.NEAREST)))
 frames[0].save(OUT + "/demo.gif", save_all=True, append_images=frames[1:], duration=FRAME_MS, loop=0, optimize=True)
 print("wrote creatures.png, guide.png, demo.gif")
